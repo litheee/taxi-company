@@ -1,0 +1,33 @@
+@font-face {
+	font-family: 'Lato';
+	src: url('/fonts/Lato-Heavy.ttf');
+	font-weight: 900;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Ubuntu';
+	src: url('Ubuntu-Regular.eot');
+	src: local('Ubuntu Regular'), local('Ubuntu-Regular'), url('Ubuntu-Regular.eot?#iefix') format('embedded-opentype'),
+		url('Ubuntu-Regular.woff') format('woff'), url('Ubuntu-Regular.ttf') format('truetype');
+	font-weight: 400;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Ubuntu';
+	src: url('Ubuntu-Medium.eot');
+	src: local('Ubuntu Medium'), local('Ubuntu-Medium'), url('Ubuntu-Medium.eot?#iefix') format('embedded-opentype'),
+		url('Ubuntu-Medium.woff') format('woff'), url('Ubuntu-Medium.ttf') format('truetype');
+	font-weight: 500;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Ubuntu';
+	src: url('Ubuntu-Bold.eot');
+	src: local('Ubuntu Bold'), local('Ubuntu-Bold'), url('Ubuntu-Bold.eot?#iefix') format('embedded-opentype'),
+		url('Ubuntu-Bold.woff') format('woff'), url('Ubuntu-Bold.ttf') format('truetype');
+	font-weight: 700;
+	font-style: normal;
+}
