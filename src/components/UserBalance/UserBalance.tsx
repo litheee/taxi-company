@@ -55,11 +55,7 @@ export const UserBalance = () => {
 				<S.BalanceRow>
 					<span>{label}</span>
 
-					<S.BalanceAmount>
-						<span>{value}</span>
-
-						<S.Currency>₽</S.Currency>
-					</S.BalanceAmount>
+					<CurrencyAmount value={5000} />
 				</S.BalanceRow>
 
 				<S.BalanceRowBorder />
@@ -73,7 +69,7 @@ export const UserBalance = () => {
 
 	return (
 		<S.UserBalance>
-			<MenuButton color="blue" onClick={openPopover}>
+			<MenuButton open={Boolean(popoverAnchorEl)} color="blue" onClick={openPopover}>
 				Баланс: <CurrencyAmount value={5000} />
 			</MenuButton>
 

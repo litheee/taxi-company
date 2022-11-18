@@ -26,7 +26,7 @@ export const MainLayout: FC<PropsWithChildren> = ({ children }) => {
 			</S.Content>
 
 			<S.Background>
-				<Image src={bgImg} alt="фон" priority quality={100} />
+				<Image src={bgImg} alt="фон" priority />
 			</S.Background>
 		</S.MainLayout>
 	)

@@ -2,6 +2,11 @@ import styled from '@emotion/styled'
 
 import { UserProfile } from 'components/UserProfile/UserProfile.styled'
 
+import { ButtonGroup } from 'styled/components'
+import { TextField } from 'ui/TextField/TextField.styled'
+
+export { ButtonGroup }
+
 export const Header = styled.header`
 	width: 100%;
 `
@@ -15,23 +20,56 @@ export const Top = styled.div`
 	${UserProfile} {
 		justify-self: flex-end;
 	}
-`
 
-export const Clock = styled.div`
-	display: flex;
-	align-items: center;
+	${TextField} {
+		.MuiInput-root {
+			height: 40px;
 
-	span {
-		font-size: 45px;
-		line-height: 40px;
-		margin-left: 15px;
+			input {
+				padding-left: 15px;
+			}
+		}
 	}
 `
 
 export const Bottom = styled.div`
 	display: flex;
 	justify-content: space-between;
-	margin-top: 15px;
+	margin-top: 10px;
+
+	${ButtonGroup} {
+		margin-left: auto;
+		width: auto;
+
+		a {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-weight: 500;
+			font-size: 15px;
+			line-height: 17px;
+			padding: 7px 10px;
+			transition: 0.3s;
+
+			&:first-of-type {
+				border-top-left-radius: 5px;
+				border-bottom-left-radius: 5px;
+			}
+
+			&:last-of-type {
+				border-top-right-radius: 5px;
+				border-bottom-right-radius: 5px;
+			}
+
+			&:hover {
+				background: #599109;
+			}
+
+			&:active {
+				background: #19560a;
+			}
+		}
+	}
 `
 
 export const BottomLeft = styled.div`

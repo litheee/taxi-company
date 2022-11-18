@@ -8,10 +8,10 @@ export const global = css`
 	${variables}
 
 	body {
-		font-family: 'Ubuntu', sans-serif;
+		font-family: var(--font-ubuntu), sans-serif;
 		font-size: 15px;
 		font-weight: 500;
-		line-height: 17.24px;
+		line-height: 17px;
 		color: #fff;
 		background: #000;
 	}
@@ -32,7 +32,7 @@ export const global = css`
 
 	button,
 	input {
-		font-family: 'Ubuntu', sans-serif;
+		font-family: var(--font-ubuntu), sans-serif;
 
 		&:focus {
 			outline: none;

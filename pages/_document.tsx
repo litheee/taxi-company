@@ -1,5 +1,6 @@
 import Document, { Html, Head, Main, NextScript, DocumentContext } from 'next/document'
-import { renderStatic } from 'styled/renderStatic'
+
+import { renderStatic } from 'core/renderStatic'
 
 export default class AppDocument extends Document {
 	static async getInitialProps(ctx: DocumentContext) {
@@ -19,8 +20,9 @@ export default class AppDocument extends Document {
 
 	render() {
 		return (
-			<Html>
+			<Html lang="ru">
 				<Head />
+
 				<body>
 					<Main />
 					<NextScript />

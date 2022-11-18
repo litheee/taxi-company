@@ -37,6 +37,12 @@ export const BalanceList = styled(Box)`
 export const BalanceRow = styled.div`
 	display: flex;
 	justify-content: space-between;
+
+	${CurrencyAmount} {
+		svg {
+			fill: var(--color-gray-100);
+		}
+	}
 `
 
 export const BalanceRowBorder = styled.div`
@@ -47,9 +53,8 @@ export const BalanceRowBorder = styled.div`
 	border-radius: 5px;
 `
 
-export const BalanceAmount = styled.div``
-
-export const Currency = styled.span`
-	margin-left: 5px;
-	color: var(--color-gray-100);
+export const TabContent = styled.div`
+	& > *:not(:last-child) {
+		margin-bottom: 15px;
+	}
 `

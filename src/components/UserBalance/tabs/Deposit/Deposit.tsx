@@ -1,9 +1,9 @@
-import { useState } from 'react'
+import { Fragment, useState } from 'react'
 import Radio from '@mui/material/Radio'
 import MenuItem from '@mui/material/MenuItem'
 
 import { CurrencyAmount } from 'components'
-import { TextField, Select } from 'ui'
+import { TextField, Select, Button } from 'ui'
 
 import * as S from './Deposit.styled'
 
@@ -24,41 +24,38 @@ export const DepositTab = () => {
 		{ name: 'yandex', label: 'Яндекс' }
 	]
 
-	const optionsRadioItems = options.map(({ name, label, icon }, idx, arr) => {
-		return (
-			<>
-				<S.FormControlLabel
-					key={name}
-					value={name}
-					label={label}
-					checked={name === selectedOption}
-					onClick={() => {
-						setSelectedOption(name)
-					}}
-					control={<Radio icon={icon} checkedIcon={icon} />}
-				/>
-
-				{arr.length !== idx + 1 ? <S.Divider /> : null}
-			</>
-		)
-	})
-
-	const balanceMenuItems = balances.map(({ name, label }) => {
-		return (
-			<MenuItem key={name} value={name}>
-				{label}
-			</MenuItem>
-		)
-	})
-
 	return (
 		<S.DepositTab>
-			<S.RadioGroup>{optionsRadioItems}</S.RadioGroup>
+			<S.RadioGroup>
+				{options.map(({ name, label, icon }, idx, arr) => {
+					return (
+						<Fragment key={name}>
+							<S.FormControlLabel
+								value={name}
+								label={label}
+								checked={name === selectedOption}
+								onClick={() => {
+									setSelectedOption(name)
+								}}
+								control={<Radio icon={icon} checkedIcon={icon} />}
+							/>
+
+							{arr.length !== idx + 1 ? <S.Divider /> : null}
+						</Fragment>
+					)
+				})}
+			</S.RadioGroup>
 
 			<TextField type="number" name="depositAmount" placeholder="Введите сумму" />
 
-			<Select name="balance" defaultValue="deposit" label="Выберите баланс">
-				{balanceMenuItems}
+			<Select name="balance" defaultValue="Депозит" placeholder="Выберите баланс">
+				{balances.map(({ name, label }) => {
+					return (
+						<MenuItem key={name} value={label}>
+							{label}
+						</MenuItem>
+					)
+				})}
 			</Select>
 
 			<S.Total>
@@ -66,6 +63,10 @@ export const DepositTab = () => {
 
 				<CurrencyAmount value={1030} />
 			</S.Total>
+
+			<Button color="green" fullWidth>
+				Пополнить
+			</Button>
 		</S.DepositTab>
 	)
 }

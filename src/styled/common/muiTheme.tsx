@@ -1,16 +1,18 @@
 import { createTheme } from '@mui/material'
 
 import ArrowDownIcon from 'public/icons/arrow-down.svg'
+import CheckboxIcon from 'public/icons/checkbox.svg'
+import CheckboxCheckedIcon from 'public/icons/checkbox-checked.svg'
 
 export const muiTheme = createTheme({
 	components: {
 		MuiTypography: {
 			styleOverrides: {
 				body1: {
-					fontFamily: 'Ubuntu, sans-serif',
+					fontFamily: 'var(--font-ubuntu), sans-serif',
 					fontSize: 15,
 					fontWeight: 500,
-					lineHeight: '17.24px',
+					lineHeight: '17px',
 					letterSpacing: 'normal'
 				}
 			}
@@ -55,6 +57,7 @@ export const muiTheme = createTheme({
 					marginTop: 10,
 					padding: '15px 10px',
 					boxShadow: 'none',
+					borderRadius: 5,
 					backgroundColor: 'var(--color-gray-300)',
 					color: '#fff',
 					boxSizing: 'border-box'
@@ -88,14 +91,15 @@ export const muiTheme = createTheme({
 					maxWidth: '100%',
 					minWidth: 'auto',
 					minHeight: 'auto',
-					fontFamily: 'Ubuntu, sans-serif',
+					fontFamily: 'var(--font-ubuntu), sans-serif',
 					fontSize: 15,
 					fontWeight: 500,
-					lineHeight: '17.24px',
+					lineHeight: '17px',
 					letterSpacing: 'normal',
 					color: '#fff',
 					padding: '5px 0',
 					textTransform: 'none',
+					transition: '0.3s',
 
 					'&.Mui-selected': {
 						background: 'var(--color-gray-200)',
@@ -132,10 +136,19 @@ export const muiTheme = createTheme({
 			styleOverrides: {
 				root: {
 					width: '100%',
+					height: 32,
+					padding: '8px 0',
+					borderRadius: 5,
+					background: 'var(--color-gray-200)',
+					boxShadow: 'var(--box-shadow)',
+					fontFamily: 'var(--font-ubuntu), sans-serif',
+					fontSize: 14,
+					lineHeight: '16px',
+					boxSizing: 'border-box',
 					transition: '0.3s',
 
 					'.MuiSelect-select.MuiInputBase-input': {
-						paddingRight: 37
+						paddingRight: 32
 					},
 
 					'.MuiSelect-select[aria-expanded="true"]': {
@@ -144,18 +157,12 @@ export const muiTheme = createTheme({
 					}
 				},
 				input: {
-					width: '100%',
-					height: 32,
-					padding: '8px 10px',
-					borderRadius: 5,
-					background: 'var(--color-gray-200)',
-					boxShadow: '2px 2px 8px rgba(37, 37, 37, 0.25)',
+					padding: '0 10px',
 					color: '#fff',
-					fontFamily: 'Ubuntu, sans-serif',
+					fontFamily: 'var(--font-ubuntu), sans-serif',
 					fontSize: 14,
 					lineHeight: '16px',
 					letterSpacing: 'normal',
-					boxSizing: 'border-box',
 
 					'&::placeholder': {
 						color: 'var(--color-gray-100)',
@@ -166,6 +173,12 @@ export const muiTheme = createTheme({
 					'&:hover::placeholder': {
 						color: '#fff'
 					}
+				},
+				inputAdornedEnd: {
+					paddingRight: 10
+				},
+				adornedEnd: {
+					paddingRight: 15
 				}
 			}
 		},
@@ -186,6 +199,7 @@ export const muiTheme = createTheme({
 			},
 			styleOverrides: {
 				select: {
+					minHeight: 'auto',
 					boxSizing: 'border-box',
 					background: 'var(--color-gray-200)',
 
@@ -215,9 +229,9 @@ export const muiTheme = createTheme({
 			styleOverrides: {
 				root: {
 					padding: 0,
-					fontFamily: 'Ubuntu, sans-serif',
+					fontFamily: 'var(--font-ubuntu), sans-serif',
 					fontSize: 14,
-					lineHeight: '17.24px',
+					lineHeight: '17px',
 					letterSpacing: 'normal',
 					color: '#b3b6b9',
 					transition: '0.3s',
@@ -238,6 +252,77 @@ export const muiTheme = createTheme({
 						'&:hover': {
 							background: 'transparent'
 						}
+					}
+				}
+			}
+		},
+		MuiButton: {
+			defaultProps: {
+				variant: 'text'
+			},
+			styleOverrides: {
+				root: {
+					minHeight: 31,
+					padding: '7px 10px',
+					background: 'var(--color-gray-200)',
+					boxShadow: 'var(--box-shadow)',
+					borderRadius: '5px',
+					textTransform: 'unset',
+					fontFamily: 'var(--font-ubuntu)',
+					fontWeight: 500,
+					fontSize: 15,
+					lineHeight: '17px',
+					color: '#fff',
+					boxSizing: 'border-box',
+					transition: '0.3s'
+				},
+				startIcon: {
+					marginLeft: 0,
+					marginRight: 10
+				},
+				endIcon: {
+					marginLeft: 10,
+					marginRight: 0
+				}
+			}
+		},
+		MuiCheckbox: {
+			defaultProps: {
+				icon: <CheckboxIcon />,
+				checkedIcon: <CheckboxCheckedIcon />
+			},
+			styleOverrides: {
+				root: {
+					padding: 0,
+					borderRadius: 'none'
+				}
+			}
+		},
+		MuiInputLabel: {
+			defaultProps: {
+				shrink: true,
+				variant: 'standard'
+			},
+			styleOverrides: {
+				root: {
+					position: 'static',
+					maxWidth: '100%',
+					marginBottom: 10,
+					fontFamily: 'var(--font-ubuntu)',
+					fontSize: 15,
+					fontWeight: 500,
+					lineHeight: '17px',
+					color: '#fff',
+					transform: 'none',
+					letterSpacing: 'normal',
+					whiteSpace: 'normal',
+
+					'& + div': {
+						marginTop: '0 !important'
+					},
+
+					'&.Mui-focused': {
+						color: '#fff'
 					}
 				}
 			}

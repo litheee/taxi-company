@@ -1,5 +1,13 @@
+import Head from 'next/head'
+
 const MainPage = () => {
-	return <div></div>
+	return (
+		<>
+			<Head>
+				<title>Таксопарк</title>
+			</Head>
+		</>
+	)
 }
 
 export default MainPage

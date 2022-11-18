@@ -1,49 +1,58 @@
-import Image from 'next/image'
+import Link from 'next/link'
 
-import { UserBalance, UserProfile } from 'components'
-import { SearchField, MenuButton } from 'ui'
+import { Clock, UserBalance, UserProfile, EmployeeFilter, UserData } from 'components'
+import { TextField } from 'ui'
 
 import * as S from './Header.styled'
 
-import avatarImg from 'public/img/avatar.png'
-
-import PowerIcon from 'public/icons/power-rounded.svg'
-import ArrorDownIcon from 'public/icons/arrow-down.svg'
-import PlusIcon from 'public/icons/plus.svg'
+import LoupeIcon from 'public/icons/loupe.svg'
 
 export const Header = () => {
-	const tabs = ['История аренды', 'Штрафы', 'Транзакции', 'Реквизиты']
+	const links = [
+		{ label: 'История аренды', href: '/' },
+		{ label: 'Штрафы', href: '/' },
+		{ label: 'Транзакции', href: '/' },
+		{ label: 'Реквизиты', href: '/' }
+	]
 
-	const tabItems = tabs.map((name) => {
+	const linkItems = links.map(({ label, href }) => {
 		return (
-			<S.TabItem key={name}>
-				<button>{name}</button>
-			</S.TabItem>
+			<Link key={label} href={href}>
+				{label}
+			</Link>
 		)
 	})
 
 	return (
 		<S.Header>
 			<S.Top>
-				<SearchField name="search" placeholder="Введите запрос поиска" />
+				<TextField
+					name="search"
+					placeholder="Введите запрос поиск"
+					InputProps={{
+						endAdornment: <LoupeIcon />
+					}}
+				/>
 
-				<S.Clock>
-					<PowerIcon />
-
-					<span>02:47</span>
-				</S.Clock>
+				<Clock />
 
 				<UserProfile />
 			</S.Top>
 
 			<S.Bottom>
 				<S.BottomLeft>
-					<MenuButton color="blue">Хабибаржалаев Н.Д.</MenuButton>
+					<UserData />
 
 					<S.Divider />
 
 					<UserBalance />
+
+					<S.Divider />
+
+					<EmployeeFilter />
 				</S.BottomLeft>
+
+				<S.ButtonGroup>{linkItems}</S.ButtonGroup>
 			</S.Bottom>
 		</S.Header>
 	)

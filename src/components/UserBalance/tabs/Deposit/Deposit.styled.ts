@@ -4,12 +4,10 @@ import MuiRadioGroup from '@mui/material/RadioGroup'
 import MuiFormControlLabel from '@mui/material/FormControlLabel'
 
 import { CurrencyAmount } from 'components/CurrencyAmount/CurrencyAmount.styled'
+import { gradientGreen } from 'styled/components/ButtonGradient'
+import { TabContent } from 'components/UserBalance/UserBalance.styled'
 
-export const DepositTab = styled.div`
-	& > *:not(:last-child) {
-		margin-bottom: 15px;
-	}
-`
+export const DepositTab = styled(TabContent)``
 
 export const RadioGroup = styled(MuiRadioGroup)`
 	border-radius: 5px;
@@ -35,6 +33,14 @@ export const DepositOption = styled.div`
 export const FormControlLabel = styled(MuiFormControlLabel)`
 	margin: 0;
 
+	${gradientGreen}
+
+	background-image: none;
+
+	&:hover::before {
+		opacity: 0;
+	}
+
 	&:first-of-type {
 		border-top-left-radius: 5px;
 		border-top-right-radius: 5px;
@@ -52,7 +58,10 @@ export const FormControlLabel = styled(MuiFormControlLabel)`
 	${({ checked }) =>
 		checked &&
 		css`
-			background: var(--gradient-green);
+			&::before,
+			&:hover::before {
+				opacity: 1;
+			}
 		`}
 `
 
@@ -61,7 +70,7 @@ export const Total = styled.span`
 	align-items: center;
 
 	span {
-		&:first-child {
+		&:first-of-type {
 			color: var(--color-gray-100);
 		}
 	}

@@ -1,3 +1,5 @@
 import styled from '@emotion/styled'
 
-export const WithdrawalTab = styled.div``
+import { TabContent } from 'components/UserBalance/UserBalance.styled'
+
+export const WithdrawalTab = styled(TabContent)``

@@ -11,5 +11,7 @@ export const variables = css`
 
 		--gradient-blue: linear-gradient(93.88deg, #2f98cf 61.98%, #2fcfb2 100%);
 		--gradient-green: linear-gradient(268.87deg, #88b114 -10.28%, #558f09 27.63%, #2c7400 73.22%, #408104 100%);
+
+		--box-shadow: 2px 2px 8px rgba(37, 37, 37, 0.25);
 	}
 `

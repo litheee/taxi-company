@@ -16,7 +16,7 @@ export const Content = styled.div<ContentProps>`
 	left: 62px;
 	display: flex;
 	width: calc(100% - 62px);
-	padding: 25px 20px 25px 10px;
+	padding: 20px 20px 20px 10px;
 	box-sizing: border-box;
 	z-index: 10;
 	transition: 0.3s;

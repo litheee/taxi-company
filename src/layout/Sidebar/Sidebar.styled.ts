@@ -45,7 +45,7 @@ export const MenuList = styled.ul`
 
 	& > ${MenuListItem}:first-of-type {
 		${MenuItemLabel} {
-			font-family: 'Lato';
+			font-family: var(--font-lato);
 			font-weight: 900;
 			font-size: 16px;
 			line-height: 19px;

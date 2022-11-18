@@ -1,9 +1,10 @@
+import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 
 import { ButtonGradient } from 'styled/components'
 
 interface MenuButtonProps {
-	color: 'blue' | 'green'
+	open: boolean
 }
 
 export const MenuButton = styled(ButtonGradient, {
@@ -19,10 +20,19 @@ export const MenuButton = styled(ButtonGradient, {
 
 	& > svg {
 		margin-left: 5px;
+		transition: 0.3s;
 	}
 
 	span {
 		display: flex;
 		align-items: center;
 	}
+
+	${({ open }) =>
+		open &&
+		css`
+			& > svg {
+				transform: rotate(180deg);
+			}
+		`}
 `
