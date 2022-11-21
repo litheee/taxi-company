@@ -5,6 +5,7 @@ import MuiPopover from '@mui/material/Popover'
 import { gradientBlue } from 'styled/components/ButtonGradient'
 import { Button } from 'ui/Button/Button.styled'
 import { MenuButton } from 'ui/MenuButton/MenuButton.styled'
+import { NotificationsNumber } from 'common/NotificationsNumber/NotificationsNumber.styled'
 
 interface UserProfilePorps {
 	popoverOpen: boolean
@@ -25,6 +26,12 @@ export const Avatar = styled.div`
 	}
 
 	background-image: none;
+
+	${NotificationsNumber} {
+		position: absolute;
+		top: -10px;
+		left: 26px;
+	}
 `
 
 export const UserProfile = styled.div<UserProfilePorps>`

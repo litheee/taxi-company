@@ -57,7 +57,7 @@ export const Clock = () => {
 	})
 
 	return (
-		<S.Clock>
+		<>
 			<S.ClockButton open={Boolean(popoverAnchorEl)} onClick={openPopover}>
 				<PowerIcon />
 
@@ -91,6 +91,6 @@ export const Clock = () => {
 					<Button>История задач</Button>
 				</S.TasksActions>
 			</S.Popover>
-		</S.Clock>
+		</>
 	)
 }

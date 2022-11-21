@@ -15,6 +15,7 @@ export const Content = styled.div<ContentProps>`
 	position: relative;
 	left: 62px;
 	display: flex;
+	flex-direction: column;
 	width: calc(100% - 62px);
 	padding: 20px 20px 20px 10px;
 	box-sizing: border-box;

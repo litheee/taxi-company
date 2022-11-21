@@ -6,5 +6,6 @@ import { Checkbox } from './Checkbox/Checkbox'
 import { AvatarUpload } from './AvatarUpload/AvatarUpload'
 import { Textarea } from './Textarea/Textarea'
 import { FormSection } from './FormSection/FormSection'
+import { Table } from './Table/Table'
 
-export { MenuButton, TextField, Select, Button, Checkbox, AvatarUpload, Textarea, FormSection }
+export { MenuButton, TextField, Select, Button, Checkbox, AvatarUpload, Textarea, FormSection, Table }

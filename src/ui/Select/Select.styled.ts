@@ -6,7 +6,12 @@ export const SelectRow = styled.div`
 	width: 100%;
 `
 
-export const Select = styled(MuiSelect)``
+export const Select = styled(MuiSelect)`
+	.MuiSelect-icon path,
+	.MuiInputBase-input {
+		transition: 0.3s;
+	}
+`
 
 export const Placeholder = styled.span`
 	font-weight: 400;
@@ -16,6 +21,7 @@ export const Placeholder = styled.span`
 	text-overflow: initial;
 	overflow: visible;
 	z-index: 1;
+	transition: 0.3s;
 
 	& + div {
 		margin-top: 0;

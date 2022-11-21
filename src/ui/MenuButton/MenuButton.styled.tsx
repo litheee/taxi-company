@@ -17,6 +17,7 @@ export const MenuButton = styled(ButtonGradient, {
 	border-radius: 5px;
 	font-weight: 500;
 	font-size: 15px;
+	transition: 0.3s;
 
 	& > svg {
 		margin-left: 5px;

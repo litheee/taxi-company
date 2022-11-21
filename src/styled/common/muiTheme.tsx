@@ -247,7 +247,7 @@ export const muiTheme = createTheme({
 
 					'&.Mui-selected': {
 						color: '#fff',
-						background: 'transparent',
+						background: 'transparent !important',
 
 						'&:hover': {
 							background: 'transparent'

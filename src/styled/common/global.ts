@@ -42,4 +42,7 @@ export const global = css`
 	svg {
 		display: flex;
 	}
+
+	/* .MuiPaper-root.filter-select-paper {
+	} */
 `

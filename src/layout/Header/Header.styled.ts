@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+import { ClockButton } from 'components/Clock/Clock.styled'
 
 import { UserProfile } from 'components/UserProfile/UserProfile.styled'
 
@@ -14,7 +15,6 @@ export const Header = styled.header`
 export const Top = styled.div`
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
-	justify-items: center;
 	align-items: center;
 
 	${UserProfile} {
@@ -22,6 +22,8 @@ export const Top = styled.div`
 	}
 
 	${TextField} {
+		max-width: 600px;
+
 		.MuiInput-root {
 			height: 40px;
 
@@ -29,6 +31,10 @@ export const Top = styled.div`
 				padding-left: 15px;
 			}
 		}
+	}
+
+	${ClockButton} {
+		margin-left: 186px;
 	}
 `
 

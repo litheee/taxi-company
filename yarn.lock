@@ -1512,6 +1512,18 @@
   resolved "https://registry.yarnpkg.com/@swc/plugin-emotion/-/plugin-emotion-2.5.21.tgz#2c68776292445b4cae314c7668df370f538d65d1"
   integrity sha512-8XxRqsUGZyp61lqPrtqsJWQKEoDDl5lITpfAHiy7gx29alPI6HeXfWc5SHwwY98C7Q8UR1LIe8edVPzVlAEDpg==
 
+"@tanstack/react-table@^8.5.30":
+  version "8.5.30"
+  resolved "https://registry.yarnpkg.com/@tanstack/react-table/-/react-table-8.5.30.tgz#5be6f8ead1f8c8076f497c253fe28d2f53d9dd9f"
+  integrity sha512-CyzVzd6T5qO2aznyHsjlKgY5Zy9YYd61EtnJjI8o9ibgiurCAUN6QMGsvKPpdu+MVbqEtzkd3sjbhN2BNbj8Og==
+  dependencies:
+    "@tanstack/table-core" "8.5.30"
+
+"@tanstack/table-core@8.5.30":
+  version "8.5.30"
+  resolved "https://registry.yarnpkg.com/@tanstack/table-core/-/table-core-8.5.30.tgz#188d3974c282ae2dce90942eac251301d227f957"
+  integrity sha512-3IhJVOpX7EDiAa2BcXowEJHOflmGI/hHhVY8UpEmtNxvDWo2QK7ohSXPndz35GK36mNoMXX4a5UA9BbVU1A0aw==
+
 "@trysound/sax@0.2.0":
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/@trysound/sax/-/sax-0.2.0.tgz#cccaab758af56761eb7bf37af6f03f326dd798ad"

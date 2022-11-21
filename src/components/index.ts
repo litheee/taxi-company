@@ -7,6 +7,10 @@ import { UserData } from './UserData/UserData'
 import { IndividualCardData } from './IndividualCardData/IndividualCardData'
 import { CompanyCardData } from './CompanyCardData/CompanyCardData'
 import { CarCardData } from './CarCardData/CarCardData'
+import { CarsTable } from './CarsTable/CarsTable'
+import { CarStatus } from './CarStatus/CarStatus'
+import { DriversTable } from './DriversTable/DriversTable'
+import { DriverStatus } from './DriverStatus/DriverStatus'
 
 export {
 	UserProfile,
@@ -17,5 +21,9 @@ export {
 	UserData,
 	IndividualCardData,
 	CompanyCardData,
-	CarCardData
+	CarCardData,
+	CarsTable,
+	CarStatus,
+	DriversTable,
+	DriverStatus
 }

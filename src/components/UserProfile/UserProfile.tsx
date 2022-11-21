@@ -1,6 +1,7 @@
 import { MouseEvent, useState } from 'react'
 import Image from 'next/image'
 
+import { NotificationsNumber } from 'common'
 import { Button, Checkbox, MenuButton } from 'ui'
 
 import * as S from './UserProfile.styled'
@@ -45,6 +46,7 @@ export const UserProfile = () => {
 			<MenuButton open={isPopoverOpen} onClick={openPopover}>
 				<S.Avatar>
 					<Image src={avatarImg} alt="Пользователь" />
+					<NotificationsNumber value={5} />
 					<S.NotificationsCount>5</S.NotificationsCount>
 				</S.Avatar>
 

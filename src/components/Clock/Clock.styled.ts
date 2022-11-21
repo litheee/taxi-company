@@ -9,8 +9,6 @@ interface ClockButtonProps {
 	open: boolean
 }
 
-export const Clock = styled.div``
-
 export const ClockButton = styled.button<ClockButtonProps>`
 	display: flex;
 	align-items: center;

@@ -10,8 +10,8 @@ interface MenuButtonProps {
 	onClick?: MouseEventHandler<{}>
 }
 
-export const MenuButton: FC<PropsWithChildren<MenuButtonProps>> = ({ children, open, color, onClick }) => (
-	<S.MenuButton open={open} color={color} onClick={onClick}>
+export const MenuButton: FC<PropsWithChildren<MenuButtonProps>> = ({ children, open, color, onClick, ...props }) => (
+	<S.MenuButton {...props} open={open} color={color} onClick={onClick}>
 		{children}
 
 		<ArrowDownIcon />
