@@ -19,15 +19,29 @@ export const SignInPage = styled.div`
 
 	&::before {
 		content: '';
-		position: fixed;
+		position: absolute;
 		width: 100%;
 		height: 100%;
 		left: 0;
 		top: 0;
 		background: url('/img/logo-lines-bg.svg');
 		background-size: cover;
-		will-change: transform;
 		z-index: -1;
+	}
+
+	@media (max-width: 500px) {
+		&::before {
+			content: '';
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			left: 0;
+			top: 0;
+			background: url('/img/logo-lines-bg.svg');
+			/* background-size: 100% 100%; */
+			background-size: auto;
+			z-index: -1;
+		}
 	}
 `
 
