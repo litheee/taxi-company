@@ -15,7 +15,6 @@ export const SignInPage = styled.div`
 	align-items: center;
 	min-height: 100vh;
 	z-index: 1;
-	background: linear-gradient(252.44deg, #353b41 0%, #191a1c 100%);
 
 	&::before {
 		content: '';
@@ -24,7 +23,7 @@ export const SignInPage = styled.div`
 		height: 100%;
 		left: 0;
 		top: 0;
-		background: url('/img/logo-lines-bg.svg');
+		background-image: url('/img/logo-lines-bg.svg'), linear-gradient(252.44deg, #353b41 0%, #191a1c 100%);
 		background-size: cover;
 		z-index: -1;
 	}
@@ -37,7 +36,7 @@ export const SignInPage = styled.div`
 			height: 100%;
 			left: 0;
 			top: 0;
-			background: url('/img/logo-lines-bg.svg');
+			background-image: url('/img/logo-lines-bg.svg'), linear-gradient(252.44deg, #353b41 0%, #191a1c 100%);
 			/* background-size: 100% 100%; */
 			background-size: auto;
 			z-index: -1;
