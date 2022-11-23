@@ -1,13 +1,12 @@
 import styled from '@emotion/styled'
 
+import { FieldsRow } from 'styled/components'
+
 import { TabContent } from 'components/UserBalance/UserBalance.styled'
 
-export const TransferTab = styled(TabContent)``
+export { FieldsRow }
 
-export const SelectRow = styled.div`
-	display: flex;
-	gap: 10px;
-`
+export const TransferTab = styled(TabContent)``
 
 export const ArrowIcon = styled.div`
 	display: flex;

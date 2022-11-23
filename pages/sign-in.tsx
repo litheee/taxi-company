@@ -1,28 +1,37 @@
+import Head from 'next/head'
+
 import { Heading } from 'common'
-import Image from 'next/image'
+import { Button, TextField } from 'ui'
 
 import * as S from 'styled/pages/SignIn'
-import { Button, TextField } from 'ui'
+
+import Logo from 'public/icons/logo-text.svg'
 
 const SignInPage = () => {
 	return (
-		<S.SignInPage>
-			<S.Logo>
-				<Image src="/img/logo.svg" width={275} height={136} alt="Восход" priority quality={100} />
-			</S.Logo>
+		<>
+			<Head>
+				<title>Вход</title>
+			</Head>
 
-			<S.Form>
-				<Heading>Вход</Heading>
+			<S.SignInPage>
+				<S.Logo>
+					<Logo />
+				</S.Logo>
 
-				<S.Divider orientation="horizontal" />
+				<S.Form>
+					<Heading>Вход</Heading>
 
-				<TextField label="Введите ваш номер телефона" placeholder="+7 (___) ___ - __ - __" />
+					<S.Divider orientation="horizontal" />
 
-				<Button color="green" fullWidth>
-					Отправить код
-				</Button>
-			</S.Form>
-		</S.SignInPage>
+					<TextField label="Введите ваш номер телефона" placeholder="+7 (___) ___ - __ - __" />
+
+					<Button color="green" fullWidth>
+						Отправить код
+					</Button>
+				</S.Form>
+			</S.SignInPage>
+		</>
 	)
 }
 

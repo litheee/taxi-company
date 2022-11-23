@@ -170,7 +170,7 @@ export const muiTheme = createTheme({
 						transition: '0.3s'
 					},
 
-					'&:hover::placeholder': {
+					'&:hover::placeholder, &:focus::placeholder': {
 						color: '#fff'
 					}
 				},

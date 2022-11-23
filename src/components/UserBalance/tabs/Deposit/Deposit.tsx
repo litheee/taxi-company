@@ -2,7 +2,7 @@ import { Fragment, useState } from 'react'
 import Radio from '@mui/material/Radio'
 
 import { CurrencyAmount } from 'components'
-import { TextField, Select, Button, MenuItem } from 'ui'
+import { TextField, Select, Button } from 'ui'
 
 import * as S from './Deposit.styled'
 
@@ -18,9 +18,9 @@ export const DepositTab = () => {
 	]
 
 	const balances = [
-		{ name: 'deposit', label: 'Депозит' },
-		{ name: 'internal', label: 'Внутренний' },
-		{ name: 'yandex', label: 'Яндекс' }
+		{ label: 'Депозит', value: 'Депозит' },
+		{ label: 'Внутренний', value: 'Внутренний' },
+		{ label: 'Яндекс', value: 'Яндекс' }
 	]
 
 	return (
@@ -47,15 +47,7 @@ export const DepositTab = () => {
 
 			<TextField type="number" name="depositAmount" placeholder="Введите сумму" />
 
-			<Select name="balance" defaultValue="Депозит" placeholder="Выберите баланс">
-				{balances.map(({ name, label }) => {
-					return (
-						<MenuItem key={name} value={label}>
-							{label}
-						</MenuItem>
-					)
-				})}
-			</Select>
+			<Select name="balance" defaultValue="Депозит" placeholder="Выберите баланс" options={balances} />
 
 			<S.Total>
 				<span>К оплате:</span>
