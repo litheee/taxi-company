@@ -1,25 +1,31 @@
-import MenuItem from '@mui/material/MenuItem'
-
-import { AvatarUpload, Select, TextField, Button, Textarea, FormSection } from 'ui'
+import { AvatarUpload, Section } from 'common'
+import { Select, TextField, Button, Textarea } from 'ui'
 
 import * as S from './IndividualCardData.styled'
 
 import ProfileIcon from 'public/icons/profile.svg'
 import PlusIcon from 'public/icons/plus.svg'
 import LoupeIcon from 'public/icons/loupe.svg'
+import DownloadIcon from 'public/icons/download.svg'
 
 export const IndividualCardData = () => {
+	const options = [
+		{ label: 'Выбрать 1', value: 'Выбрать 1' },
+		{ label: 'Выбрать 2', value: 'Выбрать 2' },
+		{ label: 'Выбрать 3', value: 'Выбрать 3' }
+	]
+
 	return (
 		<S.IndividualCardData>
 			<form>
 				<S.FormColumn>
 					<AvatarUpload icon={<ProfileIcon />} />
 
-					<TextField name="fullName" placeholder="Укажите ваше ФИО" />
+					<TextField placeholder="Укажите ваше ФИО" />
 
-					<FormSection label="Водительское удостоверение">
-						<TextField name="phone" label="Телефон" placeholder="Укажите телефон" />
-						<TextField name="email" label="E-mail" placeholder="Укажите электронный адрес" />
+					<Section label="Водительское удостоверение">
+						<TextField label="Телефон" placeholder="Укажите телефон" />
+						<TextField label="E-mail" placeholder="Укажите электронный адрес" />
 
 						<S.AdditionalContacts>
 							<TextField
@@ -29,70 +35,116 @@ export const IndividualCardData = () => {
 							/>
 
 							<span>
-								<Select placeholder="Выбрать" name="choose">
-									<MenuItem value="Выбрать">Выбрать</MenuItem>
-									<MenuItem value="Выбрать">Выбрать</MenuItem>
-									<MenuItem value="Выбрать">Выбрать</MenuItem>
-								</Select>
-
-								<TextField name="contactPhone" placeholder="+7 (___) ___ __ __" />
+								<Select placeholder="Выбрать" name="choose" options={options} />
+								<TextField placeholder="+7 (___) ___ __ __" />
 							</span>
 						</S.AdditionalContacts>
 
 						<Button color="green" startIcon={<PlusIcon />}>
 							Добавить еще
 						</Button>
-					</FormSection>
+					</Section>
 
-					<FormSection label="Водительское удостоверение" download>
-						<S.Row>
-							<TextField name="passportSeries" label="Серия" placeholder="Укажите серию" />
-							<TextField name="passportNumber" label="Номер" placeholder="Укажите номер" />
-						</S.Row>
+					<Section
+						label="Водительское удостоверение"
+						endAdornment={
+							<button>
+								<DownloadIcon />
+							</button>
+						}
+					>
+						<S.FieldsRow>
+							<TextField label="Серия" placeholder="Укажите серию" />
+							<TextField label="Номер" placeholder="Укажите номер" />
+						</S.FieldsRow>
 
 						<TextField name="gibddCode" label="Код подразделения ГИБДД" placeholder="Укажите данные" />
 						<TextField name="validUntilDate" label="Действителен до" placeholder="__.__.____" />
-					</FormSection>
+					</Section>
 				</S.FormColumn>
 
 				<S.Divider />
 
 				<S.FormColumn>
-					<FormSection label="Паспортные данные" download>
-						<S.Row>
-							<TextField name="passportSeries" label="Серия" placeholder="Укажите серию" />
-							<TextField name="passportNumber" label="Номер" placeholder="Укажите номер" />
-						</S.Row>
+					<Section
+						label="Паспортные данные"
+						endAdornment={
+							<button>
+								<DownloadIcon />
+							</button>
+						}
+					>
+						<S.FieldsRow>
+							<TextField label="Серия" placeholder="Укажите серию" />
+							<TextField label="Номер" placeholder="Укажите номер" />
+						</S.FieldsRow>
 
 						<TextField name="passportSeries" label="Кем выдан" placeholder="Укажите данные" />
 
-						<S.Row>
-							<TextField name="date" label="Дата выдачи" placeholder="__.__.____" />
-							<TextField name="code" label="Код подразденеия" placeholder="Укажите код" />
-						</S.Row>
+						<S.FieldsRow>
+							<TextField label="Дата выдачи" placeholder="__.__.____" />
+							<TextField label="Код подразденеия" placeholder="Укажите код" />
+						</S.FieldsRow>
 
-						<Textarea id="address" label="Адрес прописки" placeholder="Укажите Ваш текущий адрес проживания" />
-					</FormSection>
+						<Textarea label="Адрес прописки" placeholder="Укажите Ваш текущий адрес проживания" />
+					</Section>
 
-					<FormSection label="Фактический адрес проживания">
-						<Textarea id="address2" placeholder="Укажите Ваш текущий адрес проживания" />
-					</FormSection>
+					<Section label="Фактический адрес проживания">
+						<Textarea placeholder="Укажите Ваш текущий адрес проживания" />
+					</Section>
 
-					<FormSection label="Кисиарт ID" download>
-						<TextField name="address" placeholder="Укажите Ваш текущий адрес проживания" />
-					</FormSection>
+					<Section
+						label="Кисиарт ID"
+						endAdornment={
+							<button>
+								<DownloadIcon />
+							</button>
+						}
+					>
+						<TextField placeholder="Укажите Ваш текущий адрес проживания" />
+					</Section>
 
-					<FormSection label="Привязка профилей">
-						<TextField name="name" placeholder="Введите имя" InputProps={{ endAdornment: <LoupeIcon /> }} />
+					<Section label="Привязка профилей">
+						<TextField placeholder="Введите имя" InputProps={{ endAdornment: <LoupeIcon /> }} />
 
 						<Button color="green" startIcon={<PlusIcon />}>
 							Добавить еще
 						</Button>
-					</FormSection>
+					</Section>
 
-					<FormSection label="Документы" download></FormSection>
+					<Section
+						label="Документы"
+						endAdornment={
+							<button>
+								<DownloadIcon />
+							</button>
+						}
+					></Section>
 				</S.FormColumn>
 			</form>
 		</S.IndividualCardData>
 	)
 }
+
+// hor - h2px br1px #42 (3)
+// hor - 3px br5 #42 (in form)
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//

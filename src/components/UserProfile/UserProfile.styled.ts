@@ -1,10 +1,10 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
-import MuiPopover from '@mui/material/Popover'
 
+import { Popover as MuiPopover } from 'ui'
 import { gradientBlue } from 'styled/components/ButtonGradient'
 import { Button } from 'ui/Button/Button.styled'
-import { MenuButton } from 'ui/MenuButton/MenuButton.styled'
+import { MenuButton } from 'common/MenuButton/MenuButton.styled'
 import { NotificationsNumber } from 'common/NotificationsNumber/NotificationsNumber.styled'
 
 interface UserProfilePorps {
@@ -157,10 +157,6 @@ export const NotificationItem = styled.li`
 
 	&:not(:last-child) {
 		margin-bottom: 5px;
-	}
-
-	p {
-		margin-left: 10px;
 	}
 `
 

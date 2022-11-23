@@ -1,4 +1,5 @@
 import { CheckboxProps as MuiCheckboxProps } from '@mui/material/Checkbox'
+
 import * as S from './Checkbox.styled'
 
 interface CheckboxProps extends MuiCheckboxProps {
@@ -8,5 +9,5 @@ interface CheckboxProps extends MuiCheckboxProps {
 export const Checkbox = (props: CheckboxProps) => {
 	const { label } = props
 
-	return label ? <S.FormControlLabel control={<S.Checkbox {...props} />} label={label} /> : <Checkbox {...props} />
+	return label ? <S.FormControlLabel control={<S.Checkbox {...props} />} label={label} /> : <S.Checkbox {...props} />
 }

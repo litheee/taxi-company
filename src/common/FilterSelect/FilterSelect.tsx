@@ -1,4 +1,4 @@
-import { SelectProps } from '@mui/material/Select'
+import { SelectProps } from 'ui/Select/Select'
 
 import * as S from './FilterSelect.styled'
 

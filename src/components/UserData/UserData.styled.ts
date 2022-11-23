@@ -1,5 +1,6 @@
 import styled from '@emotion/styled'
-import MuiPopover from '@mui/material/Popover'
+
+import { Popover as MuiPopover } from 'ui'
 
 export const UserData = styled.div`
 	position: relative;

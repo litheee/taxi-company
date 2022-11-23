@@ -1,9 +1,19 @@
-import { SelectProps } from '@mui/material/Select'
-import InputLabel from '@mui/material/InputLabel'
+import { SelectProps as MuiSelectProps } from '@mui/material/Select'
+
+import { MenuItem, InputLabel } from 'ui'
 
 import * as S from './Select.styled'
 
-export const Select = ({ name, label, placeholder, ...props }: SelectProps) => {
+interface Option {
+	label: string
+	value: any
+}
+
+export interface SelectProps extends MuiSelectProps {
+	options: Option[]
+}
+
+export const Select = ({ name, label, placeholder, options, ...props }: SelectProps) => {
 	return (
 		<S.SelectRow>
 			{label ? <InputLabel>{label}</InputLabel> : null}
@@ -15,7 +25,15 @@ export const Select = ({ name, label, placeholder, ...props }: SelectProps) => {
 					return value !== '' ? value : <S.Placeholder>{placeholder}</S.Placeholder>
 				}}
 				{...props}
-			/>
+			>
+				{options.map(({ label, value }) => {
+					return (
+						<MenuItem key={label} value={value}>
+							{label}
+						</MenuItem>
+					)
+				})}
+			</S.Select>
 		</S.SelectRow>
 	)
 }

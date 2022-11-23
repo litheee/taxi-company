@@ -1,10 +1,10 @@
 import styled from '@emotion/styled'
-import MuiPopover from '@mui/material/Popover'
 
+import { Popover as MuiPopover } from 'ui'
 import { Box, ButtonGroup } from 'styled/components'
 
 import { CurrencyAmount } from 'components/CurrencyAmount/CurrencyAmount.styled'
-import { MenuButton } from 'ui/MenuButton/MenuButton.styled'
+import { MenuButton } from 'common/MenuButton/MenuButton.styled'
 
 export { ButtonGroup }
 

@@ -32,9 +32,9 @@ export const UserProfile = () => {
 	const notificationItems = notifications.map(({ id, label, time }) => {
 		return (
 			<S.NotificationItem key={id}>
-				<Checkbox />
+				<Checkbox label={label} />
 
-				<p>{label}</p>
+				{/* <p>{label}</p> */}
 
 				<S.NotificationTime>{time}</S.NotificationTime>
 			</S.NotificationItem>

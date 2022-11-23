@@ -1,120 +1,174 @@
-import { AvatarUpload, TextField, FormSection, Select, Button, Checkbox } from 'ui'
-import MenuItem from '@mui/material/MenuItem'
+import { AvatarUpload, Section } from 'common'
+import { TextField, Select, Button, Checkbox } from 'ui'
 
 import * as S from './CarCardData.styled'
 
 import CarIcon from 'public/icons/car.svg'
 import PlusIcon from 'public/icons/plus.svg'
 import LoupeIcon from 'public/icons/loupe.svg'
+import DownloadIcon from 'public/icons/download.svg'
 
 export const CarCardData = () => {
+	const brands = [
+		{ label: 'Марка 1', value: 'Марка 1' },
+		{ label: 'Марка 2', value: 'Марка 2' },
+		{ label: 'Марка 3', value: 'Марка 3' }
+	]
+
+	const models = [
+		{ label: 'Модель 1', value: 'Модель 1' },
+		{ label: 'Модель 2', value: 'Модель 2' },
+		{ label: 'Модель 3', value: 'Модель 3' }
+	]
+
+	const years = [
+		{ label: '2001', value: '2001' },
+		{ label: '2002', value: '2002' },
+		{ label: '2003', value: '2003' }
+	]
+
+	const colors = [
+		{ label: 'Цвет 1', value: 'Цвет 1' },
+		{ label: 'Цвет 2', value: 'Цвет 2' },
+		{ label: 'Цвет 3', value: 'Цвет 3' }
+	]
+
+	const types = [
+		{ label: 'Тип 1', value: 'Тип 1' },
+		{ label: 'Тип 2', value: 'Тип 2' },
+		{ label: 'Тип 3', value: 'Тип 3' }
+	]
+
+	const statuses = [
+		{ label: 'Статус 1', value: 'Статус 1' },
+		{ label: 'Статус 2', value: 'Статус 2' },
+		{ label: 'Статус 3', value: 'Статус 3' }
+	]
+
 	return (
 		<S.CarCardData>
 			<form>
 				<S.FormColumn>
 					<AvatarUpload icon={<CarIcon />} />
 
-					<FormSection label="Информация по автомобилю">
-						<Select label="Марка" placeholder="Выберите марку">
-							<MenuItem value="Марка 1">Марка 1</MenuItem>
-							<MenuItem value="Марка 2">Марка 2</MenuItem>
-							<MenuItem value="Марка 3">Марка 3</MenuItem>
-						</Select>
+					<Section label="Информация по автомобилю">
+						<Select label="Марка" placeholder="Выберите марку" options={brands} />
+						<Select label="Модель" placeholder="Выберите модель" options={models} />
 
-						<Select label="Модель" placeholder="Выберите модель">
-							<MenuItem value="Модель 1">Модель 1</MenuItem>
-							<MenuItem value="Модель 2">Модель 2</MenuItem>
-							<MenuItem value="Модель 3">Модель 3</MenuItem>
-						</Select>
-
-						<S.Row>
+						<S.FieldsRow>
 							<TextField label="ГОС номер" placeholder="_ ___ __" />
+							<Select label="Год выпуска" placeholder="Выберите год" options={years} />
+						</S.FieldsRow>
 
-							<Select label="Год выпуска" placeholder="Выберите год">
-								<MenuItem value="2001">2001</MenuItem>
-								<MenuItem value="2002">2002</MenuItem>
-								<MenuItem value="2003">2003</MenuItem>
-							</Select>
-						</S.Row>
-
-						<Select label="Цвет" placeholder="Выберите цвет">
-							<MenuItem value="Цвет 1">Цвет 1</MenuItem>
-							<MenuItem value="Цвет 2">Цвет 2</MenuItem>
-							<MenuItem value="Цвет 3">Цвет 3</MenuItem>
-						</Select>
-
+						<Select label="Цвет" placeholder="Выберите цвет" options={colors} />
 						<TextField label="Пробег" placeholder="Выберите марку" />
-
-						<Select label="Тип КПП" placeholder="Выберите Тип">
-							<MenuItem value="Тип 1">Тип 1</MenuItem>
-							<MenuItem value="Тип 2">Тип 2</MenuItem>
-							<MenuItem value="Тип 3">Тип 3</MenuItem>
-						</Select>
-					</FormSection>
+						<Select label="Тип КПП" placeholder="Выберите Тип" options={types} />
+					</Section>
 				</S.FormColumn>
 
 				<S.Divider />
 
 				<S.FormColumn>
-					<FormSection label="VIN" divider={false}>
+					<TextField label="Поправка пробега" placeholder="Введите поправку пробега" />
+
+					<Section label="VIN" divider={false}>
 						<TextField placeholder="_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _" />
-					</FormSection>
+					</Section>
 
-					<FormSection label="СТС" download divider={false}>
+					<Section
+						label="СТС"
+						divider={false}
+						endAdornment={
+							<button>
+								<DownloadIcon />
+							</button>
+						}
+					>
 						<TextField placeholder="_ _ _ _ _ _ _ _ _ _" />
-					</FormSection>
+					</Section>
 
-					<FormSection label="ПТС" download divider={false}>
+					<Section
+						label="ПТС"
+						divider={false}
+						endAdornment={
+							<button>
+								<DownloadIcon />
+							</button>
+						}
+					>
 						<TextField placeholder="_ _ _ _ _ _ _ _ _ _ _ _ _ _ _" />
-					</FormSection>
+					</Section>
 
-					<FormSection label="Номер разрешения" download divider={false}>
+					<Section
+						label="Номер разрешения"
+						divider={false}
+						endAdornment={
+							<button>
+								<DownloadIcon />
+							</button>
+						}
+					>
 						<TextField placeholder="_ _ _ _ _ _ _ _ _ _" />
-					</FormSection>
+					</Section>
 
-					<FormSection label="Собственник" divider={false}>
+					<Section label="Собственник" divider={false}>
 						<TextField placeholder="Введите ФИО" />
-					</FormSection>
+					</Section>
 
-					<FormSection label="Статус" divider={false}>
-						<Select placeholder="Выберите статус">
-							<MenuItem value="Статус 1">Статус 1</MenuItem>
-							<MenuItem value="Статус 2">Статус 2</MenuItem>
-							<MenuItem value="Статус 3">Статус 3</MenuItem>
-						</Select>
-					</FormSection>
+					<Section label="Статус" divider={false}>
+						<Select placeholder="Выберите статус" options={statuses} />
+					</Section>
 
-					<FormSection label="ОСАГО" download>
+					<Section
+						label="ОСАГО"
+						endAdornment={
+							<button>
+								<DownloadIcon />
+							</button>
+						}
+					>
 						<TextField label="Номер" placeholder="_ _ _ _ _ _ _ _ _ _ _ _ _" />
-						<TextField label="Дата окончания" placeholder="__.__.____" />
-					</FormSection>
+					</Section>
 				</S.FormColumn>
 
 				<S.Divider />
 
 				<S.FormColumn>
-					<FormSection label="КАСКО" download>
+					<TextField label="Дата окончания" placeholder="__.__.____" />
+
+					<Section
+						label="КАСКО"
+						endAdornment={
+							<button>
+								<DownloadIcon />
+							</button>
+						}
+					>
 						<TextField label="Номер" placeholder="Введите номер" />
 						<TextField label="Дата окончания" placeholder="__.__.____ " />
-					</FormSection>
+					</Section>
 
-					<FormSection label="Диагностическая карта" download>
+					<Section
+						label="Диагностическая карта"
+						endAdornment={
+							<button>
+								<DownloadIcon />
+							</button>
+						}
+					>
 						<TextField label="Номер" placeholder="_ _ _ _ _ _ _ _ _ _ _ _ _" />
 						<TextField label="Дата окончания" placeholder="__.__.____ " />
-					</FormSection>
+					</Section>
 
-					<FormSection label="Привязка профилей">
+					<Section label="Привязка профилей">
 						<TextField name="name" placeholder="Введите имя" InputProps={{ endAdornment: <LoupeIcon /> }} />
 
 						<Button color="green" startIcon={<PlusIcon />}>
 							Добавить еще
 						</Button>
-					</FormSection>
+					</Section>
 
-					<S.CheckboxRow>
-						<Checkbox />
-						<span>Парковый автомобиль</span>
-					</S.CheckboxRow>
+					<Checkbox label="Парковый автомобиль" />
 				</S.FormColumn>
 			</form>
 		</S.CarCardData>

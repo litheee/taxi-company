@@ -7,7 +7,9 @@ import { MainLayout } from 'layout'
 import { ubuntu, lato } from 'core/loadFonts'
 import { global, muiTheme } from 'styled/common'
 
-export default function App({ Component, pageProps }: AppProps) {
+export default function App({ Component, pageProps, router }: AppProps) {
+	const withoutLayoutPathnames = ['/sign-in']
+
 	return (
 		<>
 			<style jsx global>
@@ -22,9 +24,13 @@ export default function App({ Component, pageProps }: AppProps) {
 			<ThemeProvider theme={muiTheme}>
 				<Global styles={global} />
 
-				<MainLayout>
+				{withoutLayoutPathnames.some((pathname) => router.pathname.startsWith(pathname)) ? (
 					<Component {...pageProps} />
-				</MainLayout>
+				) : (
+					<MainLayout>
+						<Component {...pageProps} />
+					</MainLayout>
+				)}
 			</ThemeProvider>
 		</>
 	)

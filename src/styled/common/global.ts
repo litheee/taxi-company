@@ -7,6 +7,12 @@ export const global = css`
 	${reset}
 	${variables}
 
+	html,
+  #__next,
+  body {
+		min-height: 100vh;
+	}
+
 	body {
 		font-family: var(--font-ubuntu), sans-serif;
 		font-size: 15px;
@@ -41,6 +47,7 @@ export const global = css`
 
 	svg {
 		display: flex;
+		flex-shrink: 0;
 	}
 
 	/* .MuiPaper-root.filter-select-paper {

@@ -11,7 +11,6 @@ interface TableProps {
 }
 
 export const Table = ({ table }: TableProps) => {
-	console.log(table)
 	return (
 		<S.TableContainer>
 			<S.Table>

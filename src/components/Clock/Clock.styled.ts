@@ -1,7 +1,7 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
-import MuiPopover from '@mui/material/Popover'
 
+import { Popover as MuiPopover } from 'ui'
 import { Button } from 'ui/Button/Button.styled'
 import { Checkbox } from 'ui/Checkbox/Checkbox.styled'
 

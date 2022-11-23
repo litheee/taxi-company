@@ -1,5 +1,6 @@
 import { MouseEvent, useState } from 'react'
-import Menu from '@mui/material/Menu'
+
+import { Menu, MenuItem } from 'ui'
 
 import * as S from './EmployeeFilter.styled'
 
@@ -21,9 +22,9 @@ export const EmployeeFilter = () => {
 
 	const employeesMenuItems = employees.map((employee) => {
 		return (
-			<S.MenuItem key={employee} onClick={closeMenu}>
+			<MenuItem key={employee} onClick={closeMenu}>
 				{employee}
-			</S.MenuItem>
+			</MenuItem>
 		)
 	})
 

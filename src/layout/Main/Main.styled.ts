@@ -30,7 +30,9 @@ export const Content = styled.div<ContentProps>`
 		`}
 `
 
-export const Main = styled.main``
+export const Main = styled.main`
+	margin-top: 15px;
+`
 
 export const Background = styled.div`
 	position: absolute;

@@ -1,6 +1,4 @@
-import MenuItem from '@mui/material/MenuItem'
-
-import { TextField, Select, Button } from 'ui'
+import { TextField, Select, Button, MenuItem } from 'ui'
 
 import * as S from './Withdrawal.styled'
 

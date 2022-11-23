@@ -47,6 +47,8 @@ export const FilterSelect = styled(Select)`
 		align-items: center;
 		border-radius: 5px;
 		background: var(--color-gray-300) !important;
+		font-size: 15px;
+		font-weight: 500;
 	}
 
 	.MuiMenu-paper {
@@ -55,5 +57,7 @@ export const FilterSelect = styled(Select)`
 
 	${Placeholder} {
 		margin-right: 5px;
+		font-size: 15px;
+		font-weight: 500;
 	}
 `

@@ -1,20 +1,19 @@
 import styled from '@emotion/styled'
 
-import { FormColumn } from 'styled/components'
-import { AvatarUpload } from 'ui/AvatarUpload/AvatarUpload.styled'
-import { FormSection } from 'ui/FormSection/FormSection.styled'
+import { FormColumn, Divider, FieldsRow } from 'styled/components'
+import { AvatarUpload } from 'common/AvatarUpload/AvatarUpload.styled'
 import { TextareaRow, Textarea } from 'ui/Textarea/Textarea.styled'
+import { Section } from 'common/Section/Section.styled'
 
-export { FormColumn }
-
-export const Row = styled.div`
-	display: flex;
-	gap: 10px;
-`
+export { FormColumn, Divider, FieldsRow }
 
 export const CompanyCardData = styled.div`
 	form {
 		display: flex;
+
+		& > ${Divider} {
+			margin: 30px 0;
+		}
 	}
 
 	${AvatarUpload} {
@@ -28,25 +27,17 @@ export const CompanyCardData = styled.div`
 				text-align: center;
 			}
 
-			${FormSection}:last-of-type ${Textarea} {
+			${Section}:last-of-type ${Textarea} {
 				min-height: 80px;
 			}
 		}
 
 		&:last-of-type {
-			${Row} {
+			${FieldsRow} {
 				label {
 					word-spacing: 9999999px;
 				}
 			}
 		}
 	}
-`
-
-export const Divider = styled.div`
-	flex: 1;
-	width: 2px;
-	margin: 30px 0;
-	border-radius: 5px;
-	background: var(--color-gray-200);
 `

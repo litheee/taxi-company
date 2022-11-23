@@ -109,8 +109,8 @@ export const Pagination = styled.div`
 		content: '';
 		position: absolute;
 		top: 0;
-		left: 0;
-		width: 100%;
+		left: 15px;
+		width: calc(100% - 30px);
 		height: 1px;
 		background: var(--color-gray-200);
 		border-radius: 1px;

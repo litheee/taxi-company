@@ -178,7 +178,7 @@ export const muiTheme = createTheme({
 					paddingRight: 10
 				},
 				adornedEnd: {
-					paddingRight: 15
+					paddingRight: 10
 				}
 			}
 		},

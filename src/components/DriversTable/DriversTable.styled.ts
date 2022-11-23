@@ -1,23 +1,27 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
-import MuiPopover from '@mui/material/Popover'
 
-import { MenuButton } from 'ui'
+import { MenuButton, Popover } from 'ui'
 
-import { FormColumn } from 'styled/components'
+import { Divider, FieldsRow, FormColumn } from 'styled/components'
 import { SelectRow } from 'ui/Select/Select.styled'
 import { TextField } from 'ui/TextField/TextField.styled'
-import { FormSection, Label } from 'ui/FormSection/FormSection.styled'
 import { Button } from 'ui/Button/Button.styled'
 import { Table } from 'ui/Table/Table.styled'
+import { Section } from 'common/Section/Section.styled'
+import { InputLabel } from 'ui/InputLabel/InputLabel.styled'
+import { Heading } from 'common/Heading/Heading.styled'
+import { FormControlLabel } from 'ui/Checkbox/Checkbox.styled'
 
 interface FiltersButtonProps {
 	open: boolean
 }
 
-export { FormColumn }
+export { FormColumn, FieldsRow, Divider }
 
 export const DriversTable = styled.div`
+	max-width: 1715px;
+
 	${Table} {
 		width: calc(100% - 30px);
 		margin: 0 15px;
@@ -31,6 +35,7 @@ export const TextRed = styled.span`
 export const Filters = styled.div`
 	display: flex;
 	padding: 15px;
+	border-radius: 5px 5px 0 0;
 	background: var(--color-gray-300);
 
 	${TextField} {
@@ -86,7 +91,7 @@ export const AdditionalFiltersButton = styled(MenuButton)<FiltersButtonProps>`
 		`}
 `
 
-export const FiltersPopover = styled(MuiPopover)`
+export const FiltersPopover = styled(Popover)`
 	.MuiPaper-root {
 		width: 554px;
 		padding: 15px 10px 20px;
@@ -102,10 +107,22 @@ export const FiltersPopover = styled(MuiPopover)`
 
 	${FormColumn} {
 		padding: 0;
+
+		& > *:not(:last-child) {
+			margin-bottom: 15px;
+		}
+	}
+
+	${Divider} {
+		margin: 0 20px;
+	}
+
+	${Heading} {
+		margin-bottom: 15px;
 	}
 `
 
-export const AdditionalFiltersPopover = styled(MuiPopover)`
+export const AdditionalFiltersPopover = styled(Popover)`
 	.MuiPaper-root {
 		width: 530px;
 		padding: 15px 10px 20px;
@@ -121,12 +138,24 @@ export const AdditionalFiltersPopover = styled(MuiPopover)`
 
 	${FormColumn} {
 		padding: 0;
+
+		${FieldsRow} {
+			align-items: flex-end;
+		}
 	}
 
-	${FormSection} {
-		${Label} {
+	${Section} {
+		${InputLabel} {
 			margin-bottom: 15px;
 		}
+	}
+
+	${Divider} {
+		margin: 0 20px;
+	}
+
+	${Heading} {
+		margin-bottom: 15px;
 	}
 `
 
@@ -142,16 +171,14 @@ export const CheckboxGrid = styled.div`
 	grid-gap: 15px 30px;
 `
 
-export const Divider = styled.div`
-	width: 2px;
-	margin: 0 20px;
-	border-radius: 5px;
-	background: var(--color-gray-200);
-`
-
 export const FormContent = styled.div`
 	display: flex;
 	align-items: stretch;
+
+	${FormControlLabel} span {
+		font-size: 14px;
+		line-height: 16px;
+	}
 `
 
 export const CheckboxMoveRow = styled.div`

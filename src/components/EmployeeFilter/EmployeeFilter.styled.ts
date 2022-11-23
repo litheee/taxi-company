@@ -1,6 +1,8 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
-import MuiMenuItem from '@mui/material/MenuItem'
+
+import { Menu } from 'ui/Menu/Menu.styled'
+import { MenuItem } from 'ui/MenuItem/MenuItem.styled'
 
 interface MenuButtonProps {
 	open: boolean
@@ -9,6 +11,11 @@ interface MenuButtonProps {
 export const EmployeeFilter = styled.div`
 	display: flex;
 	gap: 10px;
+
+	${Menu} ${MenuItem} {
+		font-size: 15px;
+		font-weight: 500;
+	}
 `
 
 export const Chip = styled.div`
@@ -74,11 +81,6 @@ export const EmployeeAddButton = styled.button`
 	align-items: center;
 	width: 37px;
 	height: 31px;
-`
-
-export const MenuItem = styled(MuiMenuItem)`
-	font-size: 15px;
-	font-weight: 500;
 `
 
 export const MenuButton = styled.button<MenuButtonProps>`

@@ -1,8 +1,7 @@
 import { MouseEvent, useState } from 'react'
-import MenuItem from '@mui/material/MenuItem'
 
-import { FilterSelect } from 'common'
-import { Button, Checkbox, FormSection, Select, TextField } from 'ui'
+import { Section, FilterSelect, Heading } from 'common'
+import { Button, Checkbox, Select, TextField } from 'ui'
 
 import * as S from './CarsTable.styled'
 
@@ -89,6 +88,17 @@ export const Filters = () => {
 		'Цвет'
 	]
 
+	const options = [
+		{ label: '1', value: 1 },
+		{ label: '2', value: 2 },
+		{ label: '3', value: 3 }
+	]
+
+	const options2 = [
+		{ label: 'Все', value: 'Все' },
+		{ label: 'Остальные', value: 'Остальные' }
+	]
+
 	return (
 		<>
 			<S.Filters>
@@ -105,20 +115,9 @@ export const Filters = () => {
 				</S.FilterText>
 
 				<S.SelectGroup>
-					<FilterSelect placeholder="Статус:" defaultValue="Все">
-						<MenuItem value="Все">Все</MenuItem>
-						<MenuItem value="Остальные">Остальные</MenuItem>
-					</FilterSelect>
-
-					<FilterSelect placeholder="Год:" defaultValue="Все">
-						<MenuItem value="Все">Все</MenuItem>
-						<MenuItem value="Остальные">Остальные</MenuItem>
-					</FilterSelect>
-
-					<FilterSelect placeholder="Собственник:" defaultValue="Все">
-						<MenuItem value="Все">Все</MenuItem>
-						<MenuItem value="Остальные">Остальные</MenuItem>
-					</FilterSelect>
+					<FilterSelect placeholder="Статус:" defaultValue="Все" options={options2} />
+					<FilterSelect placeholder="Год:" defaultValue="Все" options={options2} />
+					<FilterSelect placeholder="Собственник:" defaultValue="Все" options={options2} />
 				</S.SelectGroup>
 
 				<S.FiltersButton open={isFiltersPopoverOpen} onClick={openFiltersPopover}>
@@ -150,6 +149,7 @@ export const Filters = () => {
 								return (
 									<S.CheckboxMoveRow key={label}>
 										<Checkbox label={label} />
+
 										<button>
 											<MoveIcon />
 										</button>
@@ -197,49 +197,44 @@ export const Filters = () => {
 				<form>
 					<S.FormContent>
 						<S.FormColumn>
-							<S.FormRow>
-								<TextField label="Числа" placeholder="От" />
-								<TextField placeholder="До" />
-							</S.FormRow>
+							<Heading>Числа</Heading>
+							<S.FieldsRow>
+								<TextField placeholder="от" />
+								<TextField placeholder="до" />
+							</S.FieldsRow>
 
-							<FormSection label="Адрес электронной почты" divider={false}>
+							<Heading>Адрес электронной почты</Heading>
+							<Section divider={false}>
 								<Checkbox label="Парковый автомобиль" />
 								<Checkbox label="Парковый автомобиль" />
 								<Checkbox label="Парковый автомобиль" />
-							</FormSection>
+							</Section>
 
-							<FormSection label="Адрес электронной почты" divider={false}>
+							<Heading>Адрес электронной почты</Heading>
+							<Section divider={false}>
 								<S.CheckboxGrid>
 									<Checkbox label="Чекбокс" />
 									<Checkbox label="Чекбокс" />
 									<Checkbox label="Чекбокс" />
 									<Checkbox label="Чекбокс" />
 								</S.CheckboxGrid>
-							</FormSection>
+							</Section>
 						</S.FormColumn>
 
 						<S.Divider />
 
 						<S.FormColumn>
-							<FormSection label="Выпадающий список" divider={false}>
-								<Select placeholder="Выбрать">
-									<MenuItem value={1}>1</MenuItem>
-									<MenuItem value={2}>2</MenuItem>
-									<MenuItem value={3}>3</MenuItem>
-								</Select>
-							</FormSection>
+							<Heading>Выпадающий список</Heading>
+							<Section divider={false}>
+								<Select placeholder="Выбрать" options={options} />
+							</Section>
 
-							<FormSection label="" divider={false}>
-								<S.FormRow>
-									<TextField label="Поле" placeholder="_ ___ __" />
-
-									<Select placeholder="123">
-										<MenuItem value={1}>1</MenuItem>
-										<MenuItem value={2}>2</MenuItem>
-										<MenuItem value={3}>3</MenuItem>
-									</Select>
-								</S.FormRow>
-							</FormSection>
+							<Section label="" divider={false}>
+								<S.FieldsRow>
+									<TextField placeholder="_ ___ __" />
+									<Select placeholder="123" options={options} />
+								</S.FieldsRow>
+							</Section>
 						</S.FormColumn>
 					</S.FormContent>
 

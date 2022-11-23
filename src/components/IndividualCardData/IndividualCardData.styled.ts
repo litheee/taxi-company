@@ -1,15 +1,19 @@
 import styled from '@emotion/styled'
 
-import { FormColumn } from 'styled/components'
-import { AvatarUpload } from 'ui/AvatarUpload/AvatarUpload.styled'
+import { FormColumn, Divider, FieldsRow } from 'styled/components'
+import { AvatarUpload } from 'common/AvatarUpload/AvatarUpload.styled'
 import { SelectRow } from 'ui/Select/Select.styled'
 import { TextField } from 'ui/TextField/TextField.styled'
 
-export { FormColumn }
+export { FormColumn, Divider, FieldsRow }
 
 export const IndividualCardData = styled.div`
 	form {
 		display: flex;
+
+		& > ${Divider} {
+			margin: 30px 0;
+		}
 	}
 
 	${AvatarUpload} {
@@ -37,17 +41,4 @@ export const AdditionalContacts = styled.div`
 			max-width: 99px;
 		}
 	}
-`
-
-export const Row = styled.div`
-	display: flex;
-	gap: 10px;
-`
-
-export const Divider = styled.div`
-	flex: 1;
-	width: 2px;
-	margin: 30px 0;
-	border-radius: 5px;
-	background: var(--color-gray-200);
 `

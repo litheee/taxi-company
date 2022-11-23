@@ -1,9 +1,8 @@
 import { Fragment, useState } from 'react'
 import Radio from '@mui/material/Radio'
-import MenuItem from '@mui/material/MenuItem'
 
 import { CurrencyAmount } from 'components'
-import { TextField, Select, Button } from 'ui'
+import { TextField, Select, Button, MenuItem } from 'ui'
 
 import * as S from './Deposit.styled'
 

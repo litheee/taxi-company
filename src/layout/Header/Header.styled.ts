@@ -26,6 +26,7 @@ export const Top = styled.div`
 
 		.MuiInput-root {
 			height: 40px;
+			padding-right: 15px;
 
 			input {
 				padding-left: 15px;
