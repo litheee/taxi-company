@@ -1,17 +1,19 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 
-import { MenuButton, Popover } from 'ui'
+import { Popover } from 'ui'
+import { MenuButton } from 'components/common'
 
 import { Divider, FieldsRow, FormColumn } from 'styled/components'
-import { SelectRow } from 'ui/Select/Select.styled'
+
+import { Section } from 'components/common/Section/Section.styled'
+import { Heading } from 'components/common/Heading/Heading.styled'
+import { InputLabel } from 'ui/InputLabel/InputLabel.styled'
+import { FormControlLabel } from 'ui/Checkbox/Checkbox.styled'
+import { SelectContainer } from 'ui/Select/Select.styled'
 import { TextField } from 'ui/TextField/TextField.styled'
 import { Button } from 'ui/Button/Button.styled'
 import { Table } from 'ui/Table/Table.styled'
-import { Section } from 'common/Section/Section.styled'
-import { InputLabel } from 'ui/InputLabel/InputLabel.styled'
-import { Heading } from 'common/Heading/Heading.styled'
-import { FormControlLabel } from 'ui/Checkbox/Checkbox.styled'
 
 interface FiltersButtonProps {
 	open: boolean
@@ -60,7 +62,7 @@ export const SelectGroup = styled.div`
 	gap: 15px;
 	margin-left: 15px;
 
-	${SelectRow} {
+	${SelectContainer} {
 		max-width: 228px;
 	}
 `
@@ -75,7 +77,7 @@ export const FiltersButton = styled.button<FiltersButtonProps>`
 	${({ open }) =>
 		open &&
 		css`
-			background: #2e353b;
+			background: var(--color-gray-400);
 		`}
 `
 
@@ -87,7 +89,7 @@ export const AdditionalFiltersButton = styled(MenuButton)<FiltersButtonProps>`
 	${({ open }) =>
 		open &&
 		css`
-			background: #2e353b;
+			background: var(--color-gray-400);
 		`}
 `
 

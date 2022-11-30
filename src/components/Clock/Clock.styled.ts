@@ -1,6 +1,7 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 
+import { Divider } from 'styled/components'
 import { Popover as MuiPopover } from 'ui'
 import { Button } from 'ui/Button/Button.styled'
 import { Checkbox } from 'ui/Checkbox/Checkbox.styled'
@@ -8,6 +9,8 @@ import { Checkbox } from 'ui/Checkbox/Checkbox.styled'
 interface ClockButtonProps {
 	open: boolean
 }
+
+export { Divider }
 
 export const ClockButton = styled.button<ClockButtonProps>`
 	display: flex;
@@ -38,14 +41,10 @@ export const Popover = styled(MuiPopover)`
 			max-width: 130px;
 		}
 	}
-`
 
-export const Divider = styled.div`
-	width: 100%;
-	height: 3px;
-	margin-top: 15px;
-	background: var(--color-gray-200);
-	border-radius: 5px;
+	${Divider} {
+		margin-top: 15px;
+	}
 `
 
 export const TasksListsByDay = styled.ul`

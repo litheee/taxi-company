@@ -79,7 +79,7 @@ export const Clock = () => {
 			>
 				<Button color="green">Начать работу</Button>
 
-				<S.Divider />
+				<S.Divider orientation="horizontal" />
 
 				<S.TasksListsByDay>{tasksByDayItems}</S.TasksListsByDay>
 

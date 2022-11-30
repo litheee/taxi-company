@@ -2,7 +2,7 @@ import styled from '@emotion/styled'
 
 import { Divider } from 'styled/components'
 
-import { Heading } from 'common/Heading/Heading.styled'
+import { Heading } from 'components/common/Heading/Heading.styled'
 import { Button } from 'ui/Button/Button.styled'
 import { TextField } from 'ui/TextField/TextField.styled'
 
@@ -37,7 +37,6 @@ export const SignInPage = styled.div`
 			left: 0;
 			top: 0;
 			background-image: url('/img/logo-lines-bg.svg'), linear-gradient(252.44deg, #353b41 0%, #191a1c 100%);
-			/* background-size: 100% 100%; */
 			background-size: auto;
 			z-index: -1;
 		}
@@ -60,12 +59,15 @@ export const Form = styled.form`
 
 	${Heading} {
 		justify-content: center;
-		font-size: 32px;
-		font-weight: 700;
-		line-height: 37px;
+
+		h1 {
+			font-size: 32px;
+			font-weight: 700;
+			line-height: 37px;
+		}
 	}
 
-	${TextField}, ${TextField} input, ${Heading} {
+	${TextField}, ${TextField} input {
 		text-align: center;
 	}
 
@@ -74,6 +76,10 @@ export const Form = styled.form`
 
 		label {
 			margin-bottom: 15px;
+		}
+
+		.MuiInputBase-root {
+			background: var(--color-gray-400);
 		}
 
 		input {
@@ -91,7 +97,7 @@ export const Form = styled.form`
 	${Divider} {
 		margin-top: 18px;
 		height: 2px;
-		background: #2e353b;
+		background: var(--color-gray-400);
 		border-radius: 1px;
 	}
 

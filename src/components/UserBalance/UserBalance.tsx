@@ -2,9 +2,8 @@ import { MouseEvent, useState } from 'react'
 import Tabs from '@mui/material/Tabs'
 import Tab from '@mui/material/Tab'
 
-import { CurrencyAmount } from 'components'
+import { CurrencyAmount, MenuButton } from 'components/common'
 import { DepositTab, TransferTab, WithdrawalTab } from './tabs'
-import { MenuButton } from 'ui'
 
 import * as S from './UserBalance.styled'
 

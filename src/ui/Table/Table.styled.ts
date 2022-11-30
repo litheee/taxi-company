@@ -1,6 +1,8 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 
+import { Pagination } from 'components/common/Pagination/Pagination.styled'
+
 interface TableCellProps {
 	sortable?: boolean
 }
@@ -11,8 +13,7 @@ export const TableContainer = styled.div`
 	padding-top: 21px;
 	background: var(--color-gray-300);
 
-	&::before,
-	&::after {
+	&::before {
 		content: '';
 		position: absolute;
 		top: 0;
@@ -21,6 +22,24 @@ export const TableContainer = styled.div`
 		height: 1px;
 		background: var(--color-gray-200);
 		border-radius: 1px;
+	}
+
+	${Pagination} {
+		position: relative;
+		padding: 14px 0 15px;
+		margin-top: 100px;
+		box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.25);
+
+		&::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 15px;
+			width: calc(100% - 30px);
+			height: 1px;
+			background: var(--color-gray-200);
+			border-radius: 1px;
+		}
 	}
 `
 
@@ -93,60 +112,4 @@ export const TableBody = styled.tbody`
 
 export const SortButton = styled.button`
 	margin-left: 10px;
-`
-
-export const Pagination = styled.div`
-	position: relative;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	padding: 14px 0 15px;
-	margin-top: 100px;
-	gap: 5px;
-	box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.25);
-
-	&::before {
-		content: '';
-		position: absolute;
-		top: 0;
-		left: 15px;
-		width: calc(100% - 30px);
-		height: 1px;
-		background: var(--color-gray-200);
-		border-radius: 1px;
-	}
-`
-
-export const PaginationButton = styled.button`
-	opacity: 0.2;
-`
-
-export const FirstPageButton = styled(PaginationButton)`
-	transform: rotate(180deg);
-`
-
-export const PrevButton = styled(PaginationButton)`
-	transform: rotate(90deg);
-`
-
-export const NextButton = styled(PaginationButton)`
-	transform: rotate(-90deg);
-`
-
-export const LastPageButton = styled(PaginationButton)``
-
-export const Pages = styled.div`
-	display: flex;
-	align-items: center;
-	gap: 5px;
-`
-
-export const CurrentPage = styled.div`
-	padding: 2px 6px;
-	background: var(--color-gray-200);
-	border-radius: 2px;
-`
-
-export const PagesNumber = styled.div`
-	color: var(--color-gray-100);
 `

@@ -1,8 +1,8 @@
 import { MouseEvent, useState } from 'react'
 import Image from 'next/image'
 
-import { NotificationsNumber } from 'common'
-import { Button, Checkbox, MenuButton } from 'ui'
+import { NotificationsNumber, MenuButton } from 'components/common'
+import { Button, Checkbox } from 'ui'
 
 import * as S from './UserProfile.styled'
 
@@ -33,8 +33,6 @@ export const UserProfile = () => {
 		return (
 			<S.NotificationItem key={id}>
 				<Checkbox label={label} />
-
-				{/* <p>{label}</p> */}
 
 				<S.NotificationTime>{time}</S.NotificationTime>
 			</S.NotificationItem>

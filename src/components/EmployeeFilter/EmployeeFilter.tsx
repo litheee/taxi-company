@@ -16,6 +16,7 @@ export const EmployeeFilter = () => {
 	const openMenu = ({ currentTarget }: MouseEvent<HTMLButtonElement>) => {
 		setMenuAnchorEl(currentTarget)
 	}
+
 	const closeMenu = () => {
 		setMenuAnchorEl(null)
 	}

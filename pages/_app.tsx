@@ -2,7 +2,7 @@ import type { AppProps } from 'next/app'
 import { Global } from '@emotion/react'
 import { ThemeProvider } from '@mui/material/styles'
 
-import { MainLayout } from 'layout'
+import { MainLayout } from 'components/layout'
 
 import { ubuntu, lato } from 'core/loadFonts'
 import { global, muiTheme } from 'styled/common'

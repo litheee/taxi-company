@@ -1,5 +1,5 @@
-import { AvatarUpload, Section } from 'common'
-import { Select, TextField, Button, Textarea } from 'ui'
+import { AvatarUpload, Section } from 'components/common'
+import { Select, TextField, Button, Textarea, InputMask } from 'ui'
 
 import * as S from './IndividualCardData.styled'
 
@@ -7,6 +7,7 @@ import ProfileIcon from 'public/icons/profile.svg'
 import PlusIcon from 'public/icons/plus.svg'
 import LoupeIcon from 'public/icons/loupe.svg'
 import DownloadIcon from 'public/icons/download.svg'
+import { DateField, PhoneField } from 'ui/maskedFields'
 
 export const IndividualCardData = () => {
 	const options = [
@@ -24,7 +25,7 @@ export const IndividualCardData = () => {
 					<TextField placeholder="Укажите ваше ФИО" />
 
 					<Section label="Водительское удостоверение">
-						<TextField label="Телефон" placeholder="Укажите телефон" />
+						<PhoneField maskType={2} label="Телефон" placeholder="Укажите телефон" />
 						<TextField label="E-mail" placeholder="Укажите электронный адрес" />
 
 						<S.AdditionalContacts>
@@ -35,8 +36,8 @@ export const IndividualCardData = () => {
 							/>
 
 							<span>
-								<Select placeholder="Выбрать" name="choose" options={options} />
-								<TextField placeholder="+7 (___) ___ __ __" />
+								<Select placeholder="Выбрать" options={options} displayEmpty />
+								<PhoneField maskType={2} />
 							</span>
 						</S.AdditionalContacts>
 
@@ -58,8 +59,8 @@ export const IndividualCardData = () => {
 							<TextField label="Номер" placeholder="Укажите номер" />
 						</S.FieldsRow>
 
-						<TextField name="gibddCode" label="Код подразделения ГИБДД" placeholder="Укажите данные" />
-						<TextField name="validUntilDate" label="Действителен до" placeholder="__.__.____" />
+						<TextField label="Код подразделения ГИБДД" placeholder="Укажите данные" />
+						<DateField label="Действителен до" />
 					</Section>
 				</S.FormColumn>
 
@@ -75,14 +76,19 @@ export const IndividualCardData = () => {
 						}
 					>
 						<S.FieldsRow>
-							<TextField label="Серия" placeholder="Укажите серию" />
-							<TextField label="Номер" placeholder="Укажите номер" />
+							<InputMask alwaysShowMask={false} mask="99 99">
+								<TextField label="Серия" placeholder="Укажите серию" />
+							</InputMask>
+
+							<InputMask alwaysShowMask={false} mask="999 999" placeholder="Укажите номер">
+								<TextField label="Номер" />
+							</InputMask>
 						</S.FieldsRow>
 
-						<TextField name="passportSeries" label="Кем выдан" placeholder="Укажите данные" />
+						<TextField label="Кем выдан" placeholder="Укажите данные" />
 
 						<S.FieldsRow>
-							<TextField label="Дата выдачи" placeholder="__.__.____" />
+							<DateField label="Дата выдачи" />
 							<TextField label="Код подразденеия" placeholder="Укажите код" />
 						</S.FieldsRow>
 
@@ -125,26 +131,3 @@ export const IndividualCardData = () => {
 		</S.IndividualCardData>
 	)
 }
-
-// hor - h2px br1px #42 (3)
-// hor - 3px br5 #42 (in form)
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//

@@ -1,7 +1,17 @@
+import Head from 'next/head'
+
 import { DriversTable } from 'components'
 
 const DriversTablePage = () => {
-	return <DriversTable />
+	return (
+		<>
+			<Head>
+				<title>Автомобили</title>
+			</Head>
+
+			<DriversTable />
+		</>
+	)
 }
 
 export default DriversTablePage

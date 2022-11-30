@@ -1,5 +1,6 @@
-import { AvatarUpload, Section } from 'common'
+import { AvatarUpload, Section } from 'components/common'
 import { TextField, Textarea } from 'ui'
+import { InnField, KppField, OgrnField, PhoneField } from 'ui/maskedFields'
 
 import * as S from './CompanyCardData.styled'
 
@@ -19,11 +20,11 @@ export const CompanyCardData = () => {
 						<Textarea label="Юридический адрес проживания" placeholder="Введите данные" />
 
 						<S.FieldsRow>
-							<TextField label="ИНН" placeholder="_ _ _ _ _ _ _ _ _ _" />
-							<TextField label="КПП" placeholder="_ _ _ _ _ _ _ _ _" />
+							<InnField />
+							<KppField />
 						</S.FieldsRow>
 
-						<TextField label="ОГРН" placeholder="_ _ _ _ _ _ _ _ _ _ _ _ _" />
+						<OgrnField label="ОГРН" />
 					</Section>
 
 					<Section label="Комментарии">
@@ -40,8 +41,8 @@ export const CompanyCardData = () => {
 						<TextField label="ФИО гендиректора" placeholder="Введите данные" />
 
 						<S.FieldsRow>
-							<TextField label="Телефон гендиректора" placeholder="+7 (___) ___ __ __" />
-							<TextField label="Телефон офиса" placeholder="+7 (___) ___ __ __" />
+							<PhoneField label="Телефон гендиректора" maskType={2} />
+							<PhoneField label="Телефон офиса" maskType={2} />
 						</S.FieldsRow>
 
 						<TextField label="Адрес электронной почты" placeholder="Введите данные" />

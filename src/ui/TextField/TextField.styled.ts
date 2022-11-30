@@ -11,4 +11,10 @@ export const TextField = styled(MuiTextField)`
 		-webkit-appearance: none;
 		margin: 0;
 	}
+
+	&&& {
+		.MuiInputBase-input.MuiInput-input::placeholder {
+			opacity: 1 !important;
+		}
+	}
 `

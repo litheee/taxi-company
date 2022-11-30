@@ -8,7 +8,8 @@ interface BoxProps {
 export const Box = styled.div<BoxProps>`
 	padding: 10px;
 	border-radius: 5px;
-	background: var(--color-gray-200);
+	background: var(--color-gray-300);
+	box-sizing: border-box;
 
 	${({ noPaddings = false }) =>
 		noPaddings &&

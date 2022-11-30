@@ -1,6 +1,6 @@
 import { MouseEvent, useState } from 'react'
 
-import { Section, FilterSelect, Heading } from 'common'
+import { Section, FilterSelect, Heading } from 'components/common'
 import { Button, Checkbox, Select, TextField } from 'ui'
 
 import * as S from './DriversTable.styled'
@@ -232,8 +232,8 @@ export const Filters = () => {
 
 							<Section label="" divider={false}>
 								<S.FieldsRow>
-									<TextField placeholder="_ ___ __" />
-									<Select placeholder="123" options={options} />
+									<TextField label="Поле" placeholder="_ ___ __" />
+									<Select label="Список" placeholder="123" options={options} />
 								</S.FieldsRow>
 							</Section>
 						</S.FormColumn>

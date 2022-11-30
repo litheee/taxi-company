@@ -3,8 +3,9 @@ import styled from '@emotion/styled'
 import MuiRadioGroup from '@mui/material/RadioGroup'
 import MuiFormControlLabel from '@mui/material/FormControlLabel'
 
-import { CurrencyAmount } from 'components/CurrencyAmount/CurrencyAmount.styled'
 import { gradientGreen } from 'styled/components/ButtonGradient'
+
+import { CurrencyAmount } from 'components/common/CurrencyAmount/CurrencyAmount.styled'
 import { TabContent } from 'components/UserBalance/UserBalance.styled'
 
 export const DepositTab = styled(TabContent)``

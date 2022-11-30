@@ -9,10 +9,10 @@ interface TextareaProps extends TextareaAutosizeProps {
 
 export const Textarea = ({ label, name, ...props }: TextareaProps) => {
 	return (
-		<S.TextareaRow>
+		<S.TextareaContainer>
 			{label && <InputLabel htmlFor={name}>{label}</InputLabel>}
 
 			<S.Textarea id={name} {...props} />
-		</S.TextareaRow>
+		</S.TextareaContainer>
 	)
 }

@@ -3,8 +3,8 @@ import styled from '@emotion/styled'
 import { Popover as MuiPopover } from 'ui'
 import { Box, ButtonGroup } from 'styled/components'
 
-import { CurrencyAmount } from 'components/CurrencyAmount/CurrencyAmount.styled'
-import { MenuButton } from 'common/MenuButton/MenuButton.styled'
+import { Currency, CurrencyAmount } from 'components/common/CurrencyAmount/CurrencyAmount.styled'
+import { MenuButton } from 'components/common/MenuButton/MenuButton.styled'
 
 export { ButtonGroup }
 
@@ -27,6 +27,8 @@ export const Popover = styled(MuiPopover)`
 `
 
 export const BalanceList = styled(Box)`
+	background: var(--color-gray-200);
+
 	li {
 		&:not(:last-child) {
 			margin-bottom: 15px;
@@ -38,10 +40,8 @@ export const BalanceRow = styled.div`
 	display: flex;
 	justify-content: space-between;
 
-	${CurrencyAmount} {
-		svg {
-			fill: var(--color-gray-100);
-		}
+	${Currency} {
+		color: var(--color-gray-100);
 	}
 `
 

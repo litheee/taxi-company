@@ -7,14 +7,10 @@ interface DriverStatusProps {
 }
 
 export const DriverStatus = ({ status }: DriverStatusProps) => {
-	const getDriverStatus = (status: Status) => {
-		switch (status) {
-			case 'active':
-				return <S.DriverStatus color="green">Активен</S.DriverStatus>
-			case 'blocked':
-				return <S.DriverStatus color="red">Заблокирован</S.DriverStatus>
-		}
+	switch (status) {
+		case 'active':
+			return <S.DriverStatus color="green">Активен</S.DriverStatus>
+		case 'blocked':
+			return <S.DriverStatus color="red">Заблокирован</S.DriverStatus>
 	}
-
-	return getDriverStatus(status)
 }

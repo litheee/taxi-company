@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import MuiTextarea from '@mui/material/TextareaAutosize'
 
-export const TextareaRow = styled.div`
+export const TextareaContainer = styled.div`
 	display: flex;
 	flex-direction: column;
 `

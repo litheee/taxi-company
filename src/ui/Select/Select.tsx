@@ -15,14 +15,14 @@ export interface SelectProps extends MuiSelectProps {
 
 export const Select = ({ name, label, placeholder, options, ...props }: SelectProps) => {
 	return (
-		<S.SelectRow>
+		<S.SelectContainer>
 			{label ? <InputLabel>{label}</InputLabel> : null}
 
 			<S.Select
 				displayEmpty
 				defaultValue=""
 				renderValue={(value: any) => {
-					return value !== '' ? value : <S.Placeholder>{placeholder}</S.Placeholder>
+					return value !== '' || !placeholder ? value : <S.Placeholder>{placeholder}</S.Placeholder>
 				}}
 				{...props}
 			>
@@ -34,6 +34,6 @@ export const Select = ({ name, label, placeholder, options, ...props }: SelectPr
 					)
 				})}
 			</S.Select>
-		</S.SelectRow>
+		</S.SelectContainer>
 	)
 }

@@ -121,7 +121,10 @@ export const muiTheme = createTheme({
 		MuiTextField: {
 			defaultProps: {
 				fullWidth: true,
-				variant: 'standard'
+				variant: 'standard',
+				InputLabelProps: {
+					shrink: false
+				}
 			}
 		},
 		MuiInput: {
@@ -149,11 +152,6 @@ export const muiTheme = createTheme({
 
 					'.MuiSelect-select.MuiInputBase-input': {
 						paddingRight: 32
-					},
-
-					'.MuiSelect-select[aria-expanded="true"]': {
-						borderBottomLeftRadius: 0,
-						borderBottomRightRadius: 0
 					}
 				},
 				input: {
@@ -199,12 +197,21 @@ export const muiTheme = createTheme({
 			},
 			styleOverrides: {
 				select: {
-					minHeight: 'auto',
+					display: 'flex',
+					alignItems: 'center',
+					minHeight: '100%',
 					boxSizing: 'border-box',
+					borderRadius: 'inherit',
 					background: 'var(--color-gray-200)',
 
 					'&:focus': {
 						borderRadius: 5
+					},
+
+					'&[aria-expanded="true"]': {
+						background: 'var(--color-gray-400)',
+						borderBottomLeftRadius: 0,
+						borderBottomRightRadius: 0
 					}
 				},
 				icon: {
@@ -233,12 +240,12 @@ export const muiTheme = createTheme({
 					fontSize: 14,
 					lineHeight: '17px',
 					letterSpacing: 'normal',
-					color: '#b3b6b9',
+					color: '#fff',
+					background: 'transparent !important',
 					transition: '0.3s',
 
 					'&:hover': {
-						color: '#fff',
-						background: 'transparent'
+						color: '#fff'
 					},
 
 					'&:not(:last-of-type)': {
@@ -246,12 +253,7 @@ export const muiTheme = createTheme({
 					},
 
 					'&.Mui-selected': {
-						color: '#fff',
-						background: 'transparent !important',
-
-						'&:hover': {
-							background: 'transparent'
-						}
+						color: '#fff'
 					}
 				}
 			}
@@ -323,6 +325,89 @@ export const muiTheme = createTheme({
 
 					'&.Mui-focused': {
 						color: '#fff'
+					}
+				}
+			}
+		},
+		MuiSwitch: {
+			defaultProps: {},
+			styleOverrides: {
+				root: {
+					display: 'flex',
+					width: 36,
+					height: 20,
+					padding: 0
+				},
+				switchBase: {
+					padding: 0,
+					margin: 4,
+
+					'&.Mui-checked': {
+						transform: 'translateX(16px)',
+
+						'.MuiSwitch-thumb::before': {
+							opacity: 1
+						},
+
+						'& + .MuiSwitch-track': {
+							opacity: 1,
+							background: 'rgba(47, 196, 183, 0.15)',
+
+							'&::before': {
+								background: 'var(--gradient-blue) border-box'
+							}
+						}
+					}
+				},
+				thumb: {
+					position: 'relative',
+					width: 12,
+					height: 12,
+					color: 'transparent',
+					background: '#BABCBF',
+					zIndex: 2,
+
+					'&::before': {
+						position: 'absolute',
+						content: `''`,
+						top: 0,
+						left: 0,
+						right: 0,
+						bottom: 0,
+						zIndex: -2,
+						opacity: 0,
+						borderRadius: 'inherit',
+						backgroundImage: 'var(--gradient-blue)',
+						transition: '0.3s'
+					}
+				},
+				input: {
+					height: '200%',
+					top: '-50%',
+					left: '-150%',
+					width: '400%',
+					zIndex: 3
+				},
+				track: {
+					position: 'relative',
+					opacity: 1,
+					borderRadius: 15,
+					background: 'transparent',
+
+					'&::before': {
+						position: 'absolute',
+						content: `''`,
+						top: 0,
+						left: 0,
+						right: 0,
+						bottom: 0,
+						borderRadius: 'inherit',
+						border: '2px solid transparent',
+						background: '#E7E7E8 border-box',
+						mask: 'linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0)',
+						WebkitMaskComposite: 'destination-out',
+						maskComposite: 'exclude',
+						transition: '0.3s'
 					}
 				}
 			}

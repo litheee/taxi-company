@@ -1,7 +1,8 @@
 import { MouseEvent, useState } from 'react'
 
-import { IndividualCardData, CompanyCardData, CarCardData } from 'components'
-import { MenuButton } from 'ui'
+import { IndividualCardData, CompanyCardData } from 'components'
+import { CarCardData } from 'components/cars'
+import { MenuButton } from 'components/common'
 
 import * as S from './UserData.styled'
 

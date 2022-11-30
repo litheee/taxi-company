@@ -2,10 +2,12 @@ import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 
 import { Popover as MuiPopover } from 'ui'
+
 import { gradientBlue } from 'styled/components/ButtonGradient'
+
 import { Button } from 'ui/Button/Button.styled'
-import { MenuButton } from 'common/MenuButton/MenuButton.styled'
-import { NotificationsNumber } from 'common/NotificationsNumber/NotificationsNumber.styled'
+import { MenuButton } from 'components/common/MenuButton/MenuButton.styled'
+import { NotificationsNumber } from 'components/common/NotificationsNumber/NotificationsNumber.styled'
 
 interface UserProfilePorps {
 	popoverOpen: boolean

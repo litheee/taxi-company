@@ -1,9 +1,10 @@
 import styled from '@emotion/styled'
 
 import { FormColumn, Divider, FieldsRow } from 'styled/components'
-import { AvatarUpload } from 'common/AvatarUpload/AvatarUpload.styled'
-import { TextareaRow, Textarea } from 'ui/Textarea/Textarea.styled'
-import { Section } from 'common/Section/Section.styled'
+
+import { AvatarUpload } from 'components/common/AvatarUpload/AvatarUpload.styled'
+import { Section } from 'components/common/Section/Section.styled'
+import { TextareaContainer, Textarea } from 'ui/Textarea/Textarea.styled'
 
 export { FormColumn, Divider, FieldsRow }
 
@@ -22,7 +23,7 @@ export const CompanyCardData = styled.div`
 
 	${FormColumn} {
 		&:first-of-type {
-			& > ${TextareaRow} ${Textarea} {
+			& > ${TextareaContainer} ${Textarea} {
 				min-height: 48px;
 				text-align: center;
 			}
