@@ -9,7 +9,7 @@ const CounterpartiesMoneyFlow = () => {
 	return (
 		<>
 			<Head>
-				<title>Приход/Расход</title>
+				<title>Приход/Расход </title>
 			</Head>
 
 			<S.CounterpartiesMoneyFlowPage>
