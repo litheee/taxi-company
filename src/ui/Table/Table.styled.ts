@@ -9,6 +9,9 @@ interface TableCellProps {
 
 export const TableContainer = styled.div`
 	position: relative;
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
 	width: 100%;
 	padding-top: 21px;
 	background: var(--color-gray-300);
@@ -27,7 +30,7 @@ export const TableContainer = styled.div`
 	${Pagination} {
 		position: relative;
 		padding: 14px 0 15px;
-		margin-top: 100px;
+		margin-top: auto;
 		box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.25);
 
 		&::before {

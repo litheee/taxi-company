@@ -1,11 +1,12 @@
-import { TextFieldProps } from '@mui/material/TextField'
+import { InputMask } from 'ui'
 
-import { TextField, InputMask } from 'ui'
+import { TextFieldProps } from 'ui/TextField/TextField'
 
-export const BankCardField = (props: TextFieldProps) => {
-	return (
-		<InputMask mask="9999 9999 9999 9999">
-			<TextField label="Номер карты" {...props} />
-		</InputMask>
-	)
-}
+export const BankCardField = ({ name, ...props }: TextFieldProps) => (
+	<InputMask
+		name={name}
+		label="Номер карты"
+		maskProps={{ mask: '9999 9999 9999 9999' }}
+		{...props}
+	/>
+)

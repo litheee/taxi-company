@@ -1,11 +1,14 @@
-import { TextFieldProps } from '@mui/material/TextField'
+import { InputMask } from 'ui'
 
-import { TextField, InputMask } from 'ui'
+import { TextFieldProps } from 'ui/TextField/TextField'
 
-export const BankAccountField = (props: TextFieldProps) => {
+export const BankAccountField = ({ name, ...props }: TextFieldProps) => {
 	return (
-		<InputMask mask="9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9">
-			<TextField label="Р/С" {...props} />
-		</InputMask>
+		<InputMask
+			name={name}
+			label="Р/С"
+			maskProps={{ mask: '9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9' }}
+			{...props}
+		/>
 	)
 }

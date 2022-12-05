@@ -1,7 +1,40 @@
-import { Props } from 'react-input-mask'
+import { TextFieldProps } from '@mui/material'
+import { Controller, useFormContext } from 'react-hook-form'
+import { Props as ReactInputMaskProps } from 'react-input-mask'
+
+import { TextField } from 'ui/TextField/TextField.styled'
 
 import * as S from './InputMask.styled'
 
-export const InputMask = (props: Props) => {
-	return <S.InputMask alwaysShowMask {...props} />
+type InputMaskProps = {
+	name: string
+	maskProps: ReactInputMaskProps
+} & TextFieldProps
+
+export const InputMask = ({ name, maskProps, ...props }: InputMaskProps) => {
+	const { control } = useFormContext()
+
+	return (
+		<Controller
+			name={name}
+			control={control}
+			defaultValue=""
+			render={({ field: { value, onChange } }) => (
+				<S.InputMask
+					{...maskProps}
+					alwaysShowMask
+					value={value}
+					onChange={({ target }) => {
+						const { value } = target
+						const unmaskedValue = value.replace(/[^\d]/g, '')
+
+						return onChange(unmaskedValue)
+					}}
+				>
+					{/* @ts-ignore */}
+					{(inputProps: any) => <TextField {...props} {...inputProps} />}
+				</S.InputMask>
+			)}
+		/>
+	)
 }

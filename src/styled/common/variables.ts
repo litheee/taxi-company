@@ -1,7 +1,12 @@
 import { css } from '@emotion/react'
 
+import { ubuntu, lato } from 'core/loadFonts'
+
 export const variables = css`
 	:root {
+		--font-ubuntu: ${ubuntu.style.fontFamily};
+		--font-lato: ${lato.style.fontFamily};
+
 		--color-red: #d83131;
 		--color-gray: #42484f;
 

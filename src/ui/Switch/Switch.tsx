@@ -1,11 +1,28 @@
 import { SwitchProps as MuiSwitchProps } from '@mui/material/Switch'
+import { useFormContext, Controller } from 'react-hook-form'
 
 import * as S from './Switch.styled'
 
-interface SwitchProps extends MuiSwitchProps {
+type SwitchProps = {
+	name: string
 	label?: string
-}
+} & MuiSwitchProps
 
-export const Switch = ({ label, ...props }: SwitchProps) => {
-	return label ? <S.FormControlLabel label={label} control={<S.Switch {...props} />} /> : <S.Switch {...props} />
+export const Switch = ({ label, name, ...props }: SwitchProps) => {
+	const { control } = useFormContext()
+
+	const controller = (
+		<Controller
+			name={name}
+			control={control}
+			defaultValue={false}
+			render={({ field }) => <S.Switch {...field} {...props} />}
+		/>
+	)
+
+	return label ? (
+		<S.FormControlLabel label={label} control={controller} />
+	) : (
+		controller
+	)
 }

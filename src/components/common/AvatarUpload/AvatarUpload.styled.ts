@@ -11,6 +11,7 @@ export const AvatarUpload = styled.div`
 	height: 140px;
 	border-radius: 50%;
 	background: var(--color-gray-200);
+	box-shadow: 1px 2px 7px rgba(99, 99, 99, 0.2);
 
 	${Button} {
 		position: absolute;

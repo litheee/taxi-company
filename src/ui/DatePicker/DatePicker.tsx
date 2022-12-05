@@ -4,7 +4,7 @@ import ru from 'date-fns/locale/ru'
 
 import * as S from './DatePicker.styled'
 
-import CalendarIcon from 'public/icons/calendar-2.svg'
+import CalendarIcon from 'public/icons/calendar.svg'
 import ArrowDownIcon from 'public/icons/arrow-down.svg'
 
 registerLocale('ru', ru)

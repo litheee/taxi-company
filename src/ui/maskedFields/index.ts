@@ -7,7 +7,7 @@ import { BankCardField } from './bankCard'
 import { BikField } from './bik'
 import { BankAccountField } from './bankAccount'
 import { CorporateAccountField } from './corporateAccount'
-import { LicensePlageField } from './licensePlate'
+import { LicensePlateField } from './licensePlate'
 import { VinField } from './vin'
 
 export {
@@ -20,6 +20,6 @@ export {
 	BikField,
 	BankAccountField,
 	CorporateAccountField,
-	LicensePlageField,
+	LicensePlateField,
 	VinField
 }

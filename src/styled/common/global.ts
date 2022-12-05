@@ -11,9 +11,6 @@ export const global = css`
   #__next,
   body {
 		min-height: 100vh;
-	}
-
-	body {
 		font-family: var(--font-ubuntu), sans-serif;
 		font-size: 15px;
 		font-weight: 500;

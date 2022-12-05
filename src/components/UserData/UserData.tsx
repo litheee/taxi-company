@@ -1,6 +1,6 @@
 import { MouseEvent, useState } from 'react'
 
-import { IndividualCardData, CompanyCardData } from 'components'
+import { CompanyCardData } from 'components'
 import { CarCardData } from 'components/cars'
 import { MenuButton } from 'components/common'
 
@@ -24,7 +24,11 @@ export const UserData = () => {
 				Хабибаржалаев Н.Д.
 			</MenuButton>
 
-			<S.Popover open={Boolean(menuAnchorEl)} anchorEl={menuAnchorEl} onClose={closeMenu}>
+			<S.Popover
+				open={Boolean(menuAnchorEl)}
+				anchorEl={menuAnchorEl}
+				onClose={closeMenu}
+			>
 				<S.Switch>
 					<button
 						onClick={() => {
@@ -49,7 +53,6 @@ export const UserData = () => {
 					</button>
 				</S.Switch>
 
-				{card === 0 ? <IndividualCardData /> : null}
 				{card === 1 ? <CompanyCardData /> : null}
 				{card === 2 ? <CarCardData /> : null}
 			</S.Popover>

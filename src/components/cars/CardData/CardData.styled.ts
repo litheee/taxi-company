@@ -9,13 +9,11 @@ import { FormControlLabel } from 'ui/Checkbox/Checkbox.styled'
 
 export { FormColumn, Divider, FieldsRow }
 
-export const CarCardData = styled.div`
-	form {
-		display: flex;
+export const Form = styled.form`
+	display: flex;
 
-		& > ${Divider} {
-			margin: 30px 0;
-		}
+	& > ${Divider} {
+		margin: 30px 0;
 	}
 
 	${AvatarUpload}:first-of-type {

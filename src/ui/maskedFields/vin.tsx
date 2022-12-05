@@ -1,11 +1,11 @@
-import { TextFieldProps } from '@mui/material/TextField'
+import { InputMask } from 'ui'
 
-import { TextField, InputMask } from 'ui'
+import { TextFieldProps } from 'ui/TextField/TextField'
 
-export const VinField = (props: TextFieldProps) => {
-	return (
-		<InputMask alwaysShowMask mask="* * * * * * * * * * * * * * * * *">
-			<TextField {...props} />
-		</InputMask>
-	)
-}
+export const VinField = ({ name, ...props }: TextFieldProps) => (
+	<InputMask
+		name={name}
+		maskProps={{ mask: '* * * * * * * * * * * * * * * * *' }}
+		{...props}
+	/>
+)

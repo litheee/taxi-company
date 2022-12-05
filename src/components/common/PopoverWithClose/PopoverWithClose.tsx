@@ -11,7 +11,12 @@ interface PopoverWithClose extends PopoverProps {
 	heading: string
 }
 
-export const PopoverWithClose = ({ children, heading, onClose, ...props }: PopoverWithClose) => {
+export const PopoverWithClose = ({
+	children,
+	heading,
+	onClose,
+	...props
+}: PopoverWithClose) => {
 	return (
 		<S.PopoverWithClose {...props} onClose={onClose}>
 			<Heading

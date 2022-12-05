@@ -1,11 +1,11 @@
-import { TextFieldProps } from '@mui/material/TextField'
+import { InputMask } from 'ui'
 
-import { TextField, InputMask } from 'ui'
+import { TextFieldProps } from 'ui/TextField/TextField'
 
-export const OgrnField = (props: TextFieldProps) => {
-	return (
-		<InputMask alwaysShowMask mask="9 9 9 9 9 9 9 9 9 9 9 9 9">
-			<TextField {...props} />
-		</InputMask>
-	)
-}
+export const OgrnField = ({ name, ...props }: TextFieldProps) => (
+	<InputMask
+		name={name}
+		maskProps={{ mask: '9 9 9 9 9 9 9 9 9 9 9 9 9' }}
+		{...props}
+	/>
+)

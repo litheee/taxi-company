@@ -9,8 +9,8 @@ import { CurrencyAmount } from './CurrencyAmount/CurrencyAmount'
 import { DatePaginationFilter } from './DatePaginationFilter/DatePaginationFilter'
 import { ColoredDotText } from './ColoredDotText/ColoredDotText'
 import { PopoverWithClose } from './PopoverWithClose/PopoverWithClose'
-import { MoneyFlowTableHead } from './MoneyFlowTableHead/MoneyFlowTableHead'
-import { MoneyFlowStats } from './MoneyFlowStats/MoneyFlowStats'
+import { SearchField } from './SearchField/SearchField'
+import { MenuNav } from './MenuNav/MenuNav'
 
 export {
 	FilterSelect,
@@ -24,6 +24,6 @@ export {
 	DatePaginationFilter,
 	ColoredDotText,
 	PopoverWithClose,
-	MoneyFlowTableHead,
-	MoneyFlowStats
+	SearchField,
+	MenuNav
 }

@@ -1,11 +1,12 @@
-import { TextFieldProps } from '@mui/material/TextField'
+import { InputMask } from 'ui'
 
-import { TextField, InputMask } from 'ui'
+import { TextFieldProps } from 'ui/TextField/TextField'
 
-export const BikField = (props: TextFieldProps) => {
-	return (
-		<InputMask mask="9 9 9 9 9 9 9 9 9">
-			<TextField label="БИК" {...props} />
-		</InputMask>
-	)
-}
+export const BikField = ({ name, ...props }: TextFieldProps) => (
+	<InputMask
+		name={name}
+		label="БИК"
+		maskProps={{ mask: '9 9 9 9 9 9 9 9 9' }}
+		{...props}
+	/>
+)

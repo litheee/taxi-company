@@ -1,13 +1,27 @@
 import { CheckboxProps as MuiCheckboxProps } from '@mui/material/Checkbox'
+import { useFormContext, Controller } from 'react-hook-form'
 
 import * as S from './Checkbox.styled'
 
-interface CheckboxProps extends MuiCheckboxProps {
+type CheckboxProps = {
+	name: string
 	label?: string
-}
+} & MuiCheckboxProps
 
-export const Checkbox = (props: CheckboxProps) => {
-	const { label } = props
+export const Checkbox = ({ label, name, ...props }: CheckboxProps) => {
+	const { control } = useFormContext()
 
-	return label ? <S.FormControlLabel control={<S.Checkbox {...props} />} label={label} /> : <S.Checkbox {...props} />
+	const controller = (
+		<Controller
+			name={name}
+			control={control}
+			render={({ field }) => <S.Checkbox {...field} {...props} />}
+		/>
+	)
+
+	return label ? (
+		<S.FormControlLabel control={controller} label={label} />
+	) : (
+		controller
+	)
 }

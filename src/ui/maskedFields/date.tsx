@@ -1,11 +1,7 @@
-import { TextFieldProps } from '@mui/material/TextField'
+import { InputMask } from 'ui'
 
-import { TextField, InputMask } from 'ui'
+import { TextFieldProps } from 'ui/TextField/TextField'
 
-export const DateField = (props: TextFieldProps) => {
-	return (
-		<InputMask mask="99.99.9999">
-			<TextField {...props} />
-		</InputMask>
-	)
-}
+export const DateField = ({ name, ...props }: TextFieldProps) => (
+	<InputMask name={name} maskProps={{ mask: '99.99.9999' }} {...props} />
+)

@@ -1,3 +1,4 @@
-import { CounterpartiesMoneyFlowTable } from './MoneyFlowTable/MoneyFlowTable'
+import { CounterpartiesTable } from './Table/Table'
+import { CounterpartyDataForm } from './DataForm/DataForm'
 
-export { CounterpartiesMoneyFlowTable }
+export { CounterpartiesTable, CounterpartyDataForm }

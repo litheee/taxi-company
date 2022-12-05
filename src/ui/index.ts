@@ -12,6 +12,7 @@ import { DatePicker } from './DatePicker/DatePicker'
 import { Autocomplete } from './Autocomplete/Autocomplete'
 import { Switch } from './Switch/Switch'
 import { InputMask } from './InputMask/InputMask'
+import { Modal } from './Modal/Modal'
 
 export {
 	TextField,
@@ -27,5 +28,6 @@ export {
 	DatePicker,
 	Autocomplete,
 	Switch,
-	InputMask
+	InputMask,
+	Modal
 }

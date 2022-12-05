@@ -8,13 +8,11 @@ import { TextareaContainer, Textarea } from 'ui/Textarea/Textarea.styled'
 
 export { FormColumn, Divider, FieldsRow }
 
-export const CompanyCardData = styled.div`
-	form {
-		display: flex;
+export const CompanyCardData = styled.form`
+	display: flex;
 
-		& > ${Divider} {
-			margin: 30px 0;
-		}
+	& > ${Divider} {
+		margin: 30px 0;
 	}
 
 	${AvatarUpload} {

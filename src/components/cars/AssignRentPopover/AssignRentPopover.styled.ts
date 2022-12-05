@@ -10,7 +10,6 @@ export { FieldsRow, Divider }
 export const CarAssignRentPopover = styled(PopoverWithClose)`
 	.MuiPaper-root {
 		width: 382px;
-		height: 446px;
 		margin-left: 15px;
 	}
 `
@@ -25,7 +24,22 @@ export const Form = styled.form`
 		margin-bottom: 15px;
 	}
 
+	${FieldsRow} {
+	}
+
 	${Button} {
 		margin-top: auto;
 	}
+`
+
+export const ThreeColumnsRow = styled(FieldsRow)`
+	display: grid;
+	grid-template-columns: 166px 96px 60px;
+	grid-gap: 10px;
+`
+
+export const TwoColumnsRow = styled(FieldsRow)`
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-gap: 10px;
 `

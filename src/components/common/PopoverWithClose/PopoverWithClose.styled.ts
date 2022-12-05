@@ -1,8 +1,8 @@
 import styled from '@emotion/styled'
 
-import { Popover } from 'ui'
-
 import { Divider } from 'styled/components'
+
+import { Popover } from 'ui/Popover/Popover.styled'
 
 export { Divider }
 

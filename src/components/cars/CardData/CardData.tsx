@@ -1,15 +1,19 @@
-import { AvatarUpload, Section } from 'components/common'
+import { useForm, FormProvider } from 'react-hook-form'
+
+import { AvatarUpload, SearchField, Section } from 'components/common'
 import { TextField, Select, Button, Checkbox } from 'ui'
-import { DateField, LicensePlageField } from 'ui/maskedFields'
+import { DateField, LicensePlateField } from 'ui/maskedFields'
 
 import * as S from './CardData.styled'
 
 import CarIcon from 'public/icons/car.svg'
 import PlusIcon from 'public/icons/plus.svg'
-import LoupeIcon from 'public/icons/loupe.svg'
+
 import DownloadIcon from 'public/icons/download.svg'
 
 export const CarCardData = () => {
+	const useFormProps = useForm()
+
 	const brands = [
 		{ label: 'Марка 1', value: 'Марка 1' },
 		{ label: 'Марка 2', value: 'Марка 2' },
@@ -47,33 +51,70 @@ export const CarCardData = () => {
 	]
 
 	return (
-		<S.CarCardData>
-			<form>
+		<FormProvider {...useFormProps}>
+			<S.Form>
 				<S.FormColumn>
 					<AvatarUpload icon={<CarIcon />} />
 
 					<Section label="Информация по автомобилю">
-						<Select label="Марка" placeholder="Выберите марку" options={brands} />
-						<Select label="Модель" placeholder="Выберите модель" options={models} />
+						<Select
+							name="brand"
+							label="Марка"
+							placeholder="Выберите марку"
+							options={brands}
+						/>
+						<Select
+							name="model"
+							label="Модель"
+							placeholder="Выберите модель"
+							options={models}
+						/>
 
 						<S.FieldsRow>
-							<LicensePlageField label="ГОС номер" />
-							<Select label="Год выпуска" placeholder="Выберите год" options={years} />
+							<LicensePlateField name="licensePlate" label="ГОС номер" />
+
+							<Select
+								name="productionYear"
+								label="Год выпуска"
+								placeholder="Выберите год"
+								options={years}
+							/>
 						</S.FieldsRow>
 
-						<Select label="Цвет" placeholder="Выберите цвет" options={colors} />
-						<TextField label="Пробег" placeholder="Выберите марку" />
-						<Select label="Тип КПП" placeholder="Выберите Тип" options={types} />
+						<Select
+							name="color"
+							label="Цвет"
+							placeholder="Выберите цвет"
+							options={colors}
+						/>
+						<TextField
+							name="mileage"
+							label="Пробег"
+							placeholder="Выберите марку"
+						/>
+						<Select
+							name="transmissionType"
+							label="Тип КПП"
+							placeholder="Выберите Тип"
+							options={types}
+						/>
 					</Section>
 				</S.FormColumn>
 
 				<S.Divider />
 
 				<S.FormColumn>
-					<TextField label="Поправка пробега" placeholder="Введите поправку пробега" />
+					<TextField
+						name="mileageCorrection"
+						label="Поправка пробега"
+						placeholder="Введите поправку пробега"
+					/>
 
 					<Section label="VIN" divider={false}>
-						<TextField placeholder="_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _" />
+						<TextField
+							name="vin"
+							placeholder="_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _"
+						/>
 					</Section>
 
 					<Section
@@ -85,7 +126,7 @@ export const CarCardData = () => {
 							</button>
 						}
 					>
-						<TextField placeholder="_ _ _ _ _ _ _ _ _ _" />
+						<TextField name="sts" placeholder="_ _ _ _ _ _ _ _ _ _" />
 					</Section>
 
 					<Section
@@ -97,7 +138,7 @@ export const CarCardData = () => {
 							</button>
 						}
 					>
-						<TextField placeholder="_ _ _ _ _ _ _ _ _ _ _ _ _ _ _" />
+						<TextField name="pts" placeholder="_ _ _ _ _ _ _ _ _ _ _ _ _ _ _" />
 					</Section>
 
 					<Section
@@ -109,15 +150,19 @@ export const CarCardData = () => {
 							</button>
 						}
 					>
-						<TextField placeholder="_ _ _ _ _ _ _ _ _ _" />
+						<TextField name="authNumber" placeholder="_ _ _ _ _ _ _ _ _ _" />
 					</Section>
 
 					<Section label="Собственник" divider={false}>
-						<TextField placeholder="Введите ФИО" />
+						<TextField name="owner" placeholder="Введите ФИО" />
 					</Section>
 
 					<Section label="Статус" divider={false}>
-						<Select placeholder="Выберите статус" options={statuses} />
+						<Select
+							name="status"
+							placeholder="Выберите статус"
+							options={statuses}
+						/>
 					</Section>
 
 					<Section
@@ -128,14 +173,18 @@ export const CarCardData = () => {
 							</button>
 						}
 					>
-						<TextField label="Номер" placeholder="_ _ _ _ _ _ _ _ _ _ _ _ _" />
+						<TextField
+							name="osagoNumber"
+							label="Номер"
+							placeholder="_ _ _ _ _ _ _ _ _ _ _ _ _"
+						/>
 					</Section>
 				</S.FormColumn>
 
 				<S.Divider />
 
 				<S.FormColumn>
-					<DateField label="Дата окончания" />
+					<DateField name="osagoDateEnd" label="Дата окончания" />
 
 					<Section
 						label="КАСКО"
@@ -145,8 +194,12 @@ export const CarCardData = () => {
 							</button>
 						}
 					>
-						<TextField label="Номер" placeholder="Введите номер" />
-						<DateField label="Дата окончания" />
+						<TextField
+							name="kaskoNumber"
+							label="Номер"
+							placeholder="Введите номер"
+						/>
+						<DateField name="kaskoDateEnd" label="Дата окончания" />
 					</Section>
 
 					<Section
@@ -157,21 +210,25 @@ export const CarCardData = () => {
 							</button>
 						}
 					>
-						<TextField label="Номер" placeholder="_ _ _ _ _ _ _ _ _ _ _ _ _" />
-						<DateField label="Дата окончания" />
+						<TextField
+							name="diagnosticNumber"
+							label="Номер"
+							placeholder="_ _ _ _ _ _ _ _ _ _ _ _ _"
+						/>
+						<DateField name="diagnosticDateEnd" label="Дата окончания" />
 					</Section>
 
 					<Section label="Привязка профилей">
-						<TextField name="name" placeholder="Введите имя" InputProps={{ endAdornment: <LoupeIcon /> }} />
+						<SearchField name="profile" placeholder="Введите имя" />
 
 						<Button color="green" startIcon={<PlusIcon />}>
 							Добавить еще
 						</Button>
 					</Section>
 
-					<Checkbox label="Парковый автомобиль" />
+					<Checkbox name="parkCar" label="Парковый автомобиль" />
 				</S.FormColumn>
-			</form>
-		</S.CarCardData>
+			</S.Form>
+		</FormProvider>
 	)
 }

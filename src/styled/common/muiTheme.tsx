@@ -264,6 +264,7 @@ export const muiTheme = createTheme({
 			},
 			styleOverrides: {
 				root: {
+					minWidth: 'auto',
 					minHeight: 31,
 					padding: '7px 10px',
 					background: 'var(--color-gray-200)',
@@ -330,7 +331,6 @@ export const muiTheme = createTheme({
 			}
 		},
 		MuiSwitch: {
-			defaultProps: {},
 			styleOverrides: {
 				root: {
 					display: 'flex',
@@ -409,6 +409,15 @@ export const muiTheme = createTheme({
 						maskComposite: 'exclude',
 						transition: '0.3s'
 					}
+				}
+			}
+		},
+		MuiModal: {
+			styleOverrides: {
+				root: {
+					display: 'flex',
+					justifyContent: 'center',
+					alignItems: 'center'
 				}
 			}
 		}

@@ -1,17 +1,27 @@
-import { createColumnHelper, getCoreRowModel, SortingState, useReactTable } from '@tanstack/react-table'
-import { useMemo, useState } from 'react'
+import { useState } from 'react'
+import {
+	createColumnHelper,
+	getCoreRowModel,
+	Row,
+	SortingState
+} from '@tanstack/react-table'
 
 import { ColoredDotText, NotificationsNumber } from 'components/common'
 import { Table } from 'ui'
-import { Filters } from './Filters'
+import { Filters } from './components'
 
 import { Car, CarStatus } from 'types/car'
 
 import * as S from './Table.styled'
+import { useRouter } from 'next/router'
+import { ROUTE_NAMES } from 'core/routes'
 
 export const CarsTable = () => {
+	const router = useRouter()
+
 	const cars: Car[] = [
 		{
+			id: '1',
 			status: 'working',
 			brand: 'Hyundai',
 			notifications: 200,
@@ -26,6 +36,7 @@ export const CarsTable = () => {
 			color: 'Белый'
 		},
 		{
+			id: '2',
 			status: 'awaits',
 			brand: 'Hyundai',
 			notifications: 2,
@@ -40,6 +51,7 @@ export const CarsTable = () => {
 			color: 'Белый'
 		},
 		{
+			id: '3',
 			status: 'repairs',
 			brand: 'Hyundai',
 			notifications: 12,
@@ -54,6 +66,7 @@ export const CarsTable = () => {
 			color: 'Белый'
 		},
 		{
+			id: '4',
 			status: 'accident',
 			brand: 'Hyundai',
 			notifications: 1433,
@@ -96,7 +109,8 @@ export const CarsTable = () => {
 			cell: ({ getValue, row }) => {
 				return (
 					<S.Row>
-						{getValue()} <NotificationsNumber value={row.original.notifications} />
+						{getValue()}
+						<NotificationsNumber value={row.original.notifications} />
 					</S.Row>
 				)
 			}
@@ -130,27 +144,26 @@ export const CarsTable = () => {
 		})
 	]
 
-	const table = useReactTable({
-		data: cars,
-		columns,
-		state: {
-			sorting
-		},
-		getCoreRowModel: getCoreRowModel(),
-		onSortingChange: setSorting,
-		enableSorting: true
-	})
+	const toCarPage = ({ original }: Row<Car>) => {
+		router.push(ROUTE_NAMES.CAR.replace('[id]', original.id))
+	}
 
 	return (
 		<S.CarsTable>
 			<Filters />
 
-			{useMemo(
-				() => (
-					<Table table={table} />
-				),
-				[table]
-			)}
+			<Table
+				options={{
+					data: cars,
+					columns,
+					state: {
+						sorting
+					},
+					getCoreRowModel: getCoreRowModel(),
+					onSortingChange: setSorting
+				}}
+				onRowClick={toCarPage}
+			/>
 		</S.CarsTable>
 	)
 }

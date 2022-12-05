@@ -1,6 +1,7 @@
 export type CarStatus = 'working' | 'awaits' | 'repairs' | 'accident'
 
 export interface Car {
+	id: string
 	status: CarStatus
 	model: string
 	notifications: number

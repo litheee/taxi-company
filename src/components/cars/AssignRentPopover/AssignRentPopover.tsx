@@ -1,12 +1,16 @@
 import { PopoverProps } from '@mui/material/Popover'
+import { useForm, FormProvider } from 'react-hook-form'
 
-import { Autocomplete, TextField, Select, Button } from 'ui'
+import { Autocomplete, TextField, Select, Button, InputMask } from 'ui'
+import { SearchField } from 'components/common'
 
 import * as S from './AssignRentPopover.styled'
 
-import LoupeIcon from 'public/icons/loupe.svg'
+import InfoIcon from 'public/icons/info.svg'
 
 export const CarAssignRentPopover = (props: PopoverProps) => {
+	const useFormProps = useForm()
+
 	const terms = [
 		{ label: 'Условие 1', value: 'Условие 1' },
 		{ label: 'Условие 2', value: 'Условие 2' },
@@ -27,33 +31,55 @@ export const CarAssignRentPopover = (props: PopoverProps) => {
 			anchorOrigin={{ horizontal: 'right', vertical: 'top' }}
 			transformOrigin={{ horizontal: 'left', vertical: 'top' }}
 		>
-			<S.Form>
-				<Autocomplete
-					options={cars}
-					renderInput={(params) => {
-						return (
-							<TextField
-								{...params}
-								label="Выберите автомобиль"
-								InputProps={{ ...params.InputProps, endAdornment: <LoupeIcon /> }}
-							/>
-						)
-					}}
-				/>
+			<FormProvider {...useFormProps}>
+				<S.Form>
+					<Autocomplete
+						name="chooseCar"
+						options={cars}
+						renderInput={(params) => {
+							return (
+								<SearchField
+									{...params}
+									name="chooseCar"
+									label="Выберите автомобиль"
+								/>
+							)
+						}}
+					/>
 
-				<S.FieldsRow>
-					<Select name="terms" label="Условия" options={terms} />
-					<TextField label="Сумма" />
-				</S.FieldsRow>
+					<InputMask
+						name="rentDateEnd"
+						label="Дата завершения аренды"
+						InputProps={{
+							endAdornment: <InfoIcon />
+						}}
+						maskProps={{
+							mask: '99.99.9999'
+						}}
+					/>
 
-				<Select label="Депозит" options={terms} />
+					<S.ThreeColumnsRow>
+						<Select name="terms" label="Условия" options={terms} />
+						<TextField name="amount" label="Сумма" />
+						<TextField name="months" label="Месяцы" />
+					</S.ThreeColumnsRow>
 
-				<TextField label="Сумма" />
+					<Select name="deposit" label="Депозит" options={terms} />
 
-				<Button fullWidth color="green">
-					Назначить
-				</Button>
-			</S.Form>
+					<S.TwoColumnsRow>
+						<TextField name="writeOffAmount" label="Сумма списания" />
+						<TextField name="targetAmount" label="Целевая сумма" />
+					</S.TwoColumnsRow>
+
+					<S.TwoColumnsRow>
+						<TextField name="depositAmount" label="Вносимая сумма" />
+					</S.TwoColumnsRow>
+
+					<Button fullWidth color="green">
+						Назначить
+					</Button>
+				</S.Form>
+			</FormProvider>
 		</S.CarAssignRentPopover>
 	)
 }

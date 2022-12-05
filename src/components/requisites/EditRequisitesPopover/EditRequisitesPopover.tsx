@@ -1,12 +1,20 @@
 import { useState } from 'react'
 import { PopoverProps } from '@mui/material/Popover'
+import { FormProvider, useForm } from 'react-hook-form'
 
 import { Button, Checkbox, Textarea, TextField, Switch } from 'ui'
-import { BikField, BankAccountField, InnField, KppField, CorporateAccountField } from 'ui/maskedFields'
+import {
+	BikField,
+	BankAccountField,
+	InnField,
+	KppField,
+	CorporateAccountField
+} from 'ui/maskedFields'
 
 import * as S from './EditRequisitesPopover.styled'
 
 export const EditRequisitesPopover = (props: PopoverProps) => {
+	const useFormProps = useForm()
 	const [vat, setVat] = useState(true)
 
 	return (
@@ -16,43 +24,50 @@ export const EditRequisitesPopover = (props: PopoverProps) => {
 			anchorOrigin={{ horizontal: 'right', vertical: 'top' }}
 			transformOrigin={{ horizontal: 'left', vertical: 'top' }}
 		>
-			<S.Form>
-				<TextField label="Название" placeholder="Введите название" />
-				<BikField />
-				<BankAccountField />
-				<CorporateAccountField />
+			<FormProvider {...useFormProps}>
+				<S.Form>
+					<TextField
+						name="name"
+						label="Название"
+						placeholder="Введите название"
+					/>
+					<BikField name="bik" />
+					<BankAccountField name="bankAccount" />
+					<CorporateAccountField name="corporateAccount" />
 
-				<S.FieldsRow>
-					<InnField />
-					<KppField />
-				</S.FieldsRow>
+					<S.FieldsRow>
+						<InnField name="inn" />
+						<KppField name="kpp" />
+					</S.FieldsRow>
 
-				<Textarea label="Обоснование" />
+					<Textarea name="rationale" label="Обоснование" />
 
-				<S.VatRow>
-					<span>НДС</span>
+					<S.VatRow>
+						<span>НДС</span>
 
-					<S.VatSwitch>
-						<S.VatValue active={!vat}>Нет</S.VatValue>
+						<S.VatSwitch>
+							<S.VatValue active={!vat}>Нет</S.VatValue>
 
-						<Switch
-							value={vat}
-							defaultChecked={vat}
-							onChange={(e, checked) => {
-								setVat(checked)
-							}}
-						/>
+							<Switch
+								name=""
+								value={vat}
+								defaultChecked={vat}
+								onChange={(e, checked) => {
+									setVat(checked)
+								}}
+							/>
 
-						<S.VatValue active={vat}>Да</S.VatValue>
-					</S.VatSwitch>
-				</S.VatRow>
+							<S.VatValue active={vat}>Да</S.VatValue>
+						</S.VatSwitch>
+					</S.VatRow>
 
-				<Checkbox label="Сделать основной" />
+					<Checkbox name="" label="Сделать основной" />
 
-				<Button fullWidth color="green">
-					Сохранить
-				</Button>
-			</S.Form>
+					<Button fullWidth color="green">
+						Сохранить
+					</Button>
+				</S.Form>
+			</FormProvider>
 		</S.EditRequisitesPopover>
 	)
 }

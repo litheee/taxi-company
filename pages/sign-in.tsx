@@ -1,7 +1,8 @@
 import Head from 'next/head'
+import { useForm, FormProvider } from 'react-hook-form'
 
 import { Heading } from 'components/common'
-import { Button } from 'ui'
+import { Button, TextField } from 'ui'
 import { PhoneField } from 'ui/maskedFields'
 
 import * as S from 'styled/pages/SignIn'
@@ -9,6 +10,8 @@ import * as S from 'styled/pages/SignIn'
 import Logo from 'public/icons/logo-text.svg'
 
 const SignInPage = () => {
+	const useFormProps = useForm()
+
 	return (
 		<>
 			<Head>
@@ -20,17 +23,23 @@ const SignInPage = () => {
 					<Logo />
 				</S.Logo>
 
-				<S.Form>
-					<Heading variant="h1">Вход</Heading>
+				<FormProvider {...useFormProps}>
+					<S.Form
+						onSubmit={useFormProps.handleSubmit((data) => {
+							console.log(data)
+						})}
+					>
+						<Heading variant="h1">Вход</Heading>
 
-					<S.Divider orientation="horizontal" />
+						<S.Divider orientation="horizontal" />
 
-					<PhoneField label="Введите ваш номер телефона" />
+						<PhoneField name="phone" label="Введите ваш номер телефона" />
 
-					<Button color="green" fullWidth>
-						Отправить код
-					</Button>
-				</S.Form>
+						<Button color="green" fullWidth type="submit">
+							Отправить код
+						</Button>
+					</S.Form>
+				</FormProvider>
 			</S.SignInPage>
 		</>
 	)
