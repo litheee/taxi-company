@@ -3,7 +3,7 @@ import { FC, PropsWithChildren } from 'react'
 import * as S from './AccordionEditableItem.styled'
 
 import ArrowDownIcon from 'public/icons/arrow-down.svg'
-import PenIcon from 'public/icons/pen-2.svg'
+import EditIcon from 'public/icons/edit.svg'
 
 interface AccordionEditableItemProps {
 	expanded: boolean
@@ -37,7 +37,7 @@ export const AccordionEditableItem: FC<PropsWithChildren<AccordionEditableItemPr
 						onEdit()
 					}}
 				>
-					<PenIcon />
+					<EditIcon />
 				</S.EditButton>
 			</S.AccordionSummary>
 

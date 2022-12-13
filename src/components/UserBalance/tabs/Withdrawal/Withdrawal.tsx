@@ -8,9 +8,9 @@ export const WithdrawalTab = () => {
 	const useFormProps = useForm()
 
 	const balances = [
-		{ label: 'Депозит', value: 'Депозит' },
-		{ label: 'Внутренний', value: 'Внутренний' },
-		{ label: 'Яндекс', value: 'Яндекс' }
+		{ label: 'Депозит', value: 'deposit' },
+		{ label: 'Внутренний', value: 'internal' },
+		{ label: 'Яндекс', value: 'yandex' }
 	]
 
 	return (
@@ -23,7 +23,7 @@ export const WithdrawalTab = () => {
 				/>
 				<Select
 					name="balance"
-					defaultValue="Депозит"
+					defaultValue="deposit"
 					placeholder="Выберите баланс"
 					options={balances}
 				/>

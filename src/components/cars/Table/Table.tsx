@@ -5,16 +5,17 @@ import {
 	Row,
 	SortingState
 } from '@tanstack/react-table'
+import { useRouter } from 'next/router'
 
-import { ColoredDotText, NotificationsNumber } from 'components/common'
+import { NotificationsNumber } from 'components/common'
 import { Table } from 'ui'
 import { Filters } from './components'
+import { CarStatus } from '../CarStatus/CarStatus'
 
-import { Car, CarStatus } from 'types/car'
+import { ROUTE_NAMES } from 'constants/routes'
+import { Car } from 'types/car'
 
 import * as S from './Table.styled'
-import { useRouter } from 'next/router'
-import { ROUTE_NAMES } from 'core/routes'
 
 export const CarsTable = () => {
 	const router = useRouter()
@@ -86,24 +87,7 @@ export const CarsTable = () => {
 
 	const columnHelper = createColumnHelper<Car>()
 
-	const renderCarStatus = (status: CarStatus) => {
-		switch (status) {
-			case 'working':
-				return <ColoredDotText color="green">Работает</ColoredDotText>
-			case 'awaits':
-				return <ColoredDotText color="yellow">Ожидает</ColoredDotText>
-			case 'repairs':
-				return <ColoredDotText color="orange">На ремонте</ColoredDotText>
-			case 'accident':
-				return <ColoredDotText color="red">ДТП</ColoredDotText>
-		}
-	}
-
 	const columns = [
-		columnHelper.accessor('status', {
-			header: 'Статус',
-			cell: ({ getValue }) => renderCarStatus(getValue())
-		}),
 		columnHelper.accessor('brand', {
 			header: 'Марка',
 			cell: ({ getValue, row }) => {
@@ -123,6 +107,10 @@ export const CarsTable = () => {
 		}),
 		columnHelper.accessor('licensePlate', {
 			header: 'Госномер'
+		}),
+		columnHelper.accessor('status', {
+			header: 'Статус',
+			cell: ({ getValue }) => <CarStatus status={getValue()} />
 		}),
 		columnHelper.accessor('ctc', {
 			header: 'СТС'
@@ -151,6 +139,8 @@ export const CarsTable = () => {
 	return (
 		<S.CarsTable>
 			<Filters />
+
+			<S.Divider />
 
 			<Table
 				options={{

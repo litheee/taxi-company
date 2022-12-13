@@ -11,9 +11,9 @@ export const CarEndRentPopover = (props: PopoverProps) => {
 	const [date, setDate] = useState<Date | null>(null)
 
 	const causes = [
-		{ label: 'Штаное завершение аренды', value: 'Штаное завершение аренды' },
-		{ label: 'ДТП', value: 'ДТП' },
-		{ label: 'Поломка', value: 'Поломка' }
+		{ label: 'Штаное завершение аренды', value: 'rentEnd' },
+		{ label: 'ДТП', value: 'accident' },
+		{ label: 'Поломка', value: 'breakdown' }
 	]
 
 	return (
@@ -30,7 +30,7 @@ export const CarEndRentPopover = (props: PopoverProps) => {
 						<DatePicker selected={date} onChange={setDate} />
 					</S.DateRow>
 
-					<S.Divider orientation="horizontal" />
+					<S.Divider />
 
 					<Select name="reason" label="Причина" options={causes} />
 

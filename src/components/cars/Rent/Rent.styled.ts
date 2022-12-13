@@ -1,24 +1,18 @@
 import styled from '@emotion/styled'
 
-import { Box, Divider as DividerCommon } from 'styled/components'
+import { Box, Divider } from 'styled/components'
+import { PopoverWithClose } from 'components/common'
 
 import { Heading } from 'components/common/Heading/Heading.styled'
 
-export const Divider = styled(DividerCommon)`
-	height: 2px;
-	border-radius: 1px;
-`
+export { Divider }
 
 export const CarsRent = styled(Box)`
 	width: 382px;
 	padding: 10px 20px 20px;
 `
 
-export const InRent = styled.div`
-	${Divider}:nth-of-type(2) {
-		margin-top: 10px;
-	}
-`
+export const InRent = styled.div``
 
 export const RentStatusText = styled.div`
 	display: flex;
@@ -47,5 +41,12 @@ export const CarsList = styled.div`
 
 	& > *:not(:last-child) {
 		margin-bottom: 20px;
+	}
+`
+
+export const CarAssignRentPopover = styled(PopoverWithClose)`
+	.MuiPaper-root {
+		width: 382px;
+		margin-left: 15px;
 	}
 `

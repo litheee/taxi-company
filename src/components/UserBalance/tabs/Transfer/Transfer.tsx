@@ -10,9 +10,9 @@ export const TransferTab = () => {
 	const useFormProps = useForm()
 
 	const balances = [
-		{ label: 'Депозит', value: 'Депозит' },
-		{ label: 'Внутренний', value: 'Внутренний' },
-		{ label: 'Яндекс', value: 'Яндекс' }
+		{ label: 'Депозит', value: 'deposit' },
+		{ label: 'Внутренний', value: 'internal' },
+		{ label: 'Яндекс', value: 'yandex' }
 	]
 
 	return (
@@ -27,7 +27,7 @@ export const TransferTab = () => {
 				<S.FieldsRow>
 					<Select
 						name="balanceFrom"
-						defaultValue="Депозит"
+						defaultValue="deposit"
 						placeholder="Откуда"
 						options={balances}
 					/>
@@ -38,7 +38,7 @@ export const TransferTab = () => {
 
 					<Select
 						name="balanceTo"
-						defaultValue="Внутренний"
+						defaultValue="internal"
 						placeholder="Куда"
 						options={balances}
 					/>

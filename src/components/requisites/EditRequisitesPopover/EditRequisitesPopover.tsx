@@ -12,6 +12,7 @@ import {
 } from 'ui/maskedFields'
 
 import * as S from './EditRequisitesPopover.styled'
+import { SwitchRow } from 'components/common'
 
 export const EditRequisitesPopover = (props: PopoverProps) => {
 	const useFormProps = useForm()
@@ -45,20 +46,7 @@ export const EditRequisitesPopover = (props: PopoverProps) => {
 					<S.VatRow>
 						<span>НДС</span>
 
-						<S.VatSwitch>
-							<S.VatValue active={!vat}>Нет</S.VatValue>
-
-							<Switch
-								name=""
-								value={vat}
-								defaultChecked={vat}
-								onChange={(e, checked) => {
-									setVat(checked)
-								}}
-							/>
-
-							<S.VatValue active={vat}>Да</S.VatValue>
-						</S.VatSwitch>
+						<SwitchRow name="vat" left="Нет" right="Да" />
 					</S.VatRow>
 
 					<Checkbox name="" label="Сделать основной" />

@@ -248,7 +248,7 @@ export const muiTheme = createTheme({
 						color: '#fff'
 					},
 
-					'&:not(:last-of-type)': {
+					'&:not(:last-child)': {
 						marginBottom: 15
 					},
 

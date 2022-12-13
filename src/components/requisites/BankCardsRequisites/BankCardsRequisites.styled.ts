@@ -3,7 +3,8 @@ import MuiTabs from '@mui/material/Tabs'
 import MuiTab from '@mui/material/Tab'
 
 import { Box, Divider } from 'styled/components'
-import { Heading } from 'components/common/Heading/Heading.styled'
+
+import { Heading, HeadingContainer } from 'components/common/Heading/Heading.styled'
 import { ColoredDotText } from 'components/common/ColoredDotText/ColoredDotText.styled'
 import { AccordionEditableItem } from '../AccordionEditableItem/AccordionEditableItem.styled'
 
@@ -23,7 +24,11 @@ export const BankCardsRequisites = styled(Box)`
 		bottom: 0px;
 		width: 100%;
 		height: 40px;
-		background: linear-gradient(180deg, rgba(55, 63, 72, 0) 0%, var(--color-gray-300) 100%);
+		background: linear-gradient(
+			180deg,
+			rgba(55, 63, 72, 0) 0%,
+			var(--color-gray-300) 100%
+		);
 		z-index: 10;
 	}
 
@@ -34,13 +39,13 @@ export const BankCardsRequisites = styled(Box)`
 
 	${Divider} {
 		width: calc(100% - 40px);
-		height: 2px;
 		margin: 0 20px;
-		border-radius: 1px;
 	}
 
-	& > ${Divider}:nth-of-type(2) {
-		margin-top: 10px;
+	${HeadingContainer} {
+		${Divider} {
+			margin-top: 10px;
+		}
 	}
 
 	${AccordionEditableItem}:first-of-type {
@@ -84,7 +89,11 @@ export const Tab = styled(MuiTab)`
 
 export const BankCardNumber = styled.div`
 	padding: 5px;
-	background: linear-gradient(93.88deg, rgba(47, 152, 207, 0.2) 61.98%, rgba(47, 207, 178, 0.2) 100%);
+	background: linear-gradient(
+		93.88deg,
+		rgba(47, 152, 207, 0.2) 61.98%,
+		rgba(47, 207, 178, 0.2) 100%
+	);
 	border-radius: 205px;
 	color: #fff;
 `

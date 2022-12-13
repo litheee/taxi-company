@@ -9,6 +9,8 @@ import ArrowDownIcon from 'public/icons/arrow-down.svg'
 
 registerLocale('ru', ru)
 
+type DateValue<T> = T extends false | undefined ? Date | null : [Date | null, Date | null]
+
 export const DatePicker = <
 	CustomModifierNames extends string = never,
 	WithRange extends boolean | undefined = undefined
@@ -19,6 +21,35 @@ export const DatePicker = <
 
 	const isValidDate = (date: Date) => {
 		return date instanceof Date && !isNaN(date.getTime())
+	}
+
+	const parseDMY = (string: string) => {
+		const [d, m, y] = string.split('.')
+		return new Date(Number(`20${y}`), Number(m) - 1, Number(d))
+	}
+
+	const checkValidRangeDate = (rangeValue: string) => {
+		const [startDate, endDate] = rangeValue.split(' - ')
+
+		if (isValidDate(new Date(startDate)) && isValidDate(new Date(endDate))) {
+			return [parseDMY(startDate), parseDMY(endDate)]
+		}
+
+		if (isValidDate(new Date(startDate))) {
+			return [
+				new Date(startDate),
+				isValidDate(new Date(endDate)) ? new Date(endDate) : null
+			]
+		}
+
+		if (isValidDate(new Date(endDate))) {
+			return [
+				isValidDate(new Date(startDate)) ? new Date(startDate) : null,
+				new Date(endDate)
+			]
+		}
+
+		return [null, null]
 	}
 
 	return (
@@ -45,45 +76,22 @@ export const DatePicker = <
 						}
 					]}
 					onChangeRaw={(e) => {
-						if (!isRangePicker) return
-
 						const { value } = e.target
 
 						if (!value) {
-							onChange(
-								[null, null] as WithRange extends false | undefined ? Date | null : [Date | null, Date | null],
-								e
-							)
 							return
 						}
 
-						const [startDate, endDate] = value.split(' - ')
-
-						if (isValidDate(new Date(startDate))) {
-							const [day, month, year] = startDate.split('.')
-
-							onChange(
-								[new Date(`${month}.${day}.${year}`), props.endDate] as WithRange extends false | undefined
-									? Date | null
-									: [Date | null, Date | null],
-								e
-							)
-						}
-
-						if (isValidDate(new Date(endDate))) {
-							const [day, month, year] = endDate.split('.')
-
-							onChange(
-								[props.startDate, new Date(`${month}.${day}.${year}`)] as WithRange extends false | undefined
-									? Date | null
-									: [Date | null, Date | null],
-								e
-							)
+						if (isRangePicker) {
+							return onChange(checkValidRangeDate(value) as DateValue<WithRange>, e)
 						}
 					}}
 					customInput={
 						isRangePicker ? (
-							<InputMask mask="99.99.99 - 99.99.99" value={`${props.startDate} - ${props.endDate}`} />
+							<InputMask
+								mask="99.99.99 - 99.99.99"
+								value={`${props.startDate} - ${props.endDate}`}
+							/>
 						) : (
 							<InputMask mask="99.99.9999" />
 						)

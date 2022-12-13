@@ -69,7 +69,6 @@ export const AccordionDetails = styled(MuiAccordionDetails)`
 	display: flex;
 	justify-content: flex-start;
 	padding: 0 20px 10px;
-	margin-top: 10px;
 `
 
 export const SummaryLabel = styled.div`

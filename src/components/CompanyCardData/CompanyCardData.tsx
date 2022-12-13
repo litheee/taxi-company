@@ -1,6 +1,6 @@
 import { FormProvider, useForm } from 'react-hook-form'
 
-import { AvatarUpload, Section } from 'components/common'
+import { AvatarUpload, Heading } from 'components/common'
 import { TextField, Textarea } from 'ui'
 import { InnField, KppField, OgrnField, PhoneField } from 'ui/maskedFields'
 
@@ -18,12 +18,16 @@ export const CompanyCardData = () => {
 				<S.FormColumn>
 					<AvatarUpload icon={<CompanyIcon />} />
 
-					<Textarea
-						name="organizationFullName"
-						placeholder="Укажите полное название Юр.лица/ИП"
-					/>
+					<div>
+						<Textarea
+							name="organizationFullName"
+							placeholder="Укажите полное название Юр.лица/ИП"
+						/>
+					</div>
 
-					<Section label="Основное">
+					<div>
+						<Heading variant="body1">Основное</Heading>
+
 						<Textarea
 							name="legalAddress"
 							label="Юридический адрес проживания"
@@ -36,17 +40,20 @@ export const CompanyCardData = () => {
 						</S.FieldsRow>
 
 						<OgrnField name="ogrn" label="ОГРН" />
-					</Section>
+					</div>
 
-					<Section label="Комментарии">
+					<div>
+						<Heading variant="body1">Комментарии</Heading>
 						<Textarea name="comment" placeholder="Написать комментарий" />
-					</Section>
+					</div>
 				</S.FormColumn>
 
-				<S.Divider />
+				<S.Divider $orientation="vertical" />
 
 				<S.FormColumn>
-					<Section label="Информация">
+					<div>
+						<Heading variant="body1">Информация</Heading>
+
 						<Textarea
 							name="officeLegalAddress"
 							label="Адрес офиса юр. лица"
@@ -60,16 +67,8 @@ export const CompanyCardData = () => {
 						/>
 
 						<S.FieldsRow>
-							<PhoneField
-								name="ceoPhone"
-								label="Телефон гендиректора"
-								maskType={2}
-							/>
-							<PhoneField
-								name="ceoOfficePhone"
-								label="Телефон офиса"
-								maskType={2}
-							/>
+							<PhoneField name="ceoPhone" label="Телефон гендиректора" maskType={2} />
+							<PhoneField name="ceoOfficePhone" label="Телефон офиса" maskType={2} />
 						</S.FieldsRow>
 
 						<TextField
@@ -84,16 +83,22 @@ export const CompanyCardData = () => {
 							label="Сфера деятельности"
 							placeholder="Введите данные"
 						/>
-					</Section>
+					</div>
 
-					<Section
-						label="Документы"
-						endAdornment={
-							<button>
-								<DownloadIcon />
-							</button>
-						}
-					></Section>
+					<div>
+						<Heading
+							variant="body1"
+							endAdornment={
+								<button type="button">
+									<DownloadIcon />
+								</button>
+							}
+						>
+							Документы
+						</Heading>
+
+						<span></span>
+					</div>
 				</S.FormColumn>
 			</S.CompanyCardData>
 		</FormProvider>

@@ -3,8 +3,8 @@ import styled from '@emotion/styled'
 import { FormColumn, Divider, FieldsRow } from 'styled/components'
 
 import { AvatarUpload } from 'components/common/AvatarUpload/AvatarUpload.styled'
-import { Section } from 'components/common/Section/Section.styled'
 import { TextareaContainer, Textarea } from 'ui/Textarea/Textarea.styled'
+import { HeadingContainer } from 'components/common/Heading/Heading.styled'
 
 export { FormColumn, Divider, FieldsRow }
 
@@ -20,13 +20,17 @@ export const CompanyCardData = styled.form`
 	}
 
 	${FormColumn} {
+		& > div > *:not(:last-child) {
+			margin-bottom: 15px;
+		}
+
 		&:first-of-type {
-			& > ${TextareaContainer} ${Textarea} {
+			& > div:nth-of-type(2) ${TextareaContainer} ${Textarea} {
 				min-height: 48px;
 				text-align: center;
 			}
 
-			${Section}:last-of-type ${Textarea} {
+			& > div:last-of-type ${Textarea} {
 				min-height: 80px;
 			}
 		}
@@ -37,6 +41,14 @@ export const CompanyCardData = styled.form`
 					word-spacing: 9999999px;
 				}
 			}
+		}
+	}
+
+	${HeadingContainer} {
+		${Divider} {
+			margin-top: 5px;
+			border-radius: 5px;
+			box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.4);
 		}
 	}
 `

@@ -83,10 +83,6 @@ export const IncomeExpenseTable = styled.div`
 
 	${TableContainer} {
 		padding: 0;
-
-		&::before {
-			display: none;
-		}
 	}
 
 	${Table} {
@@ -151,12 +147,10 @@ export const IncomeExpenseTable = styled.div`
 				}
 
 				${TableCell} {
-					&:nth-of-type(3) {
-						max-width: 221px;
-						position: relative;
-						white-space: nowrap;
-						overflow-x: hidden;
-					}
+					position: relative;
+					max-width: 221px;
+					white-space: nowrap;
+					overflow-x: hidden;
 				}
 			}
 		}
@@ -169,23 +163,11 @@ export const SubTableHead = styled(TableRow)`
 
 	${TableCell} {
 		padding: 4.5px 9px;
-
-		&::before,
-		&::after {
-			display: none;
-		}
 	}
 `
 
 export const SubTableBody = styled(TableRow)<SubTableBodyProps>`
 	background: var(--color-gray-400);
-
-	${TableCell} {
-		&::before,
-		&::after {
-			display: none;
-		}
-	}
 
 	${({ haveBorder }) =>
 		haveBorder &&

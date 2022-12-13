@@ -1,7 +1,10 @@
 import styled from '@emotion/styled'
 
 import { Box, Divider } from 'styled/components'
-import { Currency, CurrencyAmount } from 'components/common/CurrencyAmount/CurrencyAmount.styled'
+import {
+	Currency,
+	CurrencyAmount
+} from 'components/common/CurrencyAmount/CurrencyAmount.styled'
 
 export { Divider }
 
@@ -11,6 +14,7 @@ export const StatsRow = styled(Box)`
 	justify-content: space-between;
 	width: 100%;
 	padding: 5px 15px;
+	margin-top: 15px;
 `
 
 export const Stats = styled.div`

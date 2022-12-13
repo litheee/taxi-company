@@ -1,16 +1,11 @@
 import { PopoverProps } from '@mui/material/Popover'
 import { FormProvider, useForm } from 'react-hook-form'
 
-import { Heading, Section } from 'components/common'
-import { Button, Checkbox, InputMask, Select, TextField } from 'ui'
+import { Button, Checkbox, InputLabel, InputMask, Select, TextField } from 'ui'
 
 import * as S from './AdditionalFiltersPopover.styled'
 
-export const AdditionalFiltersPopover = ({
-	open,
-	anchorEl,
-	onClose
-}: PopoverProps) => {
+export const AdditionalFiltersPopover = ({ open, anchorEl, onClose }: PopoverProps) => {
 	const useFormProps = useForm()
 
 	const options = [
@@ -37,54 +32,47 @@ export const AdditionalFiltersPopover = ({
 				<form>
 					<S.FormContent>
 						<S.FormColumn>
-							<Heading>Числа</Heading>
 							<S.FieldsRow>
-								<TextField name="numbersFrom" type="number" placeholder="от" />
+								<TextField
+									name="numbersFrom"
+									type="number"
+									label="Числа"
+									placeholder="от"
+								/>
 								<TextField name="numbersTo" type="number" placeholder="до" />
 							</S.FieldsRow>
 
-							<Heading>Адрес электронной почты</Heading>
-							<Section divider={false}>
+							<InputLabel>Адрес электронной почты</InputLabel>
+							<S.CheckboxColumn>
 								<Checkbox name="" label="Парковый автомобиль" />
 								<Checkbox name="" label="Парковый автомобиль" />
 								<Checkbox name="" label="Парковый автомобиль" />
-							</Section>
+							</S.CheckboxColumn>
 
-							<Heading>Адрес электронной почты</Heading>
-							<Section divider={false}>
-								<S.CheckboxGrid>
-									<Checkbox name="" label="Чекбокс" />
-									<Checkbox name="" label="Чекбокс" />
-									<Checkbox name="" label="Чекбокс" />
-									<Checkbox name="" label="Чекбокс" />
-								</S.CheckboxGrid>
-							</Section>
+							<InputLabel>Адрес электронной почты</InputLabel>
+							<S.CheckboxGrid>
+								<Checkbox name="" label="Чекбокс" />
+								<Checkbox name="" label="Чекбокс" />
+								<Checkbox name="" label="Чекбокс" />
+								<Checkbox name="" label="Чекбокс" />
+							</S.CheckboxGrid>
 						</S.FormColumn>
 
-						<S.Divider />
+						<S.Divider $orientation="vertical" />
 
 						<S.FormColumn>
-							<Heading>Выпадающий список</Heading>
-							<Section divider={false}>
-								<Select name="choice" placeholder="Выбрать" options={options} />
-							</Section>
+							<Select
+								name="choice"
+								label="Выпадающий список"
+								placeholder="Выбрать"
+								options={options}
+							/>
 
-							<Section label="" divider={false}>
-								<S.FieldsRow>
-									<InputMask
-										name="field"
-										label="Поле"
-										maskProps={{ mask: '9 999 99' }}
-									/>
+							<S.FieldsRow>
+								<InputMask name="field" label="Поле" maskProps={{ mask: '9 999 99' }} />
 
-									<Select
-										name="list"
-										label="Список"
-										placeholder="123"
-										options={options}
-									/>
-								</S.FieldsRow>
-							</Section>
+								<Select name="list" label="Список" placeholder="123" options={options} />
+							</S.FieldsRow>
 						</S.FormColumn>
 					</S.FormContent>
 

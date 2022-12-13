@@ -1,6 +1,6 @@
 import { FormProvider, useForm } from 'react-hook-form'
 
-import { AvatarUpload, SearchField, Section } from 'components/common'
+import { AvatarUpload, Heading, SearchField } from 'components/common'
 import { Select, TextField, Button, Textarea, InputMask } from 'ui'
 import { DateField, PhoneField } from 'ui/maskedFields'
 
@@ -14,9 +14,9 @@ export const CounterpartyDataForm = () => {
 	const useFormProps = useForm()
 
 	const options = [
-		{ label: 'Выбрать 1', value: 'Выбрать 1' },
-		{ label: 'Выбрать 2', value: 'Выбрать 2' },
-		{ label: 'Выбрать 3', value: 'Выбрать 3' }
+		{ label: 'Выбрать 1', value: 'choose1' },
+		{ label: 'Выбрать 2', value: 'choose2' },
+		{ label: 'Выбрать 3', value: 'choose3' }
 	]
 
 	return (
@@ -25,11 +25,15 @@ export const CounterpartyDataForm = () => {
 				<S.FirstColumn>
 					<AvatarUpload icon={<ProfileIcon />} />
 
-					<TextField name="firstName" placeholder="Имя" />
-					<TextField name="lastName" placeholder="Фамилия" />
-					<TextField name="middleName" placeholder="Отчество" />
+					<div>
+						<TextField name="firstName" placeholder="Имя" />
+						<TextField name="lastName" placeholder="Фамилия" />
+						<TextField name="middleName" placeholder="Отчество" />
+					</div>
 
-					<Section label="Контактные данные">
+					<div>
+						<Heading variant="body1">Контактные данные</Heading>
+
 						<PhoneField
 							name="phone"
 							maskType={2}
@@ -44,9 +48,11 @@ export const CounterpartyDataForm = () => {
 							label="E-mail"
 							placeholder="Укажите электронный адрес"
 						/>
-					</Section>
+					</div>
 
-					<Section label="Дополнительные контакты">
+					<S.AdditionalContacts>
+						<Heading variant="body1">Дополнительные контакты</Heading>
+
 						<TextField
 							name="contactFullName"
 							placeholder="Укажите ФИО родственника/друга/жены"
@@ -60,24 +66,30 @@ export const CounterpartyDataForm = () => {
 						<Button color="green" startIcon={<PlusIcon />}>
 							Добавить еще
 						</Button>
-					</Section>
+					</S.AdditionalContacts>
 				</S.FirstColumn>
 
-				<S.Divider />
+				<S.Divider $orientation="vertical" />
 
 				<S.SecondColumn>
-					<Section label="Комментарии">
-						<Textarea name="comment" placeholder="Написать комментарий" />
-					</Section>
+					<div>
+						<Heading variant="body1">Комментарии</Heading>
 
-					<Section
-						label="Водительское удостоверение"
-						endAdornment={
-							<button>
-								<DownloadIcon />
-							</button>
-						}
-					>
+						<Textarea name="comment" placeholder="Написать комментарий" />
+					</div>
+
+					<div>
+						<Heading
+							variant="body1"
+							endAdornment={
+								<button type="button">
+									<DownloadIcon />
+								</button>
+							}
+						>
+							Водительское удостоверение
+						</Heading>
+
 						<InputMask
 							name="driverLicense.seriesNumber"
 							label="Серия и номер"
@@ -92,16 +104,20 @@ export const CounterpartyDataForm = () => {
 						/>
 
 						<DateField name="driverLicense.dateEnd" label="Действителен до" />
-					</Section>
+					</div>
 
-					<Section
-						label="Паспортные данные"
-						endAdornment={
-							<button>
-								<DownloadIcon />
-							</button>
-						}
-					>
+					<div>
+						<Heading
+							variant="body1"
+							endAdornment={
+								<button type="button">
+									<DownloadIcon />
+								</button>
+							}
+						>
+							Паспортные данные
+						</Heading>
+
 						<S.FieldsRow>
 							<InputMask
 								name="passport.series"
@@ -138,53 +154,68 @@ export const CounterpartyDataForm = () => {
 								placeholder="Укажите код"
 							/>
 						</S.FieldsRow>
-					</Section>
+					</div>
 				</S.SecondColumn>
 
-				<S.Divider />
+				<S.Divider $orientation="vertical" />
 
 				<S.FormColumn>
-					<Textarea
-						name="passport.registerAddress"
-						label="Адрес прописки"
-						placeholder="Укажите Ваш текущий адрес проживания"
-					/>
+					<div>
+						<Textarea
+							name="passport.registerAddress"
+							label="Адрес прописки"
+							placeholder="Укажите Ваш текущий адрес проживания"
+						/>
+					</div>
 
-					<Textarea
-						name="passport.currentAddress"
-						placeholder="Укажите Ваш текущий адрес проживания"
-					/>
+					<div>
+						<Textarea
+							name="passport.currentAddress"
+							label="Фактический адрес проживания"
+							placeholder="Укажите Ваш текущий адрес проживания"
+						/>
+					</div>
 
-					<Section
-						label="Кисиарт ID"
-						endAdornment={
-							<button>
-								<DownloadIcon />
-							</button>
-						}
-					>
+					<div>
+						<Heading
+							variant="body1"
+							endAdornment={
+								<button type="button">
+									<DownloadIcon />
+								</button>
+							}
+						>
+							Кисиарт ID
+						</Heading>
+
 						<TextField
 							name="kisiart.currentAddress"
 							placeholder="Укажите Ваш текущий адрес проживания"
 						/>
-					</Section>
+					</div>
 
-					<Section label="Привязка профилей">
+					<div>
+						<Heading variant="body1">Привязка профилей</Heading>
+
 						<SearchField name="profile" placeholder="Введите имя" />
 
 						<Button color="green" startIcon={<PlusIcon />}>
 							Добавить еще
 						</Button>
-					</Section>
+					</div>
 
-					<Section
-						label="Документы"
-						endAdornment={
-							<button>
-								<DownloadIcon />
-							</button>
-						}
-					></Section>
+					<div>
+						<Heading
+							variant="body1"
+							endAdornment={
+								<button type="button">
+									<DownloadIcon />
+								</button>
+							}
+						>
+							Документы
+						</Heading>
+					</div>
 				</S.FormColumn>
 			</S.CounterpartyDataForm>
 		</FormProvider>

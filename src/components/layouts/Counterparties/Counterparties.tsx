@@ -5,15 +5,11 @@ import { UserBalance, EmployeeFilter } from 'components'
 import { MenuButton, MenuNav } from 'components/common'
 import { CounterpartyDataForm } from 'components/counterparties'
 
-import { ROUTE_NAMES } from 'core/routes'
+import { ROUTE_NAMES } from 'constants/routes'
 
 import * as S from './Counterparties.styled'
 
-export const CounterpartiesLayout = ({
-	children
-}: {
-	children?: React.ReactNode
-}) => {
+export const CounterpartiesLayout = ({ children }: { children?: React.ReactNode }) => {
 	const { query } = useRouter()
 	const counterpartyId = query.id as string
 	const [menuAnchorEl, setMenuAnchorEl] = useState<null | HTMLElement>(null)
@@ -61,8 +57,15 @@ export const CounterpartiesLayout = ({
 			)
 		},
 		{
+			name: 'Списания',
+			href: getPathnameWithCounterpartyId(
+				ROUTE_NAMES.COUNTERPARTIES_CHARGES,
+				counterpartyId
+			)
+		},
+		{
 			name: 'Автомобили',
-			href: getPathnameWithCounterpartyId(ROUTE_NAMES.CARS, counterpartyId)
+			href: getPathnameWithCounterpartyId(ROUTE_NAMES.COUNTERPARTIES_CARS, counterpartyId)
 		}
 	]
 
@@ -70,11 +73,7 @@ export const CounterpartiesLayout = ({
 		<S.CounterpartiesLayout>
 			<S.TopLine>
 				<S.TopLineLeft>
-					<MenuButton
-						color="blue"
-						open={Boolean(menuAnchorEl)}
-						onClick={openMenu}
-					>
+					<MenuButton color="blue" open={Boolean(menuAnchorEl)} onClick={openMenu}>
 						Хабибаржалаев Н.Д.
 					</MenuButton>
 
@@ -86,11 +85,11 @@ export const CounterpartiesLayout = ({
 						<CounterpartyDataForm />
 					</S.Popover>
 
-					<S.Divider />
+					<S.Divider $orientation="vertical" />
 
 					<UserBalance />
 
-					<S.Divider />
+					<S.Divider $orientation="vertical" />
 
 					<EmployeeFilter />
 				</S.TopLineLeft>

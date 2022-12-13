@@ -2,7 +2,8 @@ import { useState } from 'react'
 import { PopoverProps } from '@mui/material/Popover'
 import { FormProvider, useForm } from 'react-hook-form'
 
-import { Button, Checkbox, Textarea, TextField, Switch } from 'ui'
+import { SwitchRow } from 'components/common'
+import { Button, Checkbox, Textarea, TextField } from 'ui'
 import {
 	BankAccountField,
 	BankCardField,
@@ -16,7 +17,6 @@ import * as S from './AddRequisitesPopover.styled'
 
 export const AddRequisitesPopover = (props: PopoverProps) => {
 	const useFormProps = useForm()
-	const [vat, setVat] = useState(true)
 	const [activeTab, setActiveTab] = useState(0)
 
 	const tabs = ['Карта', 'Реквизиты']
@@ -86,20 +86,7 @@ export const AddRequisitesPopover = (props: PopoverProps) => {
 						<S.VatRow>
 							<span>НДС</span>
 
-							<S.VatSwitch>
-								<S.VatValue active={!vat}>Нет</S.VatValue>
-
-								<Switch
-									name=""
-									value={vat}
-									defaultChecked={vat}
-									onChange={(e, checked) => {
-										setVat(checked)
-									}}
-								/>
-
-								<S.VatValue active={vat}>Да</S.VatValue>
-							</S.VatSwitch>
+							<SwitchRow name="vat" left="Нет" right="Да" />
 						</S.VatRow>
 
 						<Checkbox name="" label="Сделать основной" />

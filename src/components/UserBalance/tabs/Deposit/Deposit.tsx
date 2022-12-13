@@ -21,9 +21,9 @@ export const DepositTab = () => {
 	]
 
 	const balances = [
-		{ label: 'Депозит', value: 'Депозит' },
-		{ label: 'Внутренний', value: 'Внутренний' },
-		{ label: 'Яндекс', value: 'Яндекс' }
+		{ label: 'Депозит', value: 'deposit' },
+		{ label: 'Внутренний', value: 'internal' },
+		{ label: 'Яндекс', value: 'yandex' }
 	]
 
 	return (
@@ -49,15 +49,11 @@ export const DepositTab = () => {
 					})}
 				</S.RadioGroup>
 
-				<TextField
-					type="number"
-					name="depositAmount"
-					placeholder="Введите сумму"
-				/>
+				<TextField type="number" name="depositAmount" placeholder="Введите сумму" />
 
 				<Select
 					name="balance"
-					defaultValue="Депозит"
+					defaultValue="deposit"
 					placeholder="Выберите баланс"
 					options={balances}
 				/>

@@ -1,4 +1,3 @@
-import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import MuiTabs from '@mui/material/Tabs'
 import MuiTab from '@mui/material/Tab'
@@ -7,10 +6,6 @@ import { PopoverWithClose } from 'components/common'
 import { FieldsRow } from 'styled/components'
 
 import { FormControlLabel } from 'ui/Checkbox/Checkbox.styled'
-
-interface VatValueProps {
-	active: boolean
-}
 
 export { FieldsRow }
 
@@ -71,22 +66,4 @@ export const VatRow = styled.div`
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-`
-
-export const VatSwitch = styled.div`
-	display: flex;
-	align-items: center;
-	gap: 15px;
-`
-
-export const VatValue = styled.span<VatValueProps>`
-	color: #fff;
-	opacity: 0.5;
-	transition: 0.3s;
-
-	${({ active }) =>
-		active &&
-		css`
-			opacity: 1;
-		`}
 `

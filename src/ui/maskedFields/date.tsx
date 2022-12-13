@@ -1,7 +1,12 @@
-import { InputMask } from 'ui'
-
+import { Props as ReactInputMaskProps } from 'react-input-mask'
 import { TextFieldProps } from 'ui/TextField/TextField'
 
-export const DateField = ({ name, ...props }: TextFieldProps) => (
-	<InputMask name={name} maskProps={{ mask: '99.99.9999' }} {...props} />
+import { InputMask } from 'ui'
+
+export const DateField = ({
+	name,
+	maskProps,
+	...props
+}: TextFieldProps & { maskProps?: Omit<ReactInputMaskProps, 'mask'> }) => (
+	<InputMask name={name} maskProps={{ ...maskProps, mask: '99.99.9999' }} {...props} />
 )

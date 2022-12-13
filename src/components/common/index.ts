@@ -1,7 +1,6 @@
 import { FilterSelect } from './FilterSelect/FilterSelect'
 import { NotificationsNumber } from './NotificationsNumber/NotificationsNumber'
 import { AvatarUpload } from './AvatarUpload/AvatarUpload'
-import { Section } from './Section/Section'
 import { MenuButton } from './MenuButton/MenuButton'
 import { Heading } from './Heading/Heading'
 import { Pagination } from './Pagination/Pagination'
@@ -11,12 +10,14 @@ import { ColoredDotText } from './ColoredDotText/ColoredDotText'
 import { PopoverWithClose } from './PopoverWithClose/PopoverWithClose'
 import { SearchField } from './SearchField/SearchField'
 import { MenuNav } from './MenuNav/MenuNav'
+import { SwitchRow } from './SwitchRow/SwitchRow'
+import { SelectMultiple } from './SelectMultiple/SelectMultiple'
+import { FilterText } from './FilterText/FilterText'
 
 export {
 	FilterSelect,
 	NotificationsNumber,
 	AvatarUpload,
-	Section,
 	MenuButton,
 	Heading,
 	Pagination,
@@ -25,5 +26,8 @@ export {
 	ColoredDotText,
 	PopoverWithClose,
 	SearchField,
-	MenuNav
+	MenuNav,
+	SwitchRow,
+	SelectMultiple,
+	FilterText
 }

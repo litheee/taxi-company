@@ -36,18 +36,17 @@ export const Table = <TData extends RowData>({
 						<S.TableRow key={headerGroup.id}>
 							{headerGroup.headers.map((header) => {
 								const sortable = Boolean(options.state?.sorting)
+								const isColumnSortable =
+									typeof header.column.columnDef.enableSorting === 'undefined'
 
 								return (
 									<S.TableCell key={header.id} sortable={sortable}>
 										<span>
 											{header.isPlaceholder
 												? null
-												: flexRender(
-														header.column.columnDef.header,
-														header.getContext()
-												  )}
+												: flexRender(header.column.columnDef.header, header.getContext())}
 
-											{sortable && header.id !== 'actions' ? (
+											{sortable && isColumnSortable && header.id !== 'actions' ? (
 												<S.SortButton>
 													<SortIcon />
 												</S.SortButton>
@@ -75,10 +74,7 @@ export const Table = <TData extends RowData>({
 								>
 									{row.getVisibleCells().map((cell) => (
 										<S.TableCell key={cell.id}>
-											{flexRender(
-												cell.column.columnDef.cell,
-												cell.getContext()
-											)}
+											{flexRender(cell.column.columnDef.cell, cell.getContext())}
 										</S.TableCell>
 									))}
 								</S.TableRow>

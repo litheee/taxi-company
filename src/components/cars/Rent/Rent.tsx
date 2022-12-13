@@ -1,7 +1,7 @@
 import { MouseEvent, useRef, useState } from 'react'
 
 import { DatePaginationFilter, Heading } from 'components/common'
-import { Car, CarAssignRentPopover, CarEndRentPopover } from 'components/cars'
+import { Car, CarAssignRentForm, CarEndRentPopover } from 'components/cars'
 import { Button } from 'ui'
 
 import * as S from './Rent.styled'
@@ -60,7 +60,9 @@ export const CarsRent = ({ action }: CarsRentProps) => {
 		}
 	]
 
-	const carItems = cars.map(({ name, dates }) => <Car key={name} name={name} dates={dates} />)
+	const carItems = cars.map(({ name, dates }) => (
+		<Car key={name} name={name} dates={dates} />
+	))
 
 	const openPopover = ({ currentTarget }: MouseEvent<HTMLButtonElement>) => {
 		setPopoverAnchorEl(currentTarget)
@@ -70,7 +72,6 @@ export const CarsRent = ({ action }: CarsRentProps) => {
 		<S.CarsRent ref={carRentRef}>
 			<S.InRent>
 				<Heading
-					variant="h2"
 					endAdornment={
 						<Button color="blue" onClick={openPopover}>
 							{action === 'assign' ? 'Назначить' : 'Завершить'}
@@ -80,35 +81,36 @@ export const CarsRent = ({ action }: CarsRentProps) => {
 					Сейчас в аренде
 				</Heading>
 
-				<S.Divider orientation="horizontal" />
-
 				<S.RentStatusText>
 					<span>Автомобилей в аренде нет</span>
 				</S.RentStatusText>
 
-				<S.Divider orientation="horizontal" />
+				<S.Divider />
 			</S.InRent>
 
 			<S.RentHistory>
-				<Heading variant="h2">История аренды</Heading>
-
-				<S.Divider orientation="horizontal" />
+				<Heading>История аренды</Heading>
 
 				<DatePaginationFilter date={date} onDateChange={setDate} />
 
-				<S.Divider orientation="horizontal" />
+				<S.Divider />
 
 				<S.CarsList>{carItems}</S.CarsList>
 			</S.RentHistory>
 
 			{action === 'assign' ? (
-				<CarAssignRentPopover
+				<S.CarAssignRentPopover
 					open={isPopoverOpen}
 					anchorEl={carRentRef.current}
+					anchorOrigin={{ horizontal: 'right', vertical: 'top' }}
+					transformOrigin={{ horizontal: 'left', vertical: 'top' }}
+					heading="Назначить аренду"
 					onClose={() => {
 						setPopoverAnchorEl(null)
 					}}
-				/>
+				>
+					<CarAssignRentForm />
+				</S.CarAssignRentPopover>
 			) : (
 				<CarEndRentPopover
 					open={isPopoverOpen}

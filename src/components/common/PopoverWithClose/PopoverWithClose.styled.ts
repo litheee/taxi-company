@@ -3,6 +3,7 @@ import styled from '@emotion/styled'
 import { Divider } from 'styled/components'
 
 import { Popover } from 'ui/Popover/Popover.styled'
+import { HeadingContainer } from '../Heading/Heading.styled'
 
 export { Divider }
 
@@ -14,9 +15,9 @@ export const PopoverWithClose = styled(Popover)`
 		margin-top: 0;
 	}
 
-	${Divider} {
-		margin-top: 15px;
-		height: 2px;
-		border-radius: 1px;
+	${HeadingContainer} {
+		${Divider} {
+			margin-top: 15px;
+		}
 	}
 `

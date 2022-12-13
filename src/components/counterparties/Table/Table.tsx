@@ -9,7 +9,8 @@ import {
 
 import { Table } from 'ui'
 import { Filters } from './components'
-import { ROUTE_NAMES } from 'core/routes'
+
+import { ROUTE_NAMES } from 'constants/routes'
 
 import * as S from './Table.styled'
 
@@ -72,13 +73,9 @@ export const CounterpartiesTable = () => {
 	const renderCounterpartyStatus = (status: CounterpartyStatus) => {
 		switch (status) {
 			case 'active':
-				return (
-					<S.CounterpartyStatus color="green">Активен</S.CounterpartyStatus>
-				)
+				return <S.CounterpartyStatus color="green">Активен</S.CounterpartyStatus>
 			case 'blocked':
-				return (
-					<S.CounterpartyStatus color="red">Заблокирован</S.CounterpartyStatus>
-				)
+				return <S.CounterpartyStatus color="red">Заблокирован</S.CounterpartyStatus>
 		}
 	}
 
@@ -119,11 +116,7 @@ export const CounterpartiesTable = () => {
 		columnHelper.accessor('balance', {
 			header: 'Баланс',
 			cell: ({ getValue }) =>
-				getValue().charAt(0) === '-' ? (
-					<S.TextRed>{getValue()}</S.TextRed>
-				) : (
-					getValue()
-				)
+				getValue().charAt(0) === '-' ? <S.TextRed>{getValue()}</S.TextRed> : getValue()
 		}),
 		columnHelper.accessor('deposit', {
 			header: 'Депозит'
@@ -149,6 +142,8 @@ export const CounterpartiesTable = () => {
 	return (
 		<S.CounterpartiesTable>
 			<Filters />
+
+			<S.Divider />
 
 			<Table
 				options={{

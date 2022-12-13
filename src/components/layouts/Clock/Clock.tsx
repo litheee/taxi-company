@@ -11,8 +11,7 @@ import PlayIcon from 'public/icons/play.svg'
 
 export const Clock = () => {
 	const useFormProps = useForm()
-	const [popoverAnchorEl, setPopoverAnchorEl] =
-		useState<HTMLButtonElement | null>(null)
+	const [popoverAnchorEl, setPopoverAnchorEl] = useState<HTMLButtonElement | null>(null)
 
 	const openPopover = (event: MouseEvent<HTMLButtonElement>) => {
 		setPopoverAnchorEl(event.currentTarget)
@@ -82,7 +81,7 @@ export const Clock = () => {
 			>
 				<Button color="green">Начать работу</Button>
 
-				<S.Divider orientation="horizontal" />
+				<S.Divider />
 
 				<FormProvider {...useFormProps}>
 					<S.TasksListsByDay>{tasksByDayItems}</S.TasksListsByDay>

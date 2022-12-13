@@ -21,8 +21,8 @@ export const InputMask = ({ name, maskProps, ...props }: InputMaskProps) => {
 			defaultValue=""
 			render={({ field: { value, onChange } }) => (
 				<S.InputMask
-					{...maskProps}
 					alwaysShowMask
+					{...maskProps}
 					value={value}
 					onChange={({ target }) => {
 						const { value } = target

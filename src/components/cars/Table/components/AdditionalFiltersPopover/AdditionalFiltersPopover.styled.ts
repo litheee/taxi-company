@@ -3,8 +3,6 @@ import styled from '@emotion/styled'
 import { Popover } from 'ui'
 import { FormColumn, FieldsRow, Divider } from 'styled/components'
 
-import { Section } from 'components/common/Section/Section.styled'
-import { Heading } from 'components/common/Heading/Heading.styled'
 import { Button } from 'ui/Button/Button.styled'
 import { InputLabel } from 'ui/InputLabel/InputLabel.styled'
 import { FormControlLabel } from 'ui/Checkbox/Checkbox.styled'
@@ -28,30 +26,25 @@ export const AdditionalFiltersPopover = styled(Popover)`
 	${FormColumn} {
 		padding: 0;
 
+		& > ${InputLabel} {
+			margin-bottom: 15px;
+		}
+
 		${FieldsRow} {
 			align-items: flex-end;
 		}
-	}
 
-	${Section} {
-		${InputLabel} {
-			margin-bottom: 15px;
+		${FormControlLabel} span {
+			font-size: 14px;
+			line-height: 16px;
 		}
-	}
-
-	${Divider} {
-		margin: 0 20px;
-	}
-
-	${Heading} {
-		margin-bottom: 15px;
 	}
 `
 
-export const FormRow = styled.div`
-	display: flex;
-	align-items: flex-end;
-	gap: 10px;
+export const CheckboxColumn = styled.div`
+	${FormControlLabel}:not(:last-child) {
+		margin-bottom: 15px;
+	}
 `
 
 export const CheckboxGrid = styled.div`
@@ -64,8 +57,7 @@ export const FormContent = styled.div`
 	display: flex;
 	align-items: stretch;
 
-	${FormControlLabel} span {
-		font-size: 14px;
-		line-height: 16px;
+	${Divider} {
+		margin: 0 20px;
 	}
 `

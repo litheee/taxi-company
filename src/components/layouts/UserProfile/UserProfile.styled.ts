@@ -2,7 +2,7 @@ import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 
 import { Popover as MuiPopover } from 'ui'
-
+import { Divider } from 'styled/components'
 import { gradientBlue } from 'styled/components/ButtonGradient'
 
 import { Button } from 'ui/Button/Button.styled'
@@ -12,6 +12,8 @@ import { NotificationsNumber } from 'components/common/NotificationsNumber/Notif
 interface UserProfilePorps {
 	popoverOpen: boolean
 }
+
+export { Divider }
 
 export const Avatar = styled.div`
 	display: flex;
@@ -116,6 +118,11 @@ export const Popover = styled(MuiPopover)`
 			margin-bottom: 15px;
 		}
 	}
+
+	${Divider} {
+		width: calc(100% - 20px);
+		margin: 0 10px;
+	}
 `
 
 export const ActionsRow = styled.div`
@@ -168,12 +175,4 @@ export const NotificationTime = styled.span`
 	font-size: 11px;
 	color: var(--color-gray-100);
 	line-height: 12.64px;
-`
-
-export const Divider = styled.div`
-	width: calc(100% - 20px);
-	height: 2px;
-	margin: 0 10px;
-	background: var(--color-gray-200);
-	border-radius: 1px;
 `

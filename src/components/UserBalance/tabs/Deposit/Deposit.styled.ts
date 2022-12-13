@@ -4,23 +4,25 @@ import MuiRadioGroup from '@mui/material/RadioGroup'
 import MuiFormControlLabel from '@mui/material/FormControlLabel'
 
 import { gradientGreen } from 'styled/components/ButtonGradient'
+import { Divider } from 'styled/components'
 
 import { CurrencyAmount } from 'components/common/CurrencyAmount/CurrencyAmount.styled'
 import { TabContent } from 'components/UserBalance/UserBalance.styled'
+
+export { Divider }
 
 export const DepositTab = styled(TabContent)``
 
 export const RadioGroup = styled(MuiRadioGroup)`
 	border-radius: 5px;
 	background: var(--color-gray-200);
-`
 
-export const Divider = styled.div`
-	width: calc(100% - 20px);
-	height: 2px;
-	margin: 0 10px;
-	background: var(--color-gray-100);
-	opacity: 0.1;
+	${Divider} {
+		width: calc(100% - 20px);
+		margin: 0 10px;
+		background: var(--color-gray-100);
+		opacity: 0.1;
+	}
 `
 
 export const DepositOption = styled.div`

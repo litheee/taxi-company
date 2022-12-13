@@ -1,6 +1,5 @@
 export const ROUTE_NAMES = {
 	SIGN_IN: '/sign-in',
-	FINANCE: '/finance',
 
 	COUNTERPARTIES: '/counterparties',
 	COUNTERPARTY: '/counterparties/[id]',
@@ -9,11 +8,19 @@ export const ROUTE_NAMES = {
 	COUNTERPARTIES_REQUISITES: '/counterparties/[id]/requisites',
 	COUNTERPARTIES_PENALTIES: '/counterparties/[id]/penalties',
 	COUNTERPARTIES_CARS: '/counterparties/[id]/cars',
+	COUNTERPARTIES_CHARGES: '/counterparties/[id]/charges',
 
 	CARS: '/cars',
 	CAR: '/cars/[id]',
 	CARS_INCOME_EXPENSE: '/cars/[id]/income-expense',
 	CARS_PENALTIES: '/cars/[id]/penalties',
+
+	FINANCE: '/finance',
+	FINANCE_CARS: '/finance/cars',
+	FINANCE_INCOME_EXPENSE: '/finance/income-expense',
+	FINANCE_PAYMENTS: '/finance/payments',
+	FINANCE_CREDITS: '/finance/credits',
+	FINANCE_PENALTIES: '/finance/penalties',
 
 	COMPANY: '/company',
 	STOCK: '/stock',

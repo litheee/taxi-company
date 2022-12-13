@@ -24,7 +24,17 @@ export const BankCardsRequisites = () => {
 
 	const cards = ['1123', '1111', '1211', '1311', '1411', '1511', '1611', '1711', '1811']
 
-	const requisites = ['1123', '1111', '1211', '1311', '1411', '1511', '1611', '1711', '1811']
+	const requisites = [
+		'1123',
+		'1111',
+		'1211',
+		'1311',
+		'1411',
+		'1511',
+		'1611',
+		'1711',
+		'1811'
+	]
 
 	const onTabChange = (event: React.SyntheticEvent, newValue: number) => {
 		setActiveTab(newValue)
@@ -52,7 +62,7 @@ export const BankCardsRequisites = () => {
 					{isMainCard ? <ColoredDotText color="green">Основная</ColoredDotText> : null}
 				</AccordionEditableItem>
 
-				{isMainCard ? <S.Divider orientation="horizontal" /> : null}
+				{isMainCard ? <S.Divider /> : null}
 			</Fragment>
 		)
 	})
@@ -102,7 +112,7 @@ export const BankCardsRequisites = () => {
 					{isMainCard ? <ColoredDotText color="green">Основная</ColoredDotText> : null}
 				</AccordionEditableItem>
 
-				{isMainCard ? <S.Divider orientation="horizontal" /> : null}
+				{isMainCard ? <S.Divider /> : null}
 			</Fragment>
 		)
 	})
@@ -134,9 +144,9 @@ export const BankCardsRequisites = () => {
 				</S.Tabs>
 			</Heading>
 
-			<S.Divider orientation="horizontal" />
-
-			<S.TabContent>{activeTab === 0 ? cardsAccordionItems : requisitesAccordionItems}</S.TabContent>
+			<S.TabContent>
+				{activeTab === 0 ? cardsAccordionItems : requisitesAccordionItems}
+			</S.TabContent>
 
 			<BankCardEditPopover
 				open={Boolean(editableBankCard)}

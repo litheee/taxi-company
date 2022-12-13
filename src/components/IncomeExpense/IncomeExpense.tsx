@@ -1,6 +1,11 @@
 import { useState } from 'react'
 
-import { IncomeExpenseStatsRow, IncomeExpenseTable, IncomeExpenseAddTableRecordModal } from './components'
+import {
+	IncomeExpenseStatsRow,
+	IncomeExpenseTable,
+	IncomeExpenseAddTableRecordModal,
+	IncomeExpenseTableFilters
+} from './components'
 
 import * as S from './IncomeExpense.styled'
 
@@ -10,11 +15,18 @@ interface Stats {
 	profit: number
 }
 
-interface IncomeExpenseProps {
-	stats: Stats
+interface Table {
+	data: any[]
+	columns: any[]
 }
 
-export const IncomeExpense = ({ stats }: IncomeExpenseProps) => {
+interface IncomeExpenseProps {
+	stats: Stats
+	income: Table
+	expense: Table
+}
+
+export const IncomeExpense = ({ stats, income, expense }: IncomeExpenseProps) => {
 	const [isAddTableRecordModalOpen, setAddTableRecordModalOpen] = useState(false)
 
 	const toggleAddTableRecordModal = () => {
@@ -24,15 +36,29 @@ export const IncomeExpense = ({ stats }: IncomeExpenseProps) => {
 	return (
 		<>
 			<S.IncomeExpense>
+				<IncomeExpenseTableFilters />
+
 				<IncomeExpenseStatsRow stats={stats} onAddItem={toggleAddTableRecordModal} />
 
 				<S.TablesRow>
-					<IncomeExpenseTable variant="income" />
-					<IncomeExpenseTable variant="expense" />
+					<IncomeExpenseTable
+						variant="income"
+						data={income.data}
+						columns={income.columns}
+					/>
+
+					<IncomeExpenseTable
+						variant="expense"
+						data={expense.data}
+						columns={expense.columns}
+					/>
 				</S.TablesRow>
 			</S.IncomeExpense>
 
-			<IncomeExpenseAddTableRecordModal open={isAddTableRecordModalOpen} onClose={toggleAddTableRecordModal} />
+			<IncomeExpenseAddTableRecordModal
+				open={isAddTableRecordModalOpen}
+				onClose={toggleAddTableRecordModal}
+			/>
 		</>
 	)
 }

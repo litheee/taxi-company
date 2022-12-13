@@ -1,42 +1,23 @@
-import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import MuiModal from '@mui/material/Modal'
 
 import { Box, Divider } from 'styled/components'
 
-interface ModalContentProps {
-	variant: 1 | 2
-}
-
-const getModalContentStyles = (variant: 1 | 2) => {
-	switch (variant) {
-		case 1:
-			return css`
-				padding: 15px 20px;
-				background: var(--color-gray-400);
-			`
-		case 2:
-			return css`
-				padding: 20px 30px;
-				background: var(--color-gray-300);
-			`
-	}
-}
+import { HeadingContainer } from 'components/common/Heading/Heading.styled'
 
 export { Divider }
 
 export const Modal = styled(MuiModal)``
 
-export const ModalContent = styled(Box)<ModalContentProps>`
+export const ModalContent = styled(Box)`
 	position: relative;
+	padding: 15px 20px;
 	outline: none;
 
-	${({ variant }) => getModalContentStyles(variant)}
-
-	${Divider} {
-		margin-top: 15px;
-		height: 2px;
-		border-radius: 1px;
+	& > ${HeadingContainer} {
+		${Divider} {
+			margin-top: 15px;
+		}
 	}
 `
 

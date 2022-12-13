@@ -12,6 +12,7 @@ export const FilterSelect = styled(Select)`
 	align-items: stretch;
 	background: var(--color-gray-300);
 	border: 2px solid transparent;
+	filter: drop-shadow(1px 3px 9px rgba(122, 122, 122, 0.4));
 	background-clip: padding-box;
 	z-index: 0;
 

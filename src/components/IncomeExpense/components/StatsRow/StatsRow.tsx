@@ -38,14 +38,14 @@ export const IncomeExpenseStatsRow = ({
 					<CurrencyAmount value={income} />
 				</S.StatItem>
 
-				<S.Divider />
+				<S.Divider $orientation="vertical" />
 
 				<S.StatItem>
 					<OutcomeIcon />
 					<CurrencyAmount value={expense} />
 				</S.StatItem>
 
-				<S.Divider />
+				<S.Divider $orientation="vertical" />
 
 				<S.StatItem>
 					<CashIcon />

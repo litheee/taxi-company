@@ -3,12 +3,7 @@ import styled from '@emotion/styled'
 import { FormColumn, Divider, FieldsRow } from 'styled/components'
 
 import { NotificationsNumber } from 'components/common/NotificationsNumber/NotificationsNumber.styled'
-import {
-	TableCell,
-	Table,
-	TableContainer,
-	TableRow
-} from 'ui/Table/Table.styled'
+import { TableCell, Table, TableRow, TableContainer } from 'ui/Table/Table.styled'
 
 export { FormColumn, Divider, FieldsRow }
 
@@ -17,28 +12,29 @@ export const CarsTable = styled.div`
 	flex-direction: column;
 	width: 100%;
 	height: 100%;
+	background: var(--color-gray-300);
+
+	${Divider} {
+		width: calc(100% - 30px);
+		margin: 15px 15px 0;
+	}
 
 	${TableContainer} {
-		&::before,
-		&::after {
-			position: absolute;
-			left: 15px;
+		margin-top: 20px;
+
+		${Table} {
 			width: calc(100% - 30px);
-		}
-	}
+			margin: 0 15px;
 
-	${Table} {
-		width: calc(100% - 30px);
-		margin: 0 15px;
-	}
+			${TableRow} {
+				cursor: pointer;
+			}
 
-	${TableRow} {
-		cursor: pointer;
-	}
-
-	${TableCell} {
-		&:nth-of-type(2) {
-			min-width: 140px;
+			${TableCell} {
+				&:nth-of-type(2) {
+					min-width: 140px;
+				}
+			}
 		}
 	}
 `

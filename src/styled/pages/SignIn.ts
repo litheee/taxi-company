@@ -2,7 +2,7 @@ import styled from '@emotion/styled'
 
 import { Divider } from 'styled/components'
 
-import { Heading } from 'components/common/Heading/Heading.styled'
+import { Heading, HeadingContainer } from 'components/common/Heading/Heading.styled'
 import { Button } from 'ui/Button/Button.styled'
 import { TextField } from 'ui/TextField/TextField.styled'
 
@@ -23,7 +23,8 @@ export const SignInPage = styled.div`
 		height: 100%;
 		left: 0;
 		top: 0;
-		background-image: url('/img/logo-lines-bg.svg'), linear-gradient(252.44deg, #353b41 0%, #191a1c 100%);
+		background-image: url('/img/logo-lines-bg.svg'),
+			linear-gradient(252.44deg, #353b41 0%, #191a1c 100%);
 		background-size: cover;
 		z-index: -1;
 	}
@@ -36,7 +37,8 @@ export const SignInPage = styled.div`
 			height: 100%;
 			left: 0;
 			top: 0;
-			background-image: url('/img/logo-lines-bg.svg'), linear-gradient(252.44deg, #353b41 0%, #191a1c 100%);
+			background-image: url('/img/logo-lines-bg.svg'),
+				linear-gradient(252.44deg, #353b41 0%, #191a1c 100%);
 			background-size: auto;
 			z-index: -1;
 		}
@@ -57,13 +59,19 @@ export const Form = styled.form`
 	border-radius: 5px;
 	box-sizing: border-box;
 
-	${Heading} {
-		justify-content: center;
+	${HeadingContainer} {
+		${Heading} {
+			justify-content: center;
 
-		h1 {
-			font-size: 32px;
-			font-weight: 700;
-			line-height: 37px;
+			h1 {
+				font-size: 32px;
+				line-height: 37px;
+			}
+		}
+
+		${Divider} {
+			margin-top: 18px;
+			background: var(--color-gray-400);
 		}
 	}
 
@@ -92,13 +100,6 @@ export const Form = styled.form`
 				color: #fff;
 			}
 		}
-	}
-
-	${Divider} {
-		margin-top: 18px;
-		height: 2px;
-		background: var(--color-gray-400);
-		border-radius: 1px;
 	}
 
 	${Button} {

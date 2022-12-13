@@ -8,16 +8,11 @@ import {
 	SortingState
 } from '@tanstack/react-table'
 
-import { Heading, SearchField } from 'components/common'
-import {
-	Button,
-	DatePicker,
-	InputLabel,
-	Select,
-	Textarea,
-	Table,
-	TextField
-} from 'ui'
+import { TransactionStatus } from '../TransactionStatus/TransactionStatus'
+import { Heading, SearchField, SelectMultiple } from 'components/common'
+import { Button, DatePicker, InputLabel, Select, Textarea, Table, TextField } from 'ui'
+
+import type { TransactionStatus as TransactionStatusType } from '../TransactionStatus/TransactionStatus'
 
 import * as S from './AddTableRecordModal.styled'
 
@@ -58,10 +53,10 @@ const defaultColumn: Partial<ColumnDef<TableRecord>> = {
 		}, [initialValue])
 
 		return id !== 'quantity' ? (
-			<TextField name={id} placeholder={columnDef.header as string} />
+			<TextField name={`new-${id}`} placeholder={columnDef.header as string} />
 		) : (
 			<S.TableAddRow>
-				<TextField name={id} placeholder={columnDef.header as string} />
+				<TextField name={`new-${id}`} placeholder={columnDef.header as string} />
 
 				<Button color="blue">
 					<PlusIcon />
@@ -118,15 +113,16 @@ export const IncomeExpenseAddTableRecordModal = (
 	}
 
 	const categories = [
-		{ label: 'Категория 1', value: 'Категория 1' },
-		{ label: 'Категория 2', value: 'Категория 2' },
-		{ label: 'Категория 3', value: 'Категория 3' }
+		{ label: 'Категория 1', value: 'category1' },
+		{ label: 'Категория 2', value: 'category2' },
+		{ label: 'Категория 3', value: 'category3' }
 	]
 
 	const statuses = [
-		{ label: 'Статус 1', value: 'Статус 1' },
-		{ label: 'Статус 2', value: 'Статус 2' },
-		{ label: 'Статус 3', value: 'Статус 3' }
+		{ label: 'Оплачен', value: 'paid' },
+		{ label: 'Ожидание', value: 'waiting' },
+		{ label: 'Не оплачен', value: 'not-paid' },
+		{ label: 'Част. оплата', value: 'partial-paid' }
 	]
 
 	const tabItems = tabs.map((label) => {
@@ -138,10 +134,9 @@ export const IncomeExpenseAddTableRecordModal = (
 	}
 
 	return (
-		<S.IncomeExpenseAddTableRecordModal variant={2} {...props}>
+		<S.IncomeExpenseAddTableRecordModal {...props}>
 			<>
 				<Heading
-					variant="h2"
 					endAdornment={
 						<S.Tabs
 							value={recordType}
@@ -159,22 +154,21 @@ export const IncomeExpenseAddTableRecordModal = (
 					Добавление статьи
 				</Heading>
 
-				<S.Divider orientation="horizontal" />
-
 				<FormProvider {...useFormProps}>
 					<S.Form>
 						<S.ColumnsRow>
 							<S.FormColumn>
 								<DatePicker selected={date} onChange={setDate} />
 
-								<Select
+								<SelectMultiple
 									name="category"
 									label="Категория операции"
 									placeholder="Выберите категорию"
+									defaultValue={[]}
 									options={categories}
 								/>
 
-								<S.Divider orientation="horizontal" />
+								<S.Divider />
 
 								<SearchField
 									name="counterparty"
@@ -191,18 +185,22 @@ export const IncomeExpenseAddTableRecordModal = (
 								<Select
 									name="status"
 									label="Статус"
-									placeholder="Выберите статус"
 									options={statuses}
+									renderValue={(value) => {
+										return value ? (
+											<TransactionStatus status={value as TransactionStatusType} />
+										) : (
+											<S.SelectPlaceholder>Выберите статус</S.SelectPlaceholder>
+										)
+									}}
 								/>
 
 								<InputLabel>Документы</InputLabel>
 
-								<Button startIcon={<DownloadIcon fill="#fff" />}>
-									Загрузить
-								</Button>
+								<Button startIcon={<DownloadIcon fill="#fff" />}>Загрузить</Button>
 							</S.FormColumn>
 
-							<S.Divider />
+							<S.Divider $orientation="vertical" />
 
 							<S.FormColumn>
 								<Table noPagination options={tableOptions} />

@@ -20,9 +20,9 @@ export const PopoverWithClose = ({
 	return (
 		<S.PopoverWithClose {...props} onClose={onClose}>
 			<Heading
-				variant="h2"
 				endAdornment={
 					<button
+						type="button"
 						onClick={() => {
 							if (onClose) {
 								return onClose({}, 'backdropClick')
@@ -35,8 +35,6 @@ export const PopoverWithClose = ({
 			>
 				{heading}
 			</Heading>
-
-			<S.Divider orientation="horizontal" />
 
 			{children}
 		</S.PopoverWithClose>

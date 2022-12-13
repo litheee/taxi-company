@@ -19,6 +19,7 @@ export const Select = ({
 	name,
 	label,
 	placeholder,
+	defaultValue = '',
 	options,
 	...props
 }: SelectProps) => {
@@ -31,14 +32,16 @@ export const Select = ({
 			<Controller
 				name={name}
 				control={control}
-				defaultValue=""
+				defaultValue={defaultValue}
 				render={({ field }) => (
 					<S.Select
 						{...field}
 						displayEmpty
 						renderValue={(value: any) => {
+							const label = options.find(({ value: v }) => v === value)?.label
+
 							return value !== '' || !placeholder ? (
-								value
+								label
 							) : (
 								<S.Placeholder>{placeholder}</S.Placeholder>
 							)

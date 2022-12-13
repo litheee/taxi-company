@@ -13,19 +13,7 @@ export const TableContainer = styled.div`
 	flex-direction: column;
 	flex-grow: 1;
 	width: 100%;
-	padding-top: 21px;
 	background: var(--color-gray-300);
-
-	&::before {
-		content: '';
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 1px;
-		background: var(--color-gray-200);
-		border-radius: 1px;
-	}
 
 	${Pagination} {
 		position: relative;
@@ -39,7 +27,7 @@ export const TableContainer = styled.div`
 			top: 0;
 			left: 15px;
 			width: calc(100% - 30px);
-			height: 1px;
+			height: 2px;
 			background: var(--color-gray-200);
 			border-radius: 1px;
 		}

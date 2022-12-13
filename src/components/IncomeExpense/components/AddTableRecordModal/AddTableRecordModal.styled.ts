@@ -7,11 +7,13 @@ import { Divider, FormColumn } from 'styled/components'
 
 import { InputLabel } from 'ui/InputLabel/InputLabel.styled'
 import { ModalContent } from 'ui/Modal/Modal.styled'
-import { Heading } from 'components/common/Heading/Heading.styled'
+import { Heading, HeadingContainer } from 'components/common/Heading/Heading.styled'
 import { Button } from 'ui/Button/Button.styled'
-import { TableCell, TableContainer } from 'ui/Table/Table.styled'
+import { TableCell } from 'ui/Table/Table.styled'
+import { Placeholder } from 'ui/Select/Select.styled'
+import { SelectMultiple } from 'components/common/SelectMultiple/SelectMultiple.styled'
 
-export { Divider, FormColumn }
+export { Divider, FormColumn, Placeholder as SelectPlaceholder }
 
 export const IncomeExpenseAddTableRecordModal = styled(Modal)`
 	${ModalContent} {
@@ -19,13 +21,16 @@ export const IncomeExpenseAddTableRecordModal = styled(Modal)`
 		flex-direction: column;
 		width: 950px;
 		height: 950px;
+		padding: 20px 30px;
 
-		${Heading} {
-			align-items: flex-start;
-		}
+		${HeadingContainer} {
+			${Heading} {
+				align-items: flex-start;
+			}
 
-		& > ${Divider} {
-			margin-top: 10px;
+			${Divider} {
+				margin-top: 10px;
+			}
 		}
 	}
 `
@@ -73,8 +78,12 @@ export const Form = styled.form`
 			max-width: 320px;
 		}
 
+		${SelectMultiple} {
+			margin-bottom: 10px;
+		}
+
 		${Divider} {
-			margin-top: 30px;
+			margin-top: 0;
 		}
 
 		& > ${InputLabel} {
@@ -82,16 +91,8 @@ export const Form = styled.form`
 		}
 	}
 
-	${TableContainer} {
-		padding-top: 0;
-
-		&::before {
-			display: none;
-		}
-
-		${TableCell}:last-of-type {
-			padding-right: 52px;
-		}
+	${TableCell}:last-of-type {
+		padding-right: 52px;
 	}
 
 	& > ${Button} {
@@ -106,6 +107,8 @@ export const ColumnsRow = styled.div`
 	& > ${Divider} {
 		margin: 0 30px;
 		height: auto;
+		background: var(--color-gray-200);
+		border-radius: 1px;
 	}
 `
 

@@ -1,8 +1,11 @@
 import styled from '@emotion/styled'
 
 import { Popover as MuiPopover } from 'ui'
+import { Divider } from 'styled/components'
 
 import { MenuNav } from 'components/common/MenuNav/MenuNav.styled'
+
+export { Divider }
 
 export const CounterpartiesLayout = styled.div`
 	display: flex;
@@ -52,14 +55,12 @@ export const TopLine = styled.div`
 
 export const TopLineLeft = styled.div`
 	display: flex;
-`
 
-export const Divider = styled.div`
-	width: 2px;
-	height: 100%;
-	background: #333;
-	border-radius: 5px;
-	margin: 0 20px;
+	${Divider} {
+		height: 100%;
+		background: #333;
+		margin: 0 20px;
+	}
 `
 
 export const Content = styled.div`

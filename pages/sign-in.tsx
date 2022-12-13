@@ -2,7 +2,7 @@ import Head from 'next/head'
 import { useForm, FormProvider } from 'react-hook-form'
 
 import { Heading } from 'components/common'
-import { Button, TextField } from 'ui'
+import { Button } from 'ui'
 import { PhoneField } from 'ui/maskedFields'
 
 import * as S from 'styled/pages/SignIn'
@@ -30,8 +30,6 @@ const SignInPage = () => {
 						})}
 					>
 						<Heading variant="h1">Вход</Heading>
-
-						<S.Divider orientation="horizontal" />
 
 						<PhoneField name="phone" label="Введите ваш номер телефона" />
 

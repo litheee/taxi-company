@@ -168,6 +168,17 @@ export const DatePagination = styled.div<DatePaginationProps>`
 				&-wrapper {
 					width: 133px;
 				}
+
+				&__day {
+					&--today::before {
+						opacity: 0;
+					}
+
+					&--in-selecting-range {
+						background: #337c82;
+						border-radius: 0;
+					}
+				}
 			}
 		`}
 `

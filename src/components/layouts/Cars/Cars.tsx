@@ -4,7 +4,7 @@ import { MouseEvent, ReactNode, useState } from 'react'
 import { MenuButton, MenuNav } from 'components/common'
 import { CarCardData } from 'components/cars'
 
-import { ROUTE_NAMES } from 'core/routes'
+import { ROUTE_NAMES } from 'constants/routes'
 
 import * as S from './Cars.styled'
 
@@ -42,11 +42,7 @@ export const CarsLayout = ({ children }: { children?: ReactNode }) => {
 		<S.CarsLayout>
 			<S.TopLine>
 				<S.TopLineLeft>
-					<MenuButton
-						color="blue"
-						open={Boolean(menuAnchorEl)}
-						onClick={openMenu}
-					>
+					<MenuButton color="blue" open={Boolean(menuAnchorEl)} onClick={openMenu}>
 						Hyundai Sonata A001AA
 					</MenuButton>
 
@@ -58,7 +54,7 @@ export const CarsLayout = ({ children }: { children?: ReactNode }) => {
 						<CarCardData />
 					</S.Popover>
 
-					<S.Divider />
+					<S.Divider $orientation="vertical" />
 				</S.TopLineLeft>
 
 				<MenuNav nav={nav} />

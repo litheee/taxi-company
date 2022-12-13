@@ -94,7 +94,7 @@ export const FiltersPopover = ({ open, anchorEl, onClose }: PopoverProps) => {
 							})}
 						</S.FormColumn>
 
-						<S.Divider />
+						<S.Divider $orientation="vertical" />
 
 						<S.FormColumn>
 							{secondColumnCheckbox.map((label) => {
@@ -102,7 +102,7 @@ export const FiltersPopover = ({ open, anchorEl, onClose }: PopoverProps) => {
 							})}
 						</S.FormColumn>
 
-						<S.Divider />
+						<S.Divider $orientation="vertical" />
 
 						<S.FormColumn>
 							{thirdColumnCheckbox.map((label) => {

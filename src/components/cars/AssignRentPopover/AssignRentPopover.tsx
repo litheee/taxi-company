@@ -12,9 +12,9 @@ export const CarAssignRentPopover = (props: PopoverProps) => {
 	const useFormProps = useForm()
 
 	const terms = [
-		{ label: 'Условие 1', value: 'Условие 1' },
-		{ label: 'Условие 2', value: 'Условие 2' },
-		{ label: 'Условие 3', value: 'Условие 3' }
+		{ label: 'Условие 1', value: 'term1' },
+		{ label: 'Условие 2', value: 'term2' },
+		{ label: 'Условие 3', value: 'term3' }
 	]
 
 	const cars = [
@@ -38,11 +38,7 @@ export const CarAssignRentPopover = (props: PopoverProps) => {
 						options={cars}
 						renderInput={(params) => {
 							return (
-								<SearchField
-									{...params}
-									name="chooseCar"
-									label="Выберите автомобиль"
-								/>
+								<SearchField {...params} name="chooseCar" label="Выберите автомобиль" />
 							)
 						}}
 					/>

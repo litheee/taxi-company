@@ -15,8 +15,10 @@ export const Switch = ({ label, name, ...props }: SwitchProps) => {
 		<Controller
 			name={name}
 			control={control}
-			defaultValue={false}
-			render={({ field }) => <S.Switch {...field} {...props} />}
+			defaultValue=""
+			render={({ field }) => (
+				<S.Switch {...field} {...props} checked={Boolean(field.value)} />
+			)}
 		/>
 	)
 

@@ -4,7 +4,6 @@ import { Popover } from 'ui'
 import { FormColumn, Divider, FieldsRow } from 'styled/components'
 
 import { Button } from 'ui/Button/Button.styled'
-import { Heading } from 'components/common/Heading/Heading.styled'
 import { FormControlLabel } from 'ui/Checkbox/Checkbox.styled'
 
 export { FormColumn, Divider, FieldsRow }
@@ -33,10 +32,6 @@ export const FiltersPopover = styled(Popover)`
 
 	${Divider} {
 		margin: 0 20px;
-	}
-
-	${Heading} {
-		margin-bottom: 15px;
 	}
 `
 

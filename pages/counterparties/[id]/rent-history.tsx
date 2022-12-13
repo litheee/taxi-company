@@ -3,7 +3,7 @@ import Head from 'next/head'
 import { CarsRent } from 'components/cars'
 import { CounterpartiesLayout } from 'components/layouts'
 
-const CounterpartiesRentHistoryPage = () => {
+const RentHistoryPage = () => {
 	return (
 		<>
 			<Head>
@@ -17,4 +17,4 @@ const CounterpartiesRentHistoryPage = () => {
 	)
 }
 
-export default CounterpartiesRentHistoryPage
+export default RentHistoryPage

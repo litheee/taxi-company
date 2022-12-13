@@ -9,7 +9,7 @@ export const MenuListItem = styled.li`
 	padding: 2px 10px;
 	transition: 0.3s;
 
-	&:not(:last-of-type) {
+	&:not(:last-child) {
 		margin-bottom: 11px;
 	}
 

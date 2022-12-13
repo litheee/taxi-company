@@ -41,6 +41,9 @@ export const Autocomplete = <
 						noOptionsText="Ничего не найдено"
 						PaperComponent={S.Paper}
 						{...props}
+						onChange={(_, value) => {
+							return field.onChange(value)
+						}}
 					/>
 				</S.Autocomplete>
 			)}

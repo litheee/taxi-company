@@ -4,6 +4,9 @@ import { Clock } from './layouts/Clock/Clock'
 import { EmployeeFilter } from './EmployeeFilter/EmployeeFilter'
 import { CompanyCardData } from './CompanyCardData/CompanyCardData'
 import { IncomeExpense } from './IncomeExpense/IncomeExpense'
+import { PenaltiesTable } from './PenaltiesTable/PenaltiesTable'
+import { ChargesTable } from './ChargesTable/ChargesTable'
+import { AddChargeModal } from './AddChargeModal/AddChargeModal'
 
 export {
 	UserProfile,
@@ -11,5 +14,8 @@ export {
 	Clock,
 	EmployeeFilter,
 	CompanyCardData,
-	IncomeExpense
+	IncomeExpense,
+	PenaltiesTable,
+	ChargesTable,
+	AddChargeModal
 }

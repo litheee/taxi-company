@@ -1,7 +1,7 @@
 import { Fragment } from 'react'
 import Link from 'next/link'
 
-import { ROUTE_NAMES } from 'core/routes'
+import { ROUTE_NAMES } from 'constants/routes'
 
 import * as S from './Sidebar.styled'
 
