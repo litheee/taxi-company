@@ -4,14 +4,23 @@ import { AvatarUpload, Heading, SearchField } from 'components/common'
 import { Select, TextField, Button, Textarea, InputMask } from 'ui'
 import { DateField, PhoneField } from 'ui/maskedFields'
 
+import { useCounterparties } from 'hooks'
+
 import * as S from './DataForm.styled'
 
 import ProfileIcon from 'public/icons/profile.svg'
 import PlusIcon from 'public/icons/plus.svg'
 import DownloadIcon from 'public/icons/download.svg'
+import { useEffect } from 'react'
 
 export const CounterpartyDataForm = () => {
 	const useFormProps = useForm()
+
+	const counterparties = useCounterparties()
+
+	// useEffect(() => {
+
+	// }, [])
 
 	const options = [
 		{ label: 'Выбрать 1', value: 'choose1' },

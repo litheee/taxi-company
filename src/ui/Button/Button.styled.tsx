@@ -38,6 +38,13 @@ const getColorStyles = (color: Color | undefined) => {
 	}
 }
 
-export const Button = styled(({ color, ...props }: ButtonProps) => <MuiButton {...props} />)`
+export const Button = styled(({ color, ...props }: ButtonProps) => (
+	<MuiButton {...props} />
+))`
 	${({ color }) => getColorStyles(color)}
+
+	&:disabled {
+		background: var(--color-gray-400);
+		color: var(--color-gray-100);
+	}
 `

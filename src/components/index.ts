@@ -7,6 +7,7 @@ import { IncomeExpense } from './IncomeExpense/IncomeExpense'
 import { PenaltiesTable } from './PenaltiesTable/PenaltiesTable'
 import { ChargesTable } from './ChargesTable/ChargesTable'
 import { AddChargeModal } from './AddChargeModal/AddChargeModal'
+import { SignInForm } from './SignInForm/SignInForm'
 
 export {
 	UserProfile,
@@ -17,5 +18,6 @@ export {
 	IncomeExpense,
 	PenaltiesTable,
 	ChargesTable,
-	AddChargeModal
+	AddChargeModal,
+	SignInForm
 }

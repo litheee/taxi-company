@@ -5,15 +5,18 @@ import { FormProvider, useForm } from 'react-hook-form'
 import { NotificationsNumber, MenuButton } from 'components/common'
 import { Button, Checkbox } from 'ui'
 
+import { useAuth } from 'hooks'
+
 import * as S from './UserProfile.styled'
 
 import avatarImg from 'public/img/avatar.png'
 
 export const UserProfile = () => {
 	const useFormProps = useForm()
-	const [popoverAnchorEl, setPopoverAnchorEl] =
-		useState<HTMLButtonElement | null>(null)
+	const [popoverAnchorEl, setPopoverAnchorEl] = useState<HTMLButtonElement | null>(null)
 	const isPopoverOpen = Boolean(popoverAnchorEl)
+
+	const { logout } = useAuth()
 
 	const notifications = [
 		{ id: 0, label: 'Выбрать все', time: '13:06' },
@@ -30,6 +33,10 @@ export const UserProfile = () => {
 
 	const closePopover = () => {
 		setPopoverAnchorEl(null)
+	}
+
+	const onLogout = () => {
+		logout()
 	}
 
 	const notificationItems = notifications.map(({ id, label, time }) => {
@@ -69,7 +76,9 @@ export const UserProfile = () => {
 			>
 				<S.ActionsRow>
 					<Button fullWidth>В профиль</Button>
-					<Button fullWidth>Выйти</Button>
+					<Button fullWidth onClick={onLogout}>
+						Выйти
+					</Button>
 				</S.ActionsRow>
 
 				<S.Notifications>

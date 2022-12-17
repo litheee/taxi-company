@@ -11,7 +11,7 @@ const PenaltiesPage = () => {
 	return (
 		<>
 			<Head>
-				<title>Машина</title>
+				<title>Штрафы</title>
 			</Head>
 
 			<CarsLayout>

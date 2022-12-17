@@ -24,6 +24,14 @@
 			}
 		]
 	},
-	"include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "next.config.js", "next.config.js"],
+	"include": [
+		"next-env.d.ts",
+		"**/*.ts",
+		"**/*.tsx",
+		".next/types/**/*.ts",
+		"next.config.js",
+		"next.config.js",
+		"dev-server.js"
+	],
 	"exclude": ["node_modules"]
 }

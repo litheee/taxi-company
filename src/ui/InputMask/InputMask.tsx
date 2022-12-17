@@ -11,7 +11,7 @@ type InputMaskProps = {
 	maskProps: ReactInputMaskProps
 } & TextFieldProps
 
-export const InputMask = ({ name, maskProps, ...props }: InputMaskProps) => {
+export const InputMask = ({ name, maskProps, onChange, ...props }: InputMaskProps) => {
 	const { control } = useFormContext()
 
 	return (
@@ -19,16 +19,20 @@ export const InputMask = ({ name, maskProps, ...props }: InputMaskProps) => {
 			name={name}
 			control={control}
 			defaultValue=""
-			render={({ field: { value, onChange } }) => (
+			render={({ field }) => (
 				<S.InputMask
 					alwaysShowMask
 					{...maskProps}
-					value={value}
-					onChange={({ target }) => {
-						const { value } = target
+					value={field.value}
+					onChange={(e) => {
+						const { value } = e.target
 						const unmaskedValue = value.replace(/[^\d]/g, '')
 
-						return onChange(unmaskedValue)
+						if (onChange) {
+							onChange(e)
+						}
+
+						return field.onChange(unmaskedValue)
 					}}
 				>
 					{/* @ts-ignore */}
