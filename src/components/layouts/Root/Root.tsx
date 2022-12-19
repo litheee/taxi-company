@@ -12,9 +12,8 @@ import * as S from './Root.styled'
 import bgImg from 'public/img/main-background.png'
 
 export const RootLayout = ({ children }: { children: React.ReactNode }) => {
-	const [isSidebarOpen, setSidebarOpen] = useState(false)
-
 	const { hash, id, isAuthLoading } = useAuth()
+	const [isSidebarOpen, setSidebarOpen] = useState(false)
 
 	const toggleSidebar = () => {
 		setSidebarOpen(!isSidebarOpen)

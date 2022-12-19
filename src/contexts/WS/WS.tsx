@@ -1,4 +1,4 @@
-import { createContext, useEffect, useMemo } from 'react'
+import { createContext, useEffect, useMemo, useState } from 'react'
 
 import { Send, WSProviderProps, WSContextProps } from './ws.types'
 
@@ -13,20 +13,17 @@ export const WSProvider = ({ hash, id, children }: WSProviderProps): JSX.Element
 
 	ws.onmessage = (event) => {
 		const data = JSON.parse(event.data)
-		console.log('data', data)
+
+		// console.log('ws', data)
 	}
 
-	// useEffect(() => {
-	// 	return () => ws.close()
-	// }, [ws])
-
-	const send = ({ command, block, id }: Send) => {
-		ws.send(JSON.stringify({ command, block, id }))
+	const send = <T extends {}>({ command, block, id, data }: Send<T>) => {
+		ws.send(JSON.stringify({ command, block, id, data }))
 	}
 
 	const value: WSContextProps = {
-		send,
-		onmessage: ws.onmessage
+		ws,
+		send
 	}
 
 	return <WSContext.Provider value={value}>{children}</WSContext.Provider>

@@ -1,12 +1,13 @@
 import { ReactNode } from 'react'
 
-export type Command = 'subscribe' | 'unsubscribe'
+export type Command = 'subscribe' | 'unsubscribe' | 'update'
 export type Block = 'contragent'
 
-export interface Send {
+export interface Send<T> {
 	command: Command
 	block: Block
 	id: number
+	data?: T
 }
 
 export interface WSProviderProps {
@@ -16,6 +17,6 @@ export interface WSProviderProps {
 }
 
 export interface WSContextProps {
-	send: (props: Send) => void
-	onmessage: ((this: WebSocket, ev: MessageEvent<any>) => any) | null
+	ws: WebSocket
+	send: <T extends {}>(props: Send<T>) => void
 }

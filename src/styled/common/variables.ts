@@ -1,6 +1,6 @@
 import { css } from '@emotion/react'
 
-import { ubuntu, lato } from 'utils/loadFonts'
+import { ubuntu, lato } from 'utils'
 
 export const variables = css`
 	:root {

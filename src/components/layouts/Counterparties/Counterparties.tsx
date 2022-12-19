@@ -5,6 +5,7 @@ import { UserBalance, EmployeeFilter } from 'components'
 import { MenuButton, MenuNav } from 'components/common'
 import { CounterpartyDataForm } from 'components/counterparties'
 
+import { useCounterparties } from 'hooks'
 import { ROUTE_NAMES } from 'constants/routes'
 
 import * as S from './Counterparties.styled'
@@ -14,12 +15,16 @@ export const CounterpartiesLayout = ({ children }: { children?: React.ReactNode 
 	const counterpartyId = query.id as string
 	const [menuAnchorEl, setMenuAnchorEl] = useState<null | HTMLElement>(null)
 
+	const counterparties = useCounterparties()
+
 	const openMenu = ({ currentTarget }: MouseEvent<HTMLButtonElement>) => {
+		counterparties.subscribe()
 		setMenuAnchorEl(currentTarget)
 	}
 
 	const closeMenu = () => {
 		setMenuAnchorEl(null)
+		counterparties.unsubscribe()
 	}
 
 	const getPathnameWithCounterpartyId = (path: string, id: string) => {

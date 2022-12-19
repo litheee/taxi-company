@@ -1,4 +1,5 @@
 import { FormProvider, useForm } from 'react-hook-form'
+import { useEffect } from 'react'
 
 import { AvatarUpload, Heading, SearchField } from 'components/common'
 import { Select, TextField, Button, Textarea, InputMask } from 'ui'
@@ -11,16 +12,96 @@ import * as S from './DataForm.styled'
 import ProfileIcon from 'public/icons/profile.svg'
 import PlusIcon from 'public/icons/plus.svg'
 import DownloadIcon from 'public/icons/download.svg'
-import { useEffect } from 'react'
+
+type NullableString = string | null
+
+interface DrivingLicense {}
+
+interface Passport {}
+
+interface FormFields {
+	firstName: NullableString
+	middleName: NullableString
+	lastName: NullableString
+	phone: NullableString
+	email: NullableString
+	comment: NullableString
+	drivingLicense: DrivingLicense
+	passport: Passport
+	kisiartCurrentAddress: NullableString
+
+	series: NullableString
+	number: NullableString
+	issuedBy: NullableString
+	issueDate: NullableString
+	registerAddress: NullableString
+	currentAddress: NullableString
+	subdivisionCode: NullableString
+
+	expireDate: NullableString
+	drivingLicenseNumber: NullableString
+	issueCountry: NullableString
+
+	choice: string
+	contactFullName: string
+	contactPhone: string
+	profile: string
+}
 
 export const CounterpartyDataForm = () => {
-	const useFormProps = useForm()
+	const useFormProps = useForm<FormFields>({
+		defaultValues: {
+			firstName: '',
+			middleName: '',
+			lastName: '',
+			phone: '',
+			email: '',
+			comment: '',
+			expireDate: '',
+			drivingLicenseNumber: '',
+			issueCountry: '',
+			series: '',
+			number: '',
+			issuedBy: '',
+			issueDate: '',
+			registerAddress: '',
+			currentAddress: '',
+			subdivisionCode: '',
+			kisiartCurrentAddress: '',
+			choice: '',
+			contactFullName: '',
+			contactPhone: '',
+			profile: ''
+		}
+	})
 
-	const counterparties = useCounterparties()
+	const {
+		reset,
+		watch,
+		getValues,
+		formState: { dirtyFields }
+	} = useFormProps
 
-	// useEffect(() => {
+	const { counterparty, update } = useCounterparties()
 
-	// }, [])
+	const values = watch()
+	const isFieldsChanged = Object.keys(dirtyFields).length
+
+	// set counterparty fields
+	useEffect(() => {
+		reset({
+			...getValues(),
+			...counterparty
+		})
+	}, [counterparty, reset, getValues])
+
+	// update counterparty on focus leave
+	useEffect(() => {
+		if (isFieldsChanged) {
+			console.log('up')
+			update(getValues())
+		}
+	}, [getValues, isFieldsChanged])
 
 	const options = [
 		{ label: 'Выбрать 1', value: 'choose1' },
@@ -100,19 +181,19 @@ export const CounterpartyDataForm = () => {
 						</Heading>
 
 						<InputMask
-							name="driverLicense.seriesNumber"
+							name="drivingLicenseNumber"
 							label="Серия и номер"
 							maskProps={{ mask: '9 9 9 9ㅤ9 9 9 9 9 9' }}
 						/>
 
 						<Select
-							name="driverLicense.issued"
+							name="issueCountry"
 							label="Где выдано"
 							placeholder="Выберите страну"
 							options={options}
 						/>
 
-						<DateField name="driverLicense.dateEnd" label="Действителен до" />
+						<DateField name="expireDate" label="Действителен до" />
 					</div>
 
 					<div>
@@ -129,7 +210,7 @@ export const CounterpartyDataForm = () => {
 
 						<S.FieldsRow>
 							<InputMask
-								name="passport.series"
+								name="series"
 								label="Серия"
 								placeholder="Укажите серию"
 								maskProps={{
@@ -139,7 +220,7 @@ export const CounterpartyDataForm = () => {
 							/>
 
 							<InputMask
-								name="passport.number"
+								name="number"
 								label="Номер"
 								placeholder="Укажите номер"
 								maskProps={{
@@ -149,16 +230,12 @@ export const CounterpartyDataForm = () => {
 							/>
 						</S.FieldsRow>
 
-						<TextField
-							name="passport.issuedBy"
-							label="Кем выдан"
-							placeholder="Укажите данные"
-						/>
+						<TextField name="issuedBy" label="Кем выдан" placeholder="Укажите данные" />
 
 						<S.FieldsRow>
-							<DateField name="passport.dateIssue" label="Дата выдачи" />
+							<DateField name="issueDate" label="Дата выдачи" />
 							<TextField
-								name="passport.subdivisionCode"
+								name="subdivisionCode"
 								label="Код подразделения"
 								placeholder="Укажите код"
 							/>
@@ -171,7 +248,7 @@ export const CounterpartyDataForm = () => {
 				<S.FormColumn>
 					<div>
 						<Textarea
-							name="passport.registerAddress"
+							name="registerAddress"
 							label="Адрес прописки"
 							placeholder="Укажите Ваш текущий адрес проживания"
 						/>
@@ -179,7 +256,7 @@ export const CounterpartyDataForm = () => {
 
 					<div>
 						<Textarea
-							name="passport.currentAddress"
+							name="currentAddress"
 							label="Фактический адрес проживания"
 							placeholder="Укажите Ваш текущий адрес проживания"
 						/>
@@ -198,7 +275,7 @@ export const CounterpartyDataForm = () => {
 						</Heading>
 
 						<TextField
-							name="kisiart.currentAddress"
+							name="kisiartCurrentAddress"
 							placeholder="Укажите Ваш текущий адрес проживания"
 						/>
 					</div>

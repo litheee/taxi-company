@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 import { createContext, ReactNode, useEffect, useState } from 'react'
 
 import { authAPI } from 'api'
-import { setCookie, removeCookie, getCookie } from 'utils/cookie'
+import { setCookie, removeCookie, getCookie } from 'utils'
 import { ROUTE_NAMES } from 'constants/routes'
 import { AuthContextProps, SendCode, ConfirmCode } from './auth.types'
 
@@ -38,7 +38,16 @@ export function AuthProvider({ children }: { children: ReactNode }): JSX.Element
 		isError: isSendCodeError,
 		isSuccess: isSendCodeSuccess
 	} = useMutation({
-		mutationFn: ({ phone }: SendCode) => authAPI.login({ phone })
+		mutationFn: ({ phone }: SendCode) => authAPI.login({ phone }),
+		onSuccess: ({ hash, id }) => {
+			if (hash && id) {
+				setCookie('hash', hash)
+				setCookie('id', id)
+				setHash(hash)
+				setId(id)
+				router.push('/')
+			}
+		}
 	})
 
 	const {

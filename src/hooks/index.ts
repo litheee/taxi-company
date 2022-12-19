@@ -1,6 +1,5 @@
-import { useReactQuerySubscription } from './useReactQuerySubscription'
 import { useAuth } from './useAuth'
 import { useWS } from './useWS'
-import { useCounterparties } from './useCounterparties'
+import { useCounterparties } from './useCounterparties/useCounterparties'
 
-export { useReactQuerySubscription, useAuth, useWS, useCounterparties }
+export { useAuth, useWS, useCounterparties }
