@@ -30,9 +30,9 @@ export const WSProvider = ({ children }: WSProviderProps): JSX.Element => {
 			}
 		}
 
-		return () => {
-			ws.current?.close()
-		}
+		// return () => {
+		// 	ws.current?.close()
+		// }
 	}, [hash, id])
 
 	const send = <T extends {}>({ command, block, hash, id, data }: Send<T>) => {

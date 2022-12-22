@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useEffect, useState } from 'react'
+import { createContext, ReactNode, useCallback, useEffect, useState } from 'react'
 
 import { useWS } from 'hooks'
 import { User, UserContextProps, UserRaw } from './User.types'
@@ -26,26 +26,26 @@ export const UserProvider = ({ children }: { children: ReactNode }): JSX.Element
 	const [user, setUser] = useState<User>(defaultValues)
 	const [isUserLoading, setUserLoading] = useState(true)
 
-	useEffect(() => {
-		if (!ws.isReady || !ws.instance) return
+	const onMessage = useCallback((event: MessageEvent<any>) => {
+		const { data, block } = JSON.parse(event.data)
 
-		ws.instance.onmessage = (event) => {
-			const { data, block } = JSON.parse(event.data)
+		if (block === 'user') {
+			const withoutUndefined = Object.fromEntries(
+				Object.entries(transformUserRaw(data)).filter(([key, value]) => Boolean(value))
+			)
 
-			if (block === 'user') {
-				const withoutUndefined = Object.fromEntries(
-					Object.entries(transformUserRaw(data)).filter(([key, value]) => Boolean(value))
-				)
-
-				//@ts-ignore
-				setUser((user) => ({
-					...user,
-					...withoutUndefined
-				}))
-				setUserLoading(false)
-			}
+			//@ts-ignore
+			setUser(withoutUndefined)
+			setUserLoading(false)
 		}
-	}, [ws.isReady, ws.instance])
+	}, [])
+
+	useEffect(() => {
+		if (ws.isReady && ws.instance) {
+			console.log('123')
+			ws.instance.addEventListener('message', onMessage)
+		}
+	}, [ws.isReady, ws.instance, onMessage])
 
 	const value = {
 		user,

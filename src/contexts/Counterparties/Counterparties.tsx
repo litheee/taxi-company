@@ -176,7 +176,7 @@ export const CounterpartiesProvider = ({ children }: { children: ReactNode }) =>
 				ws.instance?.removeEventListener('message', onMessage)
 			}
 		}
-	}, [ws.isReady, ws.instance, onMessage, subscribed, setSubscribed])
+	}, [ws, onMessage, subscribed])
 
 	const update = (newData: Counterparty) => {
 		ws.send({
