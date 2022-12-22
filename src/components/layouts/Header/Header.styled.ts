@@ -1,12 +1,12 @@
 import styled from '@emotion/styled'
 
-import { ClockButton } from 'components/layouts/Clock/Clock.styled'
 import { UserProfile } from 'components/layouts/UserProfile/UserProfile.styled'
 import { TextField } from 'ui/TextField/TextField.styled'
 
 export const Header = styled.header`
-	display: grid;
-	grid-template-columns: repeat(3, 1fr);
+	position: relative;
+	display: flex;
+	justify-content: space-between;
 	align-items: center;
 	width: 100%;
 
@@ -25,9 +25,5 @@ export const Header = styled.header`
 				padding-left: 15px;
 			}
 		}
-	}
-
-	${ClockButton} {
-		margin-left: 186px;
 	}
 `

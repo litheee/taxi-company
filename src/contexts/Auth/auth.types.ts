@@ -1,7 +1,5 @@
 export interface AuthContextProps {
-	hash: string
-	id: string
-	isAuthLoading: boolean
+	showWelcomeScreen: boolean
 	sendCode: (phone: string) => void
 	isSendCodeSuccess: boolean
 	isSendCodeError: boolean
@@ -19,4 +17,9 @@ export interface SendCode {
 export interface ConfirmCode {
 	phone: string
 	code: string
+}
+
+export interface HandleLogin {
+	hash: string
+	id: string
 }

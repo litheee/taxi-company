@@ -44,6 +44,31 @@ export default class AppDocument extends Document {
 			<Html lang="ru">
 				<Head>
 					<meta name="emotion-insertion-point" content="" />
+					<link
+						rel="preload"
+						href="/fonts/Lato-Heavy.ttf"
+						type="font/ttf"
+						crossOrigin=""
+					/>
+					<link
+						rel="preload"
+						href="/fonts/Ubuntu-Bold.woff"
+						type="font/woff"
+						crossOrigin=""
+					/>
+					<link
+						rel="preload"
+						href="/fonts/Ubuntu-Medium.woff"
+						type="font/woff"
+						crossOrigin=""
+					/>
+					<link
+						rel="preload"
+						href="/fonts/Ubuntu-Regular.woff"
+						type="font/woff"
+						crossOrigin=""
+					/>
+
 					{(this.props as any).emotionStyleTags}
 				</Head>
 

@@ -5,7 +5,17 @@ interface SidebarProps {
 	open: boolean
 }
 
-export const MenuListItem = styled.li`
+interface MenuListItemProps {
+	selected: boolean
+}
+
+export const MenuItemIcon = styled.span`
+	position: relative;
+	padding: 5px 10px;
+	border-radius: 20px;
+`
+
+export const MenuListItem = styled.li<MenuListItemProps>`
 	padding: 2px 10px;
 	transition: 0.3s;
 
@@ -22,9 +32,23 @@ export const MenuListItem = styled.li`
 		align-items: center;
 	}
 
-	&:hover {
-		background: rgba(55, 63, 72, 0.5);
+	&& {
+		&:hover {
+			background: rgba(55, 63, 72, 0.5);
+		}
+
+		&:active {
+			background: var(--color-gray-300);
+		}
 	}
+
+	${({ selected }) =>
+		selected &&
+		css`
+			${MenuItemIcon} {
+				background: var(--color-gray-300);
+			}
+		`}
 `
 
 export const MenuItemLabel = styled.span`
@@ -50,11 +74,6 @@ export const MenuList = styled.ul`
 			line-height: 19px;
 		}
 	}
-`
-
-export const MenuItemIcon = styled.span`
-	position: relative;
-	padding: 5px 10px;
 `
 
 const openedSidebarStyles = css`

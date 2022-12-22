@@ -1,5 +1,6 @@
 import { Fragment } from 'react'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 import { ROUTE_NAMES } from 'constants/routes'
 
@@ -20,6 +21,7 @@ interface SidebarProps {
 }
 
 export const Sidebar = ({ isOpen, onSidebarToggle }: SidebarProps) => {
+	const router = useRouter()
 	const messagesNumber = 12
 
 	const links = [
@@ -45,11 +47,12 @@ export const Sidebar = ({ isOpen, onSidebarToggle }: SidebarProps) => {
 			<S.MenuList>
 				{links.map(({ icon, label, href }, idx) => {
 					const isChatItem = label === 'Чат'
+					const isSelected = router.pathname.startsWith(href)
 
 					return (
 						<Fragment key={href}>
 							{idx === 0 ? (
-								<S.MenuListItem onClick={onSidebarToggle}>
+								<S.MenuListItem selected={false} onClick={onSidebarToggle}>
 									<S.ButtonExpand>
 										<S.MenuItemIcon>
 											<HamburgerIcon />
@@ -61,7 +64,7 @@ export const Sidebar = ({ isOpen, onSidebarToggle }: SidebarProps) => {
 								</S.MenuListItem>
 							) : null}
 
-							<S.MenuListItem key={href}>
+							<S.MenuListItem key={href} selected={isSelected}>
 								<Link href={href}>
 									<S.MenuItemIcon>
 										{icon}

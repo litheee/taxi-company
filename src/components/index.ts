@@ -8,6 +8,7 @@ import { PenaltiesTable } from './PenaltiesTable/PenaltiesTable'
 import { ChargesTable } from './ChargesTable/ChargesTable'
 import { AddChargeModal } from './AddChargeModal/AddChargeModal'
 import { SignInForm } from './SignInForm/SignInForm'
+import { WelcomeLoadingScreen } from './WelcomeLoadingScreen/WelcomeLoadingScreen'
 
 export {
 	UserProfile,
@@ -19,5 +20,6 @@ export {
 	PenaltiesTable,
 	ChargesTable,
 	AddChargeModal,
-	SignInForm
+	SignInForm,
+	WelcomeLoadingScreen
 }

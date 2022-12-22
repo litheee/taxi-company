@@ -23,30 +23,36 @@ export interface DrivingLicense {}
 export interface Passport {}
 
 export interface Counterparty {
-	firstName: NullableString
-	middleName: NullableString
-	lastName: NullableString
-	phone: NullableString
-	email: NullableString
-	comment: NullableString
+	firstName: string
+	middleName: string
+	lastName: string
+	phone: string
+	email: string
+	comment: string
 	// drivingLicense: DrivingLicense
 	// passport: Passport
-	kisiartCurrentAddress: NullableString
+	kisiartCurrentAddress: string
 
-	series: NullableString
-	number: NullableString
-	issuedBy: NullableString
-	issueDate: NullableString
-	registerAddress: NullableString
-	currentAddress: NullableString
-	subdivisionCode: NullableString
+	series: string
+	number: string
+	issuedBy: string
+	issueDate: string
+	registerAddress: string
+	currentAddress: string
+	subdivisionCode: string
 
-	expireDate: NullableString
-	drivingLicenseNumber: NullableString
-	issueCountry: NullableString
+	expireDate: string
+	drivingLicenseNumber: string
+	issueCountry: string
 
 	choice: string
 	contactFullName: string
 	contactPhone: string
 	profile: string
+}
+
+export interface CounterpartiesContextProps {
+	counterparty: Counterparty
+	isCounterpartyLoading: boolean
+	update: (data: Counterparty) => void
 }

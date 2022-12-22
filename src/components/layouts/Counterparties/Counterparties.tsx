@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router'
 import { MouseEvent, useState } from 'react'
+import Skeleton from '@mui/material/Skeleton'
 
 import { UserBalance, EmployeeFilter } from 'components'
 import { MenuButton, MenuNav } from 'components/common'
@@ -10,21 +11,22 @@ import { ROUTE_NAMES } from 'constants/routes'
 
 import * as S from './Counterparties.styled'
 
-export const CounterpartiesLayout = ({ children }: { children?: React.ReactNode }) => {
+export const CounterpartiesLayout = ({ children }: { children: React.ReactNode }) => {
 	const { query } = useRouter()
 	const counterpartyId = query.id as string
 	const [menuAnchorEl, setMenuAnchorEl] = useState<null | HTMLElement>(null)
 
-	const counterparties = useCounterparties()
+	const {
+		counterparty: { firstName, middleName, lastName },
+		isCounterpartyLoading
+	} = useCounterparties()
 
 	const openMenu = ({ currentTarget }: MouseEvent<HTMLButtonElement>) => {
-		counterparties.subscribe()
 		setMenuAnchorEl(currentTarget)
 	}
 
 	const closeMenu = () => {
 		setMenuAnchorEl(null)
-		counterparties.unsubscribe()
 	}
 
 	const getPathnameWithCounterpartyId = (path: string, id: string) => {
@@ -74,12 +76,14 @@ export const CounterpartiesLayout = ({ children }: { children?: React.ReactNode 
 		}
 	]
 
+	const fullName = `${lastName} ${firstName[0]}.${middleName[0]}`
+
 	return (
 		<S.CounterpartiesLayout>
 			<S.TopLine>
 				<S.TopLineLeft>
 					<MenuButton color="blue" open={Boolean(menuAnchorEl)} onClick={openMenu}>
-						Хабибаржалаев Н.Д.
+						{!isCounterpartyLoading ? fullName : <Skeleton width={151} height={17} />}
 					</MenuButton>
 
 					<S.Popover

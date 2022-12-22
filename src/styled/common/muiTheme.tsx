@@ -420,6 +420,14 @@ export const muiTheme = createTheme({
 					alignItems: 'center'
 				}
 			}
+		},
+		MuiSkeleton: {
+			styleOverrides: {
+				root: {
+					backgroundColor: 'var(--color-gray-200)',
+					transform: 'none'
+				}
+			}
 		}
 	}
 })

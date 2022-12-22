@@ -2,9 +2,11 @@ import { css } from '@emotion/react'
 
 import { reset } from './reset'
 import { variables } from './variables'
+import { fonts } from './fonts'
 
 export const global = css`
 	${reset}
+	${fonts}
 	${variables}
 
 	html,

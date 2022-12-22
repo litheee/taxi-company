@@ -13,34 +13,32 @@ import ProfileIcon from 'public/icons/profile.svg'
 import PlusIcon from 'public/icons/plus.svg'
 import DownloadIcon from 'public/icons/download.svg'
 
-type NullableString = string | null
-
 interface DrivingLicense {}
 
 interface Passport {}
 
 interface FormFields {
-	firstName: NullableString
-	middleName: NullableString
-	lastName: NullableString
-	phone: NullableString
-	email: NullableString
-	comment: NullableString
+	firstName: string
+	middleName: string
+	lastName: string
+	phone: string
+	email: string
+	comment: string
 	drivingLicense: DrivingLicense
 	passport: Passport
-	kisiartCurrentAddress: NullableString
+	kisiartCurrentAddress: string
 
-	series: NullableString
-	number: NullableString
-	issuedBy: NullableString
-	issueDate: NullableString
-	registerAddress: NullableString
-	currentAddress: NullableString
-	subdivisionCode: NullableString
+	series: string
+	number: string
+	issuedBy: string
+	issueDate: string
+	registerAddress: string
+	currentAddress: string
+	subdivisionCode: string
 
-	expireDate: NullableString
-	drivingLicenseNumber: NullableString
-	issueCountry: NullableString
+	expireDate: string
+	drivingLicenseNumber: string
+	issueCountry: string
 
 	choice: string
 	contactFullName: string
@@ -77,14 +75,12 @@ export const CounterpartyDataForm = () => {
 
 	const {
 		reset,
-		watch,
 		getValues,
 		formState: { dirtyFields }
 	} = useFormProps
 
 	const { counterparty, update } = useCounterparties()
 
-	const values = watch()
 	const isFieldsChanged = Object.keys(dirtyFields).length
 
 	// set counterparty fields
@@ -98,7 +94,6 @@ export const CounterpartyDataForm = () => {
 	// update counterparty on focus leave
 	useEffect(() => {
 		if (isFieldsChanged) {
-			console.log('up')
 			update(getValues())
 		}
 	}, [getValues, isFieldsChanged])

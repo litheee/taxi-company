@@ -1,11 +1,12 @@
 import { MouseEvent, useState } from 'react'
 import Image from 'next/image'
 import { FormProvider, useForm } from 'react-hook-form'
+import Skeleton from '@mui/material/Skeleton'
 
 import { NotificationsNumber, MenuButton } from 'components/common'
 import { Button, Checkbox } from 'ui'
 
-import { useAuth } from 'hooks'
+import { useAuth, useUser } from 'hooks'
 
 import * as S from './UserProfile.styled'
 
@@ -17,6 +18,7 @@ export const UserProfile = () => {
 	const isPopoverOpen = Boolean(popoverAnchorEl)
 
 	const { logout } = useAuth()
+	const { user, isUserLoading } = useUser()
 
 	const notifications = [
 		{ id: 0, label: 'Выбрать все', time: '13:06' },
@@ -58,7 +60,13 @@ export const UserProfile = () => {
 					<S.NotificationsCount>5</S.NotificationsCount>
 				</S.Avatar>
 
-				<span>Хабибаржалаев Нурмагомед</span>
+				{!isUserLoading ? (
+					<span>
+						{user.lastName} {user.firstName}
+					</span>
+				) : (
+					<Skeleton width={217} height={17} />
+				)}
 			</MenuButton>
 
 			<S.Popover

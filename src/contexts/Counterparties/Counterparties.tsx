@@ -1,30 +1,34 @@
-import { useCallback, useState } from 'react'
-import merge from 'lodash.merge'
-import assign from 'lodash.assign'
+import { createContext, ReactNode, useCallback, useEffect, useState } from 'react'
+// import merge from 'lodash.merge'
+// import assign from 'lodash.assign'
 
-import { useWS } from '../useWS'
-import { CounterpartyRaw, Counterparty } from './useCounterparties.types'
+import { useWS } from 'hooks'
 import { getObjectsDiffDeep } from 'utils'
+import {
+	CounterpartiesContextProps,
+	Counterparty,
+	CounterpartyRaw
+} from './Counterparties.types'
 
 //@ts-ignore
-const changeNullToEmptyString = (obj: object) => {
-	const objEntries = Object.entries(obj)
+// const changeNullToEmptyString = (obj: object) => {
+// 	const objEntries = Object.entries(obj)
 
-	return Object.fromEntries(
-		//@ts-ignore
-		objEntries.reduce((prev, [key, value]) => {
-			if (value === null) {
-				return [...prev, [key, '']]
-			}
+// 	return Object.fromEntries(
+// 		//@ts-ignore
+// 		objEntries.reduce((prev, [key, value]) => {
+// 			if (value === null) {
+// 				return [...prev, [key, '']]
+// 			}
 
-			if (typeof value === 'object') {
-				return [...prev, [key, changeNullToEmptyString(value)]]
-			}
+// 			if (typeof value === 'object') {
+// 				return [...prev, [key, changeNullToEmptyString(value)]]
+// 			}
 
-			return [...prev, [key, value]]
-		}, [])
-	)
-}
+// 			return [...prev, [key, value]]
+// 		}, [])
+// 	)
+// }
 
 const transformCounterpartyRaw = (counterparty: CounterpartyRaw): Counterparty => {
 	const {
@@ -108,7 +112,9 @@ const transformCounterparty = (counterparty: Counterparty): Partial<Counterparty
 	}
 }
 
-export const useCounterparties = () => {
+export const CounterpartiesContext = createContext({} as CounterpartiesContextProps)
+
+export const CounterpartiesProvider = ({ children }: { children: ReactNode }) => {
 	const defaultValues: Counterparty = {
 		firstName: '',
 		middleName: '',
@@ -133,10 +139,12 @@ export const useCounterparties = () => {
 		profile: ''
 	}
 
-	const [counterparty, setCounterparty] = useState<Counterparty>()
-	const { ws, send } = useWS()
+	const [counterparty, setCounterparty] = useState<Counterparty>(defaultValues)
+	const [subscribed, setSubscribed] = useState(false)
+	const [isCounterpartyLoading, setCounterpartyLoading] = useState(true)
+	const ws = useWS()
 
-	ws.onmessage = (event) => {
+	const onMessage = useCallback((event: MessageEvent<any>) => {
 		const { data, block } = JSON.parse(event.data)
 
 		if (block === 'contragent') {
@@ -151,20 +159,27 @@ export const useCounterparties = () => {
 				...counterparty,
 				...withoutUndefined
 			}))
+			setCounterpartyLoading(false)
 		}
-	}
+	}, [])
 
-	const subscribe = useCallback(() => {
-		send({ command: 'subscribe', block: 'contragent', id: 4549 })
-	}, [send])
+	useEffect(() => {
+		if (ws.isReady && ws.instance && !subscribed) {
+			ws.send({ command: 'subscribe', block: 'contragent', id: 4549 })
+			ws.instance.addEventListener('message', onMessage)
+			setSubscribed(true)
+		}
 
-	const unsubscribe = useCallback(() => {
-		send({ command: 'unsubscribe', block: 'contragent', id: 4549 })
-	}, [send])
+		return () => {
+			if (subscribed) {
+				ws.send({ command: 'unsubscribe', block: 'contragent', id: 4549 })
+				ws.instance?.removeEventListener('message', onMessage)
+			}
+		}
+	}, [ws.isReady, ws.instance, onMessage, subscribed, setSubscribed])
 
 	const update = (newData: Counterparty) => {
-		console.log('update')
-		send({
+		ws.send({
 			command: 'update',
 			block: 'contragent',
 			id: 4549,
@@ -172,14 +187,18 @@ export const useCounterparties = () => {
 			data: transformCounterparty(getObjectsDiffDeep(counterparty, newData))
 		})
 
-		//@ts-ignore
 		setCounterparty(newData)
 	}
 
-	return {
+	const value: CounterpartiesContextProps = {
 		counterparty,
-		subscribe,
-		unsubscribe,
+		isCounterpartyLoading,
 		update
 	}
+
+	return (
+		<CounterpartiesContext.Provider value={value}>
+			{children}
+		</CounterpartiesContext.Provider>
+	)
 }

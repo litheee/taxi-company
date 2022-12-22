@@ -14,12 +14,20 @@ interface ClockButtonProps {
 export { Divider }
 
 export const ClockButton = styled.button<ClockButtonProps>`
+	position: absolute;
+	left: 50%;
 	display: flex;
 	align-items: center;
 	width: min-content;
 	padding: 5px 8px;
+	margin-left: -30px;
 	border-radius: 5px;
+	transform: translateX(-50%);
 	transition: 0.3s;
+
+	&:hover {
+		background: var(--color-gray-300);
+	}
 
 	span {
 		font-size: 45px;

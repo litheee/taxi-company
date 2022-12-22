@@ -1,23 +1,41 @@
+import { AxiosResponse } from 'axios'
 import { API } from 'core/axios'
 
-interface Login {
-	phone?: string
-	code?: string
-	logout?: boolean
-}
+import {
+	ConfirmCode,
+	ErrorResponse,
+	HashResponse,
+	Response,
+	SendCode
+} from './auth.types'
 
-interface LoginRes {
-	success: boolean
-	field?: string
-	message?: string
-	hash?: string
-	id?: string
-}
-
-export const login = async ({ phone, code, logout }: Login) => {
-	const { data } = await API.post<LoginRes>(
-		logout ? '/login.php?/logout=1' : `/login.php?auth=${1}&phone=${phone}&code=${code}`
+export const checkAuth = async () => {
+	const { data } = await API.get<HashResponse, AxiosResponse<HashResponse, Response>>(
+		'/login.php'
 	)
+
+	return data
+}
+
+export const sendCode = async ({ phone }: SendCode) => {
+	const { data } = await API.post<Response, AxiosResponse<Response, ErrorResponse>>(
+		`/login.php?auth=${1}&phone=${phone}`
+	)
+
+	return data
+}
+
+export const confirmCode = async ({ phone, code }: ConfirmCode) => {
+	const { data } = await API.post<
+		HashResponse,
+		AxiosResponse<HashResponse, ErrorResponse>
+	>(`/login.php?auth=${1}&phone=${phone}&code=${code}`)
+
+	return data
+}
+
+export const logout = async () => {
+	const { data } = await API.post('/login.php?logout=1')
 
 	return data
 }

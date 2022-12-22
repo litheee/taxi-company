@@ -4,7 +4,7 @@ import { SignInForm } from 'components'
 
 import * as S from 'styled/pages/SignIn'
 
-import Logo from 'public/icons/logo-text.svg'
+import LogoIcon from 'public/icons/logo-text.svg'
 
 const SignInPage = () => {
 	return (
@@ -15,7 +15,7 @@ const SignInPage = () => {
 
 			<S.SignInPage>
 				<S.Logo>
-					<Logo />
+					<LogoIcon />
 				</S.Logo>
 
 				<SignInForm />

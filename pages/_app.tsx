@@ -6,9 +6,11 @@ import { Hydrate, QueryClient, QueryClientProvider } from '@tanstack/react-query
 
 import { RootLayout } from 'components/layouts'
 
+import { AuthProvider, UserProvider } from 'contexts'
+import { WSProvider } from 'contexts'
+
 import { global, muiTheme } from 'styled/common'
 import { createEmotionCache } from 'styled/common/createEmotionCache'
-import { AuthProvider } from 'contexts'
 
 const clientSideEmotionCache = createEmotionCache()
 
@@ -41,20 +43,24 @@ export default function App({
 	const LayoutComponent = isLayoutNotNeeded ? Fragment : RootLayout
 
 	return (
-		<CacheProvider value={emotionCache}>
-			<ThemeProvider theme={muiTheme}>
-				<Global styles={global} />
-
-				<QueryClientProvider client={queryClient}>
+		<QueryClientProvider client={queryClient}>
+			<Hydrate state={pageProps.dehydratedState}>
+				<WSProvider>
 					<AuthProvider>
-						<LayoutComponent>
-							<Hydrate state={pageProps.dehydratedState}>
-								<Component {...pageProps} />
-							</Hydrate>
-						</LayoutComponent>
+						<UserProvider>
+							<CacheProvider value={emotionCache}>
+								<ThemeProvider theme={muiTheme}>
+									<Global styles={global} />
+
+									<LayoutComponent>
+										<Component {...pageProps} />
+									</LayoutComponent>
+								</ThemeProvider>
+							</CacheProvider>
+						</UserProvider>
 					</AuthProvider>
-				</QueryClientProvider>
-			</ThemeProvider>
-		</CacheProvider>
+				</WSProvider>
+			</Hydrate>
+		</QueryClientProvider>
 	)
 }
