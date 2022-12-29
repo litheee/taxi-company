@@ -7,6 +7,9 @@ export const BankCardField = ({ name, ...props }: TextFieldProps) => (
 		name={name}
 		label="Номер карты"
 		maskProps={{ mask: '9999 9999 9999 9999' }}
+		inputProps={{
+			name
+		}}
 		{...props}
 	/>
 )

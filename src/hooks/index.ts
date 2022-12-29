@@ -1,6 +1,5 @@
 import { useAuth } from './useAuth'
 import { useWS } from './useWS'
-import { useCounterparties } from './useCounterparties'
-import { useUser } from './useUser'
+import { useUser } from './useUser/useUser'
 
-export { useAuth, useWS, useCounterparties, useUser }
+export { useAuth, useWS, useUser }

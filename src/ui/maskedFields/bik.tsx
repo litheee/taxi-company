@@ -7,6 +7,9 @@ export const BikField = ({ name, ...props }: TextFieldProps) => (
 		name={name}
 		label="БИК"
 		maskProps={{ mask: '9 9 9 9 9 9 9 9 9' }}
+		inputProps={{
+			name
+		}}
 		{...props}
 	/>
 )

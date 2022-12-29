@@ -7,6 +7,9 @@ export const CorporateAccountField = ({ name, ...props }: TextFieldProps) => (
 		name={name}
 		label="К/C"
 		maskProps={{ mask: '9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9' }}
+		inputProps={{
+			name
+		}}
 		{...props}
 	/>
 )

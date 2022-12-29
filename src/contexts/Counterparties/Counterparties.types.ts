@@ -52,7 +52,10 @@ export interface Counterparty {
 }
 
 export interface CounterpartiesContextProps {
-	counterparty: Counterparty
+	counterparty?: Counterparty
 	isCounterpartyLoading: boolean
+	focusedFields: string[]
 	update: (data: Counterparty) => void
+	focus: (fieldName: string) => void
+	blur: (fieldName: string) => void
 }

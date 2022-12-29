@@ -11,7 +11,11 @@ export const AuthContext = createContext({} as AuthContextProps)
 
 export const AuthProvider = ({ children }: { children: ReactNode }): JSX.Element => {
 	const router = useRouter()
-	const ws = useWS()
+	const ws = useWS({
+		block: '',
+		subscription: false,
+		listener: false
+	})
 
 	const [showWelcomeScreen, setShowWelcomeScreen] = useState(false)
 

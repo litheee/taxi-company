@@ -13,6 +13,9 @@ export const LicensePlateField = ({ name, ...props }: TextFieldProps) => {
 			maskProps={{
 				mask: '9 999 99'
 			}}
+			inputProps={{
+				name
+			}}
 			// maskProps={{
 			// 	mask,
 			// 	beforeMaskedStateChange: ({ nextState }) => {

@@ -7,5 +7,8 @@ export const KppField = ({ name, ...props }: TextFieldProps) => (
 		name={name}
 		label="КПП"
 		maskProps={{ mask: '9 9 9 9 9 9 9 9 9' }}
+		inputProps={{
+			name
+		}}
 	/>
 )

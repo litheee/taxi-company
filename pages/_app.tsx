@@ -6,7 +6,7 @@ import { Hydrate, QueryClient, QueryClientProvider } from '@tanstack/react-query
 
 import { RootLayout } from 'components/layouts'
 
-import { AuthProvider, UserProvider } from 'contexts'
+import { AuthProvider } from 'contexts'
 import { WSProvider } from 'contexts'
 
 import { global, muiTheme } from 'styled/common'
@@ -47,17 +47,15 @@ export default function App({
 			<Hydrate state={pageProps.dehydratedState}>
 				<WSProvider>
 					<AuthProvider>
-						<UserProvider>
-							<CacheProvider value={emotionCache}>
-								<ThemeProvider theme={muiTheme}>
-									<Global styles={global} />
+						<CacheProvider value={emotionCache}>
+							<ThemeProvider theme={muiTheme}>
+								<Global styles={global} />
 
-									<LayoutComponent>
-										<Component {...pageProps} />
-									</LayoutComponent>
-								</ThemeProvider>
-							</CacheProvider>
-						</UserProvider>
+								<LayoutComponent>
+									<Component {...pageProps} />
+								</LayoutComponent>
+							</ThemeProvider>
+						</CacheProvider>
 					</AuthProvider>
 				</WSProvider>
 			</Hydrate>

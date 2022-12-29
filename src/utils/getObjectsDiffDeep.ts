@@ -1,8 +1,4 @@
-interface Obj {
-	[key: string]: any
-}
-
-export const getObjectsDiffDeep = (obj1: Obj, obj2: Obj) => {
+export const getObjectsDiffDeep = (obj1: any, obj2: any): any => {
 	const diffObj = Array.isArray(obj2) ? [] : {}
 
 	Object.getOwnPropertyNames(obj2).forEach(function (prop) {

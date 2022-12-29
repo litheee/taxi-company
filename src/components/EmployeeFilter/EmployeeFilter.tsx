@@ -1,6 +1,8 @@
 import { MouseEvent, useState } from 'react'
+import { FormProvider, useForm } from 'react-hook-form'
 
-import { Menu, MenuItem } from 'ui'
+import { MenuItem } from 'ui'
+import { SearchField } from 'components/common'
 
 import * as S from './EmployeeFilter.styled'
 
@@ -9,9 +11,35 @@ import CrossIcon from 'public/icons/cross.svg'
 import ArrowDownIcon from 'public/icons/arrow-down.svg'
 
 export const EmployeeFilter = () => {
+	const useFormProps = useForm()
 	const [menuAnchorEl, setMenuAnchorEl] = useState<null | HTMLElement>(null)
 
-	const employees = ['Директор', 'Управляющий', 'Водитель', 'Диспетчер', 'Механик']
+	const roles = [
+		{
+			name: 'supplier',
+			label: 'Поставщик',
+			roles: [
+				{ name: 'supplier1', label: 'Поставщик #1' },
+				{ name: 'supplier2', label: 'Поставщик #2' }
+			]
+		},
+		{
+			name: 'employee',
+			label: 'Сотрудник',
+			roles: [
+				{ name: 'mechanic', label: 'Механик' },
+				{ name: 'chiefAccountant', label: 'Главный бухгалтер' },
+				{ name: 'employee1', label: 'Сотрудник №...' },
+				{ name: 'employee2', label: 'Сотрудник №...' },
+				{ name: 'employee3', label: 'Сотрудник №...' },
+				{ name: 'employee4', label: 'Сотрудник №...' },
+				{ name: 'employee5', label: 'Сотрудник №...' },
+				{ name: 'employee6', label: 'Сотрудник №...' },
+				{ name: 'employee7', label: 'Сотрудник №...' },
+				{ name: 'employee8', label: 'Сотрудник №...' }
+			]
+		}
+	]
 
 	const openMenu = ({ currentTarget }: MouseEvent<HTMLButtonElement>) => {
 		setMenuAnchorEl(currentTarget)
@@ -21,52 +49,44 @@ export const EmployeeFilter = () => {
 		setMenuAnchorEl(null)
 	}
 
-	const employeesMenuItems = employees.map((employee) => {
-		return (
-			<MenuItem key={employee} onClick={closeMenu}>
-				{employee}
-			</MenuItem>
-		)
-	})
-
 	return (
 		<S.EmployeeFilter>
-			<S.Chip>
+			<S.MenuButton open={Boolean(menuAnchorEl)} onClick={openMenu}>
 				<span>
-					Водитель
-					<button>
-						<CrossIcon />
-					</button>
-				</span>
-			</S.Chip>
-
-			<S.Chip>
-				<span>
-					Собственник
-					<button>
-						<CrossIcon />
-					</button>
-				</span>
-			</S.Chip>
-
-			<S.EmployeeAdd>
-				<S.EmployeeAddButton>
 					<PlusIcon />
-				</S.EmployeeAddButton>
-
-				<button>Поставщик</button>
-
-				<S.MenuButton open={Boolean(menuAnchorEl)} onClick={openMenu}>
-					Сотрудник
 					<span>
 						<ArrowDownIcon />
 					</span>
-				</S.MenuButton>
-			</S.EmployeeAdd>
+				</span>
+			</S.MenuButton>
 
-			<Menu open={Boolean(menuAnchorEl)} anchorEl={menuAnchorEl} onClose={closeMenu}>
-				{employeesMenuItems}
-			</Menu>
+			<S.RolesMenu
+				open={Boolean(menuAnchorEl)}
+				anchorEl={menuAnchorEl}
+				onClose={closeMenu}
+			>
+				<FormProvider {...useFormProps}>
+					<SearchField name="search" placeholder="Поиск" />
+				</FormProvider>
+
+				<S.RolesMenuList>
+					{roles.map(({ name, label, roles }) => {
+						return (
+							<S.RolesListContainer key={name}>
+								<span>{label}</span>
+
+								<S.RolesList>
+									{roles.map(({ name, label }) => (
+										<MenuItem key={name} onClick={closeMenu}>
+											{label}
+										</MenuItem>
+									))}
+								</S.RolesList>
+							</S.RolesListContainer>
+						)
+					})}
+				</S.RolesMenuList>
+			</S.RolesMenu>
 		</S.EmployeeFilter>
 	)
 }

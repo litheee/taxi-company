@@ -1,14 +1,21 @@
 import { ReactNode } from 'react'
 
-export type Command = 'subscribe' | 'unsubscribe' | 'update' | 'authorize'
-export type Block = 'contragent'
+export type Command =
+	| 'subscribe'
+	| 'unsubscribe'
+	| 'update'
+	| 'authorize'
+	| 'focus'
+	| 'blur'
+export type Block = 'contragent' | 'user' | ''
 
 export interface Send<T> {
 	command: Command
 	block?: Block
-	id: number | string
+	id?: number | string
 	hash?: string
 	data?: T
+	field?: string
 }
 
 export interface WSProviderProps {

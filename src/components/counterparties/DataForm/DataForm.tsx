@@ -1,11 +1,11 @@
 import { FormProvider, useForm } from 'react-hook-form'
-import { useEffect } from 'react'
+import { FocusEvent, useEffect, useRef } from 'react'
 
 import { AvatarUpload, Heading, SearchField } from 'components/common'
 import { Select, TextField, Button, Textarea, InputMask } from 'ui'
 import { DateField, PhoneField } from 'ui/maskedFields'
 
-import { useCounterparties } from 'hooks'
+import { useCounterparties } from 'contexts'
 
 import * as S from './DataForm.styled'
 
@@ -24,8 +24,8 @@ interface FormFields {
 	phone: string
 	email: string
 	comment: string
-	drivingLicense: DrivingLicense
-	passport: Passport
+	// drivingLicense: DrivingLicense
+	// passport: Passport
 	kisiartCurrentAddress: string
 
 	series: string
@@ -73,13 +73,14 @@ export const CounterpartyDataForm = () => {
 		}
 	})
 
+	const formRef = useRef<HTMLFormElement>(null)
+	const { counterparty, focusedFields, update, focus, blur } = useCounterparties()
+
 	const {
 		reset,
 		getValues,
 		formState: { dirtyFields }
 	} = useFormProps
-
-	const { counterparty, update } = useCounterparties()
 
 	const isFieldsChanged = Object.keys(dirtyFields).length
 
@@ -98,15 +99,51 @@ export const CounterpartyDataForm = () => {
 		}
 	}, [getValues, isFieldsChanged])
 
+	useEffect(() => {
+		if (!formRef.current) return
+
+		const allInputs = formRef.current.querySelectorAll('input, textarea') as NodeListOf<
+			HTMLInputElement | HTMLTextAreaElement
+		>
+
+		allInputs.forEach((input) => {
+			if (focusedFields.includes(input.name)) {
+				input.readOnly = true
+			} else {
+				input.readOnly = false
+			}
+		})
+	}, [formRef, focusedFields])
+
 	const options = [
 		{ label: 'Выбрать 1', value: 'choose1' },
 		{ label: 'Выбрать 2', value: 'choose2' },
 		{ label: 'Выбрать 3', value: 'choose3' }
 	]
 
+	const onFormFocus = ({ target }: FocusEvent<HTMLFormElement, Element>) => {
+		const { tagName, name } = target
+
+		if (tagName === 'INPUT' || tagName === 'TEXTAREA') {
+			focus(name)
+		}
+
+		if (!focusedFields.includes(name)) {
+			target.readOnly = false
+		}
+	}
+
+	const onFormBlur = ({ target }: FocusEvent<HTMLFormElement, Element>) => {
+		const { tagName, name } = target
+
+		if (tagName === 'INPUT' || tagName === 'TEXTAREA') {
+			blur(name)
+		}
+	}
+
 	return (
 		<FormProvider {...useFormProps}>
-			<S.CounterpartyDataForm>
+			<S.CounterpartyDataForm ref={formRef} onFocus={onFormFocus} onBlur={onFormBlur}>
 				<S.FirstColumn>
 					<AvatarUpload icon={<ProfileIcon />} />
 

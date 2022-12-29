@@ -1,10 +1,9 @@
 import { AuthContext, AuthProvider } from './Auth/Auth'
 import { WSContext, WSProvider } from './WS/WS'
 import {
-	CounterpartiesContext,
-	CounterpartiesProvider
+	CounterpartiesProvider,
+	useCounterparties
 } from './Counterparties/Counterparties'
-import { UserProvider, UserContext } from './User/User'
 
 export {
 	AuthContext,
@@ -12,7 +11,5 @@ export {
 	WSContext,
 	WSProvider,
 	CounterpartiesProvider,
-	CounterpartiesContext,
-	UserProvider,
-	UserContext
+	useCounterparties
 }

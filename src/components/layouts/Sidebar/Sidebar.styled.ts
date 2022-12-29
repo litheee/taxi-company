@@ -64,9 +64,9 @@ export const MenuList = styled.ul`
 	display: flex;
 	flex-direction: column;
 	width: 100%;
-	padding: 10px 0 25px;
 
 	& > ${MenuListItem}:first-of-type {
+		padding-top: 10px;
 		${MenuItemLabel} {
 			font-family: var(--font-lato);
 			font-weight: 900;
@@ -92,10 +92,12 @@ export const Sidebar = styled.aside<SidebarProps>`
 	left: 0;
 	display: flex;
 	flex-shrink: 0;
+	padding-bottom: 25px;
 	width: 62px;
 	min-height: 100vh;
 	overflow: hidden;
 	transition: 0.3s ease-out;
+	box-sizing: border-box;
 	z-index: 100;
 
 	&:hover {
