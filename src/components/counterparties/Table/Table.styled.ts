@@ -23,6 +23,7 @@ export const CounterpartiesTable = styled.div`
 	width: 100%;
 	height: 100%;
 	background: var(--color-gray-300);
+	border-radius: 5px 5px 0 0;
 
 	${TableContainer} {
 		margin-top: 20px;

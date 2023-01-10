@@ -74,7 +74,7 @@ export const CarRentedCard = ({ nextPaymentStatus, status, img }: CarRentedCardP
 				</S.CarStatus>
 
 				{img ? (
-					<Image src={img} width={350} height={200} alt="Автомобиль" />
+					<Image src={img} alt="Автомобиль" />
 				) : (
 					<S.CarImagePlaceholder>
 						<CarIcon width={160} height={160} viewBox="0 0 84 84" />

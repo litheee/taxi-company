@@ -48,7 +48,4 @@ export const global = css`
 		display: flex;
 		flex-shrink: 0;
 	}
-
-	/* .MuiPaper-root.filter-select-paper {
-	} */
 `

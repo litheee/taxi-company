@@ -81,7 +81,6 @@ export const muiTheme = createTheme({
 			}
 		},
 		MuiTab: {
-			defaultProps: {},
 			styleOverrides: {
 				root: {
 					display: 'flex',
@@ -102,7 +101,6 @@ export const muiTheme = createTheme({
 					transition: '0.3s',
 
 					'&.Mui-selected': {
-						background: 'var(--color-gray-200)',
 						color: '#fff'
 					},
 
@@ -426,6 +424,34 @@ export const muiTheme = createTheme({
 				root: {
 					backgroundColor: 'var(--color-gray-200)',
 					transform: 'none'
+				}
+			}
+		},
+		MuiTooltip: {
+			defaultProps: {
+				PopperProps: {
+					disablePortal: true
+				}
+			},
+			styleOverrides: {
+				popper: {
+					'&[data-popper-placement*="bottom"] .MuiTooltip-tooltip': {
+						marginTop: '0 !important'
+					}
+				},
+				tooltip: {
+					display: 'flex',
+					flexWrap: 'wrap',
+					maxWidth: 240,
+					gap: 10,
+					padding: '10px 15px',
+					background: '#181C20',
+					borderRadius: '2px',
+					fontFamily: 'var(--font-ubuntu)',
+					fontWeight: 500,
+					fontSize: 15,
+					lineHeight: '17px',
+					boxSizing: 'border-box'
 				}
 			}
 		}

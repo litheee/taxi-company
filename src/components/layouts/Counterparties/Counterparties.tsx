@@ -2,12 +2,16 @@ import { useRouter } from 'next/router'
 import { MouseEvent, useState } from 'react'
 import Skeleton from '@mui/material/Skeleton'
 
-import { UserBalance, EmployeeFilter } from 'components'
+import { UserBalance } from 'components'
 import { MenuButton, MenuNav } from 'components/common'
-import { CounterpartyDataForm } from 'components/counterparties'
+import {
+	CounterpartyDataForm,
+	CounterpartiesRolesSelect
+} from 'components/counterparties'
 
 import { useCounterparties } from 'contexts'
 import { ROUTE_NAMES } from 'constants/routes'
+import { replaceIdPathname } from 'utils'
 
 import * as S from './Counterparties.styled'
 
@@ -26,50 +30,31 @@ export const CounterpartiesLayout = ({ children }: { children: React.ReactNode }
 		setMenuAnchorEl(null)
 	}
 
-	const getPathnameWithCounterpartyId = (path: string, id: string) => {
-		return path.replace('[id]', id)
-	}
-
 	const nav = [
 		{ name: 'Контрагенты', href: ROUTE_NAMES.COUNTERPARTIES },
 		{
 			name: 'Приход/Расход',
-			href: getPathnameWithCounterpartyId(
-				ROUTE_NAMES.COUNTERPARTIES_INCOME_EXPENSE,
-				counterpartyId
-			)
+			href: replaceIdPathname(ROUTE_NAMES.COUNTERPARTIES_INCOME_EXPENSE, counterpartyId)
 		},
 		{
 			name: 'История аренды',
-			href: getPathnameWithCounterpartyId(
-				ROUTE_NAMES.COUNTERPARTIES_RENT_HISTORY,
-				counterpartyId
-			)
+			href: replaceIdPathname(ROUTE_NAMES.COUNTERPARTIES_RENT_HISTORY, counterpartyId)
 		},
 		{
 			name: 'Реквизиты',
-			href: getPathnameWithCounterpartyId(
-				ROUTE_NAMES.COUNTERPARTIES_REQUISITES,
-				counterpartyId
-			)
+			href: replaceIdPathname(ROUTE_NAMES.COUNTERPARTIES_REQUISITES, counterpartyId)
 		},
 		{
 			name: 'Штрафы',
-			href: getPathnameWithCounterpartyId(
-				ROUTE_NAMES.COUNTERPARTIES_PENALTIES,
-				counterpartyId
-			)
+			href: replaceIdPathname(ROUTE_NAMES.COUNTERPARTIES_PENALTIES, counterpartyId)
 		},
 		{
 			name: 'Списания',
-			href: getPathnameWithCounterpartyId(
-				ROUTE_NAMES.COUNTERPARTIES_CHARGES,
-				counterpartyId
-			)
+			href: replaceIdPathname(ROUTE_NAMES.COUNTERPARTIES_CHARGES, counterpartyId)
 		},
 		{
 			name: 'Автомобили',
-			href: getPathnameWithCounterpartyId(ROUTE_NAMES.COUNTERPARTIES_CARS, counterpartyId)
+			href: replaceIdPathname(ROUTE_NAMES.COUNTERPARTIES_CARS, counterpartyId)
 		}
 	]
 
@@ -86,7 +71,7 @@ export const CounterpartiesLayout = ({ children }: { children: React.ReactNode }
 						open={Boolean(menuAnchorEl)}
 						onClick={!isCounterpartyLoading ? openMenu : undefined}
 					>
-						{!isCounterpartyLoading ? fullName : <Skeleton width={151} height={17} />}
+						{!isCounterpartyLoading ? fullName : <Skeleton width={89} height={17} />}
 					</MenuButton>
 
 					<S.Popover
@@ -103,7 +88,7 @@ export const CounterpartiesLayout = ({ children }: { children: React.ReactNode }
 
 					<S.Divider $orientation="vertical" />
 
-					<EmployeeFilter />
+					<CounterpartiesRolesSelect />
 				</S.TopLineLeft>
 
 				<MenuNav nav={nav} />

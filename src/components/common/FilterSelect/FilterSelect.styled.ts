@@ -1,32 +1,28 @@
+import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 
 import { Select } from 'ui'
 
 import { Placeholder } from 'ui/Select/Select.styled'
 
+interface FilterSelectProps {}
+
 export { Placeholder }
 
-export const FilterSelect = styled(Select)`
+export const FilterSelect = styled(Select)<FilterSelectProps>`
 	position: relative;
 	padding: 0;
-	align-items: stretch;
-	background: var(--color-gray-300);
-	border: 2px solid transparent;
-	filter: drop-shadow(1px 3px 9px rgba(122, 122, 122, 0.4));
-	background-clip: padding-box;
-	z-index: 0;
 
-	&::before {
-		content: '';
-		position: absolute;
-		top: 0;
-		left: 0;
-		right: 0;
-		bottom: 0;
-		margin: -2px;
-		border-radius: inherit;
-		background: var(--gradient-blue);
-		z-index: -1;
+	&&& {
+		.MuiSelect-select {
+			padding-right: 33px;
+		}
+	}
+
+	&& {
+		.MuiSelect-select {
+			background: #000;
+		}
 	}
 
 	&:hover {
@@ -43,17 +39,40 @@ export const FilterSelect = styled(Select)`
 		}
 	}
 
-	.MuiInputBase-input {
+	.MuiPaper-root {
+		z-index: 1600;
+		margin-top: 0;
+		border-radius: 0 0 5px 5px;
+		box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.25);
+		background: var(--color-gray-200);
+	}
+
+	.MuiSelect-icon {
+		z-index: 10;
+		stroke: #fff;
+	}
+
+	.MuiSelect-select {
+		position: relative;
 		display: flex;
 		align-items: center;
 		border-radius: 5px;
-		background: var(--color-gray-300) !important;
+		background: #000;
 		font-size: 15px;
 		font-weight: 500;
-	}
 
-	.MuiMenu-paper {
-		margin-top: 2px;
+		&::before {
+			content: '';
+			position: absolute;
+			inset: 0;
+			padding: 2px;
+			background: var(--gradient-blue);
+			border-radius: inherit;
+			mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+			-webkit-mask-composite: xor;
+			mask-composite: exclude;
+			transition: 0.3s;
+		}
 	}
 
 	${Placeholder} {
@@ -61,4 +80,14 @@ export const FilterSelect = styled(Select)`
 		font-size: 15px;
 		font-weight: 500;
 	}
+
+	${({ open }) =>
+		open &&
+		css`
+			.MuiSelect-select {
+				&::before {
+					border-radius: 5px 5px 0 0;
+				}
+			}
+		`}
 `

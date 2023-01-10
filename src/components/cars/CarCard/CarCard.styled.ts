@@ -24,7 +24,8 @@ export const CarCard = styled(Box)`
 	display: flex;
 	flex-direction: column;
 	align-items: stretch;
-	width: 350px;
+	width: 100%;
+	min-width: 350px;
 	padding: 0;
 `
 
@@ -102,7 +103,10 @@ export const AvailableTime = styled(Row)`
 
 export const CarImage = styled.div`
 	position: relative;
-	height: 200px;
+
+	img {
+		width: 100%;
+	}
 `
 
 export const CarStatus = styled.div`

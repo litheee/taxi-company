@@ -30,7 +30,7 @@ export const useWS = <T>(props: useWSProps<T>) => {
 	const [focusedFields, setFocusedFields] = useState<string[]>([])
 	const [isLoading, setLoading] = useState(Boolean(listener))
 	const [isSubscribed, setSubscribed] = useState(false)
-	console.log('focusedFields', focusedFields)
+
 	const subscribe = () => {
 		send({ command: 'subscribe', block, id })
 	}

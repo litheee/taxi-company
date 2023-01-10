@@ -13,7 +13,6 @@ export const Filters = styled.div`
 	display: flex;
 	gap: 20px;
 	padding: 15px 15px 0;
-	border-radius: 5px 5px 0 0;
 
 	${TextField} {
 		max-width: 280px;

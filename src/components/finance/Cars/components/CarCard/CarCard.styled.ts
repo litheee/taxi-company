@@ -7,6 +7,8 @@ import { Currency } from 'components/common/CurrencyAmount/CurrencyAmount.styled
 export { Divider, Text }
 
 export const CarCard = styled(Box)`
+	padding: 15px 20px;
+
 	${Divider} {
 		margin: 10px 0;
 	}

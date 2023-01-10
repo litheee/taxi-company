@@ -1,34 +1,46 @@
+import { css } from '@emotion/react'
 import styled from '@emotion/styled'
+import NextLink from 'next/link'
 
 import { ButtonGroup } from 'styled/components'
 
-export const MenuNav = styled(ButtonGroup)`
-	a {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		font-weight: 500;
-		font-size: 15px;
-		line-height: 17px;
-		padding: 7px 10px;
-		transition: 0.3s;
+interface LinkProps {
+	active: boolean
+}
 
-		&:first-of-type {
-			border-top-left-radius: 5px;
-			border-bottom-left-radius: 5px;
-		}
+export const MenuNav = styled(ButtonGroup)``
 
-		&:last-of-type {
-			border-top-right-radius: 5px;
-			border-bottom-right-radius: 5px;
-		}
+export const Link = styled(NextLink)<LinkProps>`
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-weight: 500;
+	font-size: 15px;
+	line-height: 17px;
+	padding: 7px 10px;
+	transition: 0.3s;
 
-		&:hover {
-			background: #599109;
-		}
-
-		&:active {
-			background: #19560a;
-		}
+	&:first-of-type {
+		border-top-left-radius: 5px;
+		border-bottom-left-radius: 5px;
 	}
+
+	&:last-of-type {
+		border-top-right-radius: 5px;
+		border-bottom-right-radius: 5px;
+	}
+
+	&:hover {
+		background: #599109;
+	}
+
+	&:active {
+		background: #19560a;
+	}
+
+	${({ active }) =>
+		active &&
+		css`
+			background: #19560a;
+		`}
 `

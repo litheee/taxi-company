@@ -3,8 +3,12 @@ import styled from '@emotion/styled'
 import { Popover as MuiPopover } from 'ui'
 import { Box, ButtonGroup } from 'styled/components'
 
-import { Currency, CurrencyAmount } from 'components/common/CurrencyAmount/CurrencyAmount.styled'
+import {
+	Currency,
+	CurrencyAmount
+} from 'components/common/CurrencyAmount/CurrencyAmount.styled'
 import { MenuButton } from 'components/common/MenuButton/MenuButton.styled'
+import { Button } from 'ui/Button/Button.styled'
 
 export { ButtonGroup }
 
@@ -23,6 +27,16 @@ export const Popover = styled(MuiPopover)`
 		& > *:not(:last-child) {
 			margin-bottom: 15px;
 		}
+	}
+
+	${ButtonGroup} {
+		.MuiTab-root:not(.Mui-selected) {
+			background: var(--color-gray-200);
+		}
+	}
+
+	${Button} {
+		box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.4);
 	}
 `
 

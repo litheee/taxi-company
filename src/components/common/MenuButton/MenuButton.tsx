@@ -6,14 +6,23 @@ import ArrowDownIcon from 'public/icons/arrow-down.svg'
 
 interface MenuButtonProps {
 	open: boolean
+	arrowPlacement?: 'left' | 'right'
 	color?: 'blue' | 'green'
 	onClick?: MouseEventHandler<{}>
 }
 
-export const MenuButton: FC<PropsWithChildren<MenuButtonProps>> = ({ children, open, color, ...props }) => (
+export const MenuButton: FC<PropsWithChildren<MenuButtonProps>> = ({
+	children,
+	open,
+	color,
+	arrowPlacement = 'right',
+	...props
+}) => (
 	<S.MenuButton {...props} open={open} color={color}>
+		{arrowPlacement === 'left' ? <ArrowDownIcon /> : null}
+
 		{children}
 
-		<ArrowDownIcon />
+		{arrowPlacement === 'right' ? <ArrowDownIcon /> : null}
 	</S.MenuButton>
 )

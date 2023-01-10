@@ -1,9 +1,6 @@
 import styled from '@emotion/styled'
 
-import {
-	FilterSelect,
-	Placeholder
-} from 'components/common/FilterSelect/FilterSelect.styled'
+import { Placeholder } from 'components/common/FilterSelect/FilterSelect.styled'
 import { SelectContainer } from 'ui/Select/Select.styled'
 import { TextField } from 'ui/TextField/TextField.styled'
 
@@ -18,7 +15,7 @@ export const Filters = styled.div`
 		margin-right: 15px;
 	}
 
-	${TextField} {
+	& > ${TextField} {
 		flex-grow: 1;
 		margin-right: 20px;
 	}
@@ -28,9 +25,7 @@ export const Filters = styled.div`
 		flex-shrink: 0;
 	}
 
-	${FilterSelect} {
-		.MuiInputBase-input {
-			background: #000 !important;
-		}
+	& > span {
+		color: var(--color-gray-100);
 	}
 `

@@ -45,7 +45,7 @@ export const Form = styled.form`
 `
 
 export const ChargeScheduleSelect = styled(Select)`
-	&& {
+	&&& {
 		background: transparent;
 		box-shadow: none;
 		height: 17px;
@@ -65,6 +65,20 @@ export const ChargeScheduleSelect = styled(Select)`
 
 		&[aria-expanded='true'] {
 			background: transparent;
+		}
+	}
+
+	.MuiPaper-root {
+		margin-top: 6px;
+		margin-left: -10px;
+		padding: 10px;
+		box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.25);
+		background: var(--color-gray-200);
+
+		.MuiMenuItem-root {
+			font-weight: 500;
+			font-size: 15px;
+			line-height: 17px;
 		}
 	}
 `

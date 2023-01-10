@@ -9,6 +9,8 @@ import { CarRentedCard } from './CarCard/CarRentedCard'
 import { CarStatus } from './CarStatus/CarStatus'
 import { CarsListFilter } from './CarsListFilter/CarsListFilter'
 import { CarAssignRentForm } from './AssignRentForm/AssignRentForm'
+import { CarStatusSelect } from './CarStatusSelect/CarStatusSelect'
+import { CarBrandSelect } from './CarBrandSelect/CarBrandSelect'
 
 export {
 	CarCardData,
@@ -21,5 +23,7 @@ export {
 	CarAvailableCard,
 	CarStatus,
 	CarsListFilter,
-	CarAssignRentForm
+	CarAssignRentForm,
+	CarStatusSelect,
+	CarBrandSelect
 }

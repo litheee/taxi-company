@@ -20,8 +20,15 @@ export const MenuButton = styled(ButtonGradient, {
 	transition: 0.3s;
 
 	& > svg {
-		margin-left: 5px;
 		transition: 0.3s;
+	}
+
+	& > svg:first-of-type {
+		margin-right: 5px;
+	}
+
+	& > svg:last-of-type {
+		margin-left: 5px;
 	}
 
 	span {

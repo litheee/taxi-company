@@ -5,6 +5,7 @@ import { MenuButton, MenuNav } from 'components/common'
 import { CarCardData } from 'components/cars'
 
 import { ROUTE_NAMES } from 'constants/routes'
+import { replaceIdPathname } from 'utils'
 
 import * as S from './Cars.styled'
 
@@ -22,19 +23,15 @@ export const CarsLayout = ({ children }: { children?: ReactNode }) => {
 		setMenuAnchorEl(null)
 	}
 
-	const getPathnameWithCarId = (path: string, id: string) => {
-		return path.replace('[id]', id)
-	}
-
 	const nav = [
 		{ name: 'Автомобили', href: ROUTE_NAMES.CARS },
 		{
 			name: 'Приход/Расход',
-			href: getPathnameWithCarId(ROUTE_NAMES.CARS_INCOME_EXPENSE, carId)
+			href: replaceIdPathname(ROUTE_NAMES.CARS_INCOME_EXPENSE, carId)
 		},
 		{
 			name: 'Штрафы',
-			href: getPathnameWithCarId(ROUTE_NAMES.CARS_PENALTIES, carId)
+			href: replaceIdPathname(ROUTE_NAMES.CARS_PENALTIES, carId)
 		}
 	]
 

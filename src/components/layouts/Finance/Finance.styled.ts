@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
-import { FilterSelect } from 'components/common/FilterSelect/FilterSelect.styled'
 
+import { FilterSelect } from 'components/common/FilterSelect/FilterSelect.styled'
 import { MenuNav } from 'components/common/MenuNav/MenuNav.styled'
 import { TextField } from 'ui/TextField/TextField.styled'
 
@@ -58,12 +58,6 @@ export const TopLineLeft = styled.div`
 
 	${TextField} {
 		max-width: 340px;
-	}
-
-	${FilterSelect} {
-		.MuiInputBase-input {
-			background: #000 !important;
-		}
 	}
 `
 

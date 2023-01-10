@@ -2,7 +2,7 @@ import { FC, PropsWithChildren } from 'react'
 
 import * as S from './ColoredDotText.styled'
 
-type Color = 'green' | 'yellow' | 'orange' | 'red' | 'blue' | 'gray'
+export type Color = 'green' | 'yellow' | 'orange' | 'red' | 'blue' | 'gray'
 
 interface ColoredDotTextProps {
 	color: Color

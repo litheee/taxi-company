@@ -27,9 +27,10 @@ export const AddChargeModal = (props: AddChargeModalProps) => {
 
 	const chargeSchedules = [
 		{ label: 'Ежедневно', value: 'daily' },
-		{ label: 'По графику', value: 'schedule' },
 		{ label: 'По дням недели', value: 'week-days' },
-		{ label: 'По дням месяца', value: 'month-days' }
+		{ label: 'По дням месяца', value: 'month-days' },
+		{ label: 'По графику', value: 'schedule' },
+		{ label: 'По активности', value: 'activity' }
 	]
 
 	const weekDays = ['пн', 'вт', 'ср', 'чт', 'пт', 'сб', 'вс']
@@ -51,6 +52,11 @@ export const AddChargeModal = (props: AddChargeModalProps) => {
 							name="chargeSchedule"
 							defaultValue="daily"
 							options={chargeSchedules}
+							MenuProps={{
+								disablePortal: true,
+								anchorOrigin: { horizontal: 'left', vertical: 'bottom' },
+								transformOrigin: { horizontal: 'left', vertical: 'top' }
+							}}
 						/>
 					)
 				}}
@@ -89,15 +95,17 @@ export const AddChargeModal = (props: AddChargeModalProps) => {
 							}}
 						/>
 
-						<InputMask
-							name="time"
-							label="Время"
-							maskProps={{ mask: '99:99', alwaysShowMask: false }}
-							placeholder="00:00"
-							InputProps={{
-								endAdornment: <ClockIcon />
-							}}
-						/>
+						{chargeSchedule !== 'activity' ? (
+							<InputMask
+								name="time"
+								label="Время"
+								maskProps={{ mask: '99:99', alwaysShowMask: false }}
+								placeholder="00:00"
+								InputProps={{
+									endAdornment: <ClockIcon />
+								}}
+							/>
+						) : null}
 
 						<DateField
 							name="endDate"

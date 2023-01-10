@@ -10,7 +10,11 @@ interface MenuButtonProps {
 	open: boolean
 }
 
-export const EmployeeFilter = styled.div`
+interface RoleListItem {
+	darkGreen: boolean
+}
+
+export const CounterpartiesRolesSelect = styled.div`
 	display: flex;
 	gap: 10px;
 
@@ -20,72 +24,69 @@ export const EmployeeFilter = styled.div`
 	}
 `
 
-export const Chip = styled.div`
-	padding: 2px;
-	box-shadow: var(--box-shadow);
-	border-radius: 5px;
-	background: var(--gradient-green);
-
-	&:hover > span {
-		background: transparent;
-	}
-
-	& > span {
-		display: flex;
-		align-items: center;
-		padding: 5px 8px;
-		background: #000;
-		border-radius: 5px;
-		transition: 0.3s;
-
-		button {
-			margin-left: 10px;
-		}
-	}
-`
-
-export const EmployeeAdd = styled.div`
+export const RolesList = styled.ul`
 	display: flex;
-	align-items: center;
-	border-radius: 5px;
-	padding-right: 2px;
-	background: var(--gradient-green);
-	box-shadow: var(--box-shadow);
-
-	button:not(:first-of-type) {
-		display: flex;
-		align-items: center;
-		height: 27px;
-		padding: 0 10px;
-		font-size: 15px;
-		font-weight: 500;
-		background: #000;
-		transition: 0.3s;
-
-		&:hover {
-			background: transparent;
-		}
-
-		&:last-child {
-			border-top-right-radius: 5px;
-			border-bottom-right-radius: 5px;
-		}
-
-		& > svg {
-			margin-left: 5px;
-		}
-	}
-`
-
-export const EmployeeAddButton = styled.button`
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	width: 37px;
 	height: 31px;
+	background: var(--gradient-green);
+	border-radius: 5px;
 `
 
-// NEW
+export const RoleListItem = styled.li<RoleListItem>`
+	display: flex;
+	align-items: center;
+	padding: 5px 10px;
+
+	&:not(:last-of-type) {
+		border-right: 2px solid #2f6d08;
+	}
+
+	${({ darkGreen }) =>
+		darkGreen &&
+		css`
+			background: #19560a;
+			box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.1);
+		`}
+`
+
+export const RoleListItemName = styled.div``
+
+export const RoleListItemSubRole = styled.div`
+	margin-left: 5px;
+	padding: 2px 5px;
+	border-radius: 5px;
+	background: rgba(255, 255, 255, 0.2);
+`
+
+export const RoleListItemActions = styled.div`
+	display: flex;
+	align-items: center;
+	margin-left: 5px;
+
+	button {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		// arrow
+		&:first-of-type {
+			width: 17px;
+			height: 17px;
+		}
+
+		// cross
+		&:last-of-type {
+			width: 13px;
+			height: 13px;
+			margin-left: 10px;
+			opacity: 0.5;
+			transition: 0.3s;
+
+			&:hover {
+				opacity: 1;
+			}
+		}
+	}
+`
 
 export const MenuButton = styled.button<MenuButtonProps>`
 	position: relative;
@@ -171,7 +172,7 @@ export const RolesMenu = styled(MenuUI)`
 	}
 `
 
-export const RolesMenuList = styled.div`
+export const RolesMenuNamesList = styled.div`
 	margin-top: 10px;
 
 	${MenuItem} {
@@ -183,7 +184,7 @@ export const RolesMenuList = styled.div`
 	}
 `
 
-export const RolesListContainer = styled.div`
+export const RolesMenuNamesListItem = styled.div`
 	&:not(:last-child) {
 		position: relative;
 		padding-bottom: 2px;
@@ -209,10 +210,21 @@ export const RolesListContainer = styled.div`
 	}
 `
 
-export const RolesList = styled.ul`
+export const RolesMenuList = styled.ul`
 	${MenuItem} {
 		font-size: 15px;
 		font-weight: 500;
 		line-height: 17px;
+	}
+`
+
+export const SubRolesMenu = styled(RolesMenu)`
+	.MuiPaper-root {
+		margin-top: 17px;
+		padding: 5px 10px;
+	}
+
+	${RolesMenuNamesList} {
+		margin-top: 0;
 	}
 `

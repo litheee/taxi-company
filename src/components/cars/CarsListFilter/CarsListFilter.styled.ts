@@ -11,10 +11,4 @@ export const CarsListFilter = styled.div`
 	display: flex;
 	align-items: center;
 	gap: 15px;
-
-	${FilterSelect} {
-		.MuiInputBase-input {
-			background: #000 !important;
-		}
-	}
 `

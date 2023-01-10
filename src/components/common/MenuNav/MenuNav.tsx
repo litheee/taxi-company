@@ -1,4 +1,4 @@
-import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 import * as S from './MenuNav.styled'
 
@@ -12,13 +12,33 @@ interface MenuNavProps {
 }
 
 export const MenuNav = ({ nav }: MenuNavProps) => {
+	const { pathname } = useRouter()
+
+	const getActiveNavItem = (currentPathname: string, nav: NavItem[]) => {
+		const lastEndpointIdx = currentPathname.lastIndexOf('/')
+		const currentEndpoint = currentPathname.slice(lastEndpointIdx)
+
+		const activeNavItem = nav.find(({ href }) => {
+			const lastEndpointIdx = href.lastIndexOf('/')
+			const endpoint = href.slice(lastEndpointIdx)
+
+			return currentEndpoint === endpoint
+		})
+
+		return activeNavItem
+	}
+
 	return (
 		<S.MenuNav>
 			{nav.map(({ name, href }) => {
 				return (
-					<Link key={name} href={href}>
+					<S.Link
+						key={name}
+						href={href}
+						active={name === getActiveNavItem(pathname, nav)?.name}
+					>
 						{name}
-					</Link>
+					</S.Link>
 				)
 			})}
 		</S.MenuNav>

@@ -60,7 +60,7 @@ export const UserProfile = () => {
 					<S.NotificationsCount>5</S.NotificationsCount>
 				</S.Avatar>
 
-				{!isUserLoading ? (
+				{!isUserLoading && user ? (
 					<span>
 						{user.lastName} {user.firstName}
 					</span>

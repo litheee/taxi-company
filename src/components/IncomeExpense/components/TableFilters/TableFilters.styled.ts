@@ -17,9 +17,5 @@ export const Selects = styled.div`
 
 	${FilterSelect} {
 		width: 260px;
-
-		.MuiInputBase-input {
-			background: #000 !important;
-		}
 	}
 `

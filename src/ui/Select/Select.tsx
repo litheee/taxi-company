@@ -12,7 +12,7 @@ interface Option {
 
 export type SelectProps = {
 	name: string
-	options: Option[]
+	options?: Option[]
 } & MuiSelectProps
 
 export const Select = ({
@@ -37,7 +37,10 @@ export const Select = ({
 					<S.Select
 						{...field}
 						displayEmpty
+						defaultValue={defaultValue}
 						renderValue={(value: any) => {
+							if (!options) return value
+
 							const label = options.find(({ value: v }) => v === value)?.label
 
 							return value !== '' || !placeholder ? (
@@ -48,13 +51,15 @@ export const Select = ({
 						}}
 						{...props}
 					>
-						{options.map(({ label, value }) => {
-							return (
-								<MenuItem key={label} value={value}>
-									{label}
-								</MenuItem>
-							)
-						})}
+						{!props.children && options
+							? options.map(({ label, value }) => {
+									return (
+										<MenuItem key={label} value={value}>
+											{label}
+										</MenuItem>
+									)
+							  })
+							: props.children}
 					</S.Select>
 				)}
 			/>

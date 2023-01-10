@@ -29,6 +29,7 @@ export const UserBalance = () => {
 
 	const closePopover = () => {
 		setPopoverAnchorEl(null)
+		setActionTab(null)
 	}
 
 	const onTabChange = (event: React.SyntheticEvent, newValue: number) => {
@@ -72,10 +73,14 @@ export const UserBalance = () => {
 				Баланс: <CurrencyAmount value={5000} />
 			</MenuButton>
 
-			<S.Popover open={Boolean(popoverAnchorEl)} anchorEl={popoverAnchorEl} onClose={closePopover}>
+			<S.Popover
+				open={Boolean(popoverAnchorEl)}
+				anchorEl={popoverAnchorEl}
+				onClose={closePopover}
+			>
 				<S.BalanceList as="ul">{balanceItems}</S.BalanceList>
 
-				<S.ButtonGroup>
+				<S.ButtonGroup bgFill={actionTab === null}>
 					<Tabs value={actionTab} onChange={onTabChange}>
 						{actionTabs}
 					</Tabs>

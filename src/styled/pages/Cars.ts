@@ -8,7 +8,7 @@ export const CarsPage = styled.div`
 
 export const CarsGrid = styled.ul`
 	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(350px, 350px));
+	grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
 	justify-content: space-between;
 	grid-auto-flow: dense;
 	grid-gap: 15px;
